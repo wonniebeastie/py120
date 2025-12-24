@@ -5,8 +5,9 @@ class Car:
         self.color = color
         self.speed = 0
 
-    def turn_engine_on(self):
-        print(f"{self.model}'s engine turns on!")
+    @staticmethod
+    def turn_engine_on():
+        print('The engine is on!')
 
     def accelerate(self):
         self.speed += 3000
@@ -25,10 +26,11 @@ class Car:
 
 car1 = Car('Sus Turtle Shell', 5603, 'Rainbow')
 
-car1.turn_engine_on() # Sus Turtle Shell's engine turns on!
+car1.turn_engine_on() # The engine is on!
 car1.accelerate() # You accelerate to 3000 mph! Your only wig flies off.
 car1.print_current_speed() # Your current speed is 3000 mph.
 car1.brake() # You slow down to 2000 mph.
 car1.print_current_speed() # Your current speed is 2000 mph.
 car1.turn_engine_off() # Sus Turtle Shell's engine turns off.
 car1.print_current_speed() # Your current speed is 0 mph.
+
