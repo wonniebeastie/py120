@@ -8,7 +8,10 @@ class Car:
         return f'{self.color.capitalize()} {self.year} {self.model}'
 
     def __repr__(self):
-        return f'Car({repr(self.model)}, {repr(self.year)}, {repr(self.color)})'
+        color = repr(self.color)
+        year = repr(self.year)
+        model = repr(self.model)
+        return f'Car({model}, {year}, {color})'
 
 vwbuzz = Car('ID.Buzz', 2024, 'red')
 print(vwbuzz)        # Red 2024 ID.Buzz
