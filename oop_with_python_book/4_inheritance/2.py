@@ -1,24 +1,24 @@
-class Vehicles:
+class Vehicle:
     counter = 0
 
     def __init__(self):
-        Vehicles.counter += 1
+        Vehicle.counter += 1
 
     @classmethod
     def vehicles(cls):
-        return Vehicles.counter
+        return Vehicle.counter
 
-class Car(Vehicles):
+class Car(Vehicle):
     
     def __init__(self):
         super().__init__()
 
-class Truck(Vehicles):
+class Truck(Vehicle):
 
     def __init__(self):
         super().__init__()
 
-class Boat(Vehicles):
+class Boat(Vehicle):
 
     def __init__(self):
         super().__init__()
