@@ -9,13 +9,19 @@ class Vehicles:
         return Vehicles.counter
 
 class Car(Vehicles):
-    pass
+    
+    def __init__(self):
+        super().__init__()
 
 class Truck(Vehicles):
-    pass
+
+    def __init__(self):
+        super().__init__()
 
 class Boat(Vehicles):
-    pass
+
+    def __init__(self):
+        super().__init__()
 
 print(Car.vehicles())     # 0
 
