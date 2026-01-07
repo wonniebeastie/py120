@@ -1,8 +1,13 @@
-class Car:
+class Vehicles:
 
     def __init__(self, fuel_capacity, mpg):
         self.capacity = fuel_capacity
         self.mpg = mpg
+
+class Car(Vehicles):
+
+    def __init__(self, fuel_capacity, mpg):
+        super().__init__(fuel_capacity, mpg)
 
     def max_range_in_miles(self):
         return self.capacity * self.mpg
@@ -10,11 +15,10 @@ class Car:
     def family_drive(self):
         print('Taking the family for a drive')
 
-class Truck:
+class Truck(Vehicles):
 
     def __init__(self, fuel_capacity, mpg):
-        self.capacity = fuel_capacity
-        self.mpg = mpg
+        super().__init__(fuel_capacity, mpg)
 
     def max_range_in_miles(self):
         return self.capacity * self.mpg
