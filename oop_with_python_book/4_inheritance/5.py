@@ -4,24 +4,21 @@ class Vehicles:
         self.capacity = fuel_capacity
         self.mpg = mpg
 
-class Car(Vehicles):
-
-    def __init__(self, fuel_capacity, mpg):
-        super().__init__(fuel_capacity, mpg)
-
     def max_range_in_miles(self):
         return self.capacity * self.mpg
 
     def family_drive(self):
         print('Taking the family for a drive')
 
-class Truck(Vehicles):
+class Car(Vehicles):
 
     def __init__(self, fuel_capacity, mpg):
         super().__init__(fuel_capacity, mpg)
 
-    def max_range_in_miles(self):
-        return self.capacity * self.mpg
+class Truck(Vehicles):
+
+    def __init__(self, fuel_capacity, mpg):
+        super().__init__(fuel_capacity, mpg)
 
     def hookup_trailer(self):
         print('Hooking up trailer')
@@ -39,7 +36,7 @@ try:
     truck.family_drive()
 except AttributeError:
     print('No family_drive method for Truck')
-# No family_drive method for Truck
+# Taking the family for a drive
 
 try:
     car.hookup_trailer()
