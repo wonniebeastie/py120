@@ -5,11 +5,19 @@ class Person:
         self.first_name = name_parts[0]
         self.last_name = ''
         if len(name_parts) > 1:
-            self.last_name = name_parts[1]
+            self.last_name = name_parts[1]        
 
     @property
     def name(self):
         return f'{self.first_name} {self.last_name}'.strip()
+
+    @name.setter
+    def name(self, name):
+        name_parts = name.split()
+        self.first_name = name_parts[0]
+        self.last_name = ''
+        if len(name_parts) > 1:
+            self.last_name = name_parts[1]
 
     @property
     def first_name(self):
