@@ -32,5 +32,7 @@ class Person:
         self._last_name = last_name
 
 bob = Person('Robert Smith')
-print(f"The person's name is: {bob}")
-# The person's name is: <__main__.Person object at 0x104d7bfd0>
+print("The person's name is: " + bob.name)
+# The person's name is: Robert Smith
+print(f"The person's name is: {bob.name}")
+# The person's name is: Robert Smith
