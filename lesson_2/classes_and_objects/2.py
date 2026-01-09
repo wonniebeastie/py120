@@ -1,8 +1,11 @@
 class Person:
 
-    def __init__(self, first_name, last_name=''):
-        self.first_name = first_name
-        self.last_name = last_name
+    def __init__(self, name):
+        name_parts = name.split()
+        self.first_name = name_parts[0]
+        self.last_name = ''
+        if len(name_parts) > 1:
+            self.last_name = name_parts[1]
 
     @property
     def name(self):
@@ -26,7 +29,7 @@ class Person:
 
 bob = Person('Robert')
 
-print(bob.name)             # Robert
+print(bob.name)             # Robert    
 print(bob.first_name)       # Robert
 print(repr(bob.last_name))  # ''
 
