@@ -1,11 +1,7 @@
 class Person:
 
     def __init__(self, name):
-        name_parts = name.split()
-        self.first_name = name_parts[0]
-        self.last_name = ''
-        if len(name_parts) > 1:
-            self.last_name = name_parts[1]        
+        self.name = name    
 
     @property
     def name(self):
