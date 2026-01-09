@@ -31,8 +31,14 @@ class Person:
     def last_name(self, last_name):
         self._last_name = last_name
 
+    def __str__(self):
+        return self.name
+
 bob = Person('Robert Smith')
 print("The person's name is: " + bob.name)
 # The person's name is: Robert Smith
 print(f"The person's name is: {bob.name}")
+# The person's name is: Robert Smith
+
+print(f"The person's name is: {bob}")
 # The person's name is: Robert Smith
