@@ -7,9 +7,13 @@ class Person:
     def name(self):
         return self._name
 
-    @name.setter
-    def name(self, name):
-        self._name = name
+    @property
+    def first_name(self):
+        return self._first_name
+    
+    @first_name.setter
+    def first_name(self, first_name):
+        self._first_name = first_name
 
 bob = Person('Robert')
 print(bob.name)             # Robert
