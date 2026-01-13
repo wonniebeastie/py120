@@ -6,5 +6,8 @@ class Cat:
     def name(self):
         return self._name
 
+    def personal_greeting(self):
+        print(f"Hello! My name is {self.name}!")
+
 kitty = Cat('Sophie')
-kitty.personal_greeting()     # Hello! My name is Sophie!
+kitty.personal_greeting()  # Hello! My name is Sophie!
