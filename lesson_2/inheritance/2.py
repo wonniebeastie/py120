@@ -17,3 +17,8 @@ class Dog(Pet):
 
     def fetch(self):
         return 'fetching!'
+
+class Bulldog(Dog):
+
+    def sleep(self):
+        return 'snoring!'
