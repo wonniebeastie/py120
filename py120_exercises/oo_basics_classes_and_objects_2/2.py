@@ -10,6 +10,9 @@ class Cat:
     def name(self, value):
         self._name = value
 
+    def rename(self, new_name):
+        self.name = new_name
+
 # Comments show expected output
 kitty = Cat('Sophie')
 print(kitty.name)             # Sophie
