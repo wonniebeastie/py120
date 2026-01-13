@@ -6,6 +6,12 @@ class Vehicle:
     def year(self):
         return self._year
 
+class Truck(Vehicle):
+    pass
+
+class Car(Vehicle):
+    pass
+
 # Comments show expected output
 truck1 = Truck(1994)
 print(truck1.year)            # 1994
