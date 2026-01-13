@@ -10,6 +10,9 @@ class Cat:
     def name(self, value):
         self._name = value
 
+    def identify(self):
+        return self
+
 # Comments show expected output
 kitty = Cat('Sophie')
 print(kitty.identify())
