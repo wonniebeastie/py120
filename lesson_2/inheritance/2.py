@@ -1,4 +1,7 @@
 class Pet:
+    def speak(self):
+        pass
+
     def sleep(self):
         return 'sleeping!'
 
