@@ -1,6 +1,6 @@
 class Banner:
     def __init__(self, message):
-        pass
+        self.message = message
 
     def __str__(self):
         return "\n".join([self._horizontal_rule(),
@@ -15,6 +15,7 @@ class Banner:
     def _horizontal_rule(self):
         pass
 
+    # Prints middle part of box
     def _message_line(self):
         return f"| {self.message} |"
 
