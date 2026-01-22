@@ -9,11 +9,13 @@ class Banner:
                           self._empty_line(),
                           self._horizontal_rule()])
 
+    # Prints the "blank" lines above and below message
     def _empty_line(self):
         pass
 
+    # Prints the top & bottom lines
     def _horizontal_rule(self):
-        pass
+        return '+-' + ('-' * len(self.message)) + '-+'
 
     # Prints middle part of box
     def _message_line(self):
