@@ -22,7 +22,8 @@ class Cat(Pet):
 
     @property
     def info(self):
-        return f'My cat {self._name} is {self._age} years old and has {self._colors} fur.'
+        return (f"My cat {self._name} is {self._age} "
+                f"years old and has {self._colors} fur.")
 
 cocoa = Cat('Cocoa', 3, 'black')
 cheddar = Cat('Cheddar', 4, 'yellow and white')
