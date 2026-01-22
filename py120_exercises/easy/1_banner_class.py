@@ -11,7 +11,7 @@ class Banner:
 
     # Prints the "blank" lines above and below message
     def _empty_line(self):
-        pass
+        return '| ' + (' ' * len(self.message)) + ' |'
 
     # Prints the top & bottom lines
     def _horizontal_rule(self):
