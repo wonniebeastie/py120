@@ -9,3 +9,7 @@ class Animal:
     def introduce(self):
         return (f"Hello, my name is {self.name} and I am "
                 f"{self.age} years old and {self.status}.")
+
+class Cat(Animal):
+    def __init__(self, name, age, legs, species, status):
+        super().__init__(self, name, age, 4, "cat", status)
