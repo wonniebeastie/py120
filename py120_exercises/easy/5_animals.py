@@ -26,3 +26,7 @@ class Dog(Animal):
     def __init__(self, name, age, status, owner):
         super().__init__(name, age, 4, "dog", status)
         self.owner = owner
+
+    def introduce(self):
+        return super().introduce() + ' Woof! Woof!'
+
