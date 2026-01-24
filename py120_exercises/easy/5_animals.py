@@ -21,3 +21,8 @@ cat = Cat("Pepe", 4, "happy")
 expected = ("Hello, my name is Pepe and I am 4 years old "
             "and happy. Meow meow!")
 print(cat.introduce() == expected)      # True
+
+class Dog(Animal):
+    def __init__(self, name, age, status, owner):
+        super().__init__(name, age, 4, "dog", status)
+        self.owner = owner
