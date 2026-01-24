@@ -30,3 +30,8 @@ class Dog(Animal):
     def introduce(self):
         return super().introduce() + ' Woof! Woof!'
 
+dog = Dog("Bobo", 9, "hungry", "Daddy")
+expected = ("Hello, my name is Bobo and I am 9 years old "
+            "and hungry. Woof! Woof!")
+print(dog.introduce() == expected)                  # True
+# print(dog.greet_owner() == "Hi Daddy! Woof! Woof!") # True
