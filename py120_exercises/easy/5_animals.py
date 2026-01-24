@@ -13,3 +13,6 @@ class Animal:
 class Cat(Animal):
     def __init__(self, name, age, legs, species, status):
         super().__init__(self, name, age, 4, "cat", status)
+
+    def introduce(self):
+        return super().introduce() + 'Meow meow!'
