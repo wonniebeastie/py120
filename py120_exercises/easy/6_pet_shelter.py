@@ -24,11 +24,16 @@ class Owner:
         pass
 
 class Shelter:
-    def __init__(self):
+    def __init__(self, masterlist):
         """
         - Each `Shelter` instance should have a masterlist of all owners
           and which pets they adopted
+        
+        DS:
+        - dict (key: owner, value: list of pets)
         """
+        self.masterlist = {}
+
     def adopt(self, owner, pet):
         """
         I: `Owner` instance
