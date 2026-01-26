@@ -1,3 +1,16 @@
+class Pet:
+    def __init__(self, species, name):
+        self.species = species
+        self.name = name
+
+class Owner:
+    def __init__(self, name):
+        self.name = name
+
+class Shelter:
+    pass
+
+
 cocoa   = Pet('cat', 'Cocoa')
 cheddar = Pet('cat', 'Cheddar')
 darwin  = Pet('bearded dragon', 'Darwin')
