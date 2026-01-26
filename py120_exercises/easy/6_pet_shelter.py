@@ -39,8 +39,8 @@ class Owner:
         return len(self.adopted_pets)
 
 class Shelter:
-    def adopt(self):
-        pass
+    def adopt(self, owner, pet):
+        owner.adopted_pets.add(pet)
 
 cocoa   = Pet('cat', 'Cocoa')
 cheddar = Pet('cat', 'Cheddar')
@@ -62,11 +62,13 @@ shelter.adopt(bholmes, sweetie)
 shelter.adopt(bholmes, molly)
 shelter.adopt(bholmes, chester)
 
-shelter.print_adoptions()
-print(f"{phanson.name} has {phanson.number_of_pets()} "
-      "adopted pets.")
-print(f"{bholmes.name} has {bholmes.number_of_pets()} "
-      "adopted pets.")
+print(phanson.adopted_pets)
+
+# shelter.print_adoptions()
+# print(f"{phanson.name} has {phanson.number_of_pets()} "
+#       "adopted pets.")
+# print(f"{bholmes.name} has {bholmes.number_of_pets()} "
+#       "adopted pets.")
 
 # The outputs we want:
 # P Hanson has adopted the following pets:
