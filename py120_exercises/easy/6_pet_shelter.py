@@ -7,6 +7,12 @@ class Pet:
         self.species = species
         self.name = name
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
+
 class Owner:
     def __init__(self, name):
         """
@@ -17,14 +23,26 @@ class Owner:
         self.name = name
         self.adopted_pets = set()
 
+    def add_pet(self, pet):
+        """
+        I: pet
+
+        - when a pet is adopted by owner,
+        - the `adopted_pets` collection is updated
+        """
+        self.adopted_pets.add(pet)
+
     def number_of_pets(self):
         """
         O: the number of pets owner instance has
         """
         pass
 
+    def __repr__(self):
+        return self.adopted_pets
+
 class Shelter:
-    def __init__(self, masterlist):
+    def __init__(self):
         """
         - Each `Shelter` instance should have a masterlist of all owners
           and which pets they adopted
@@ -37,14 +55,17 @@ class Shelter:
     def adopt(self, owner, pet):
         """
         I: `Owner` instance
-        O: `Pet` instance
+        I:: `Pet` instance
 
-        Rules:
         - each time someone adopts a pet, their collection of pets should be
           updated
         - the "masterlist" for that `Shelter` instance should be updated
+
+        Algo:
+        - call `add_pet` from `Owner` class with the pet
+        - update masterlist with owner & their `adopted_pets` list
         """
-        pass
+        owner.add_pet(pet)
 
     def print_adoptions(self):
         """
@@ -75,14 +96,15 @@ bholmes = Owner('B Holmes')
 
 shelter = Shelter()
 shelter.adopt(phanson, cocoa)
-shelter.adopt(phanson, cheddar)
-shelter.adopt(phanson, darwin)
-shelter.adopt(bholmes, kennedy)
-shelter.adopt(bholmes, sweetie)
-shelter.adopt(bholmes, molly)
-shelter.adopt(bholmes, chester)
+print(phanson.adopted_pets)
+# shelter.adopt(phanson, cheddar)
+# shelter.adopt(phanson, darwin)
+# shelter.adopt(bholmes, kennedy)
+# shelter.adopt(bholmes, sweetie)
+# shelter.adopt(bholmes, molly)
+# shelter.adopt(bholmes, chester)
 
-shelter.print_adoptions()
+# shelter.print_adoptions()
 # print(f"{phanson.name} has {phanson.number_of_pets()} "
 #       "adopted pets.")
 # print(f"{bholmes.name} has {bholmes.number_of_pets()} "
