@@ -36,7 +36,7 @@ class Owner:
         """
         O: the number of pets owner instance has
         """
-        pass
+        return len(self.adopted_pets)
 
     # def __str__(self):
     #     return self.name
@@ -101,10 +101,10 @@ shelter.adopt(bholmes, molly)
 shelter.adopt(bholmes, chester)
 
 shelter.print_adoptions()
-# print(f"{phanson.name} has {phanson.number_of_pets()} "
-#       "adopted pets.")
-# print(f"{bholmes.name} has {bholmes.number_of_pets()} "
-#       "adopted pets.")
+print(f"{phanson.name} has {phanson.number_of_pets()} "
+      "adopted pets.")
+print(f"{bholmes.name} has {bholmes.number_of_pets()} "
+      "adopted pets.")
 
 # The outputs we want:
 # P Hanson has adopted the following pets:
