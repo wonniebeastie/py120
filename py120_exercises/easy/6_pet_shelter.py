@@ -5,7 +5,6 @@ class Pet:
 
 class Owner:
     def __init__(self, name):
-
         self.name = name
         self.adopted_pets = set()
 
