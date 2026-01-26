@@ -33,7 +33,7 @@ class Pet:
 class Owner:
     def __init__(self, name):
         self.name = name
-        self.adopted_pets = {}
+        self.adopted_pets = set()
 
     def number_of_pets(self):
         return len(self.adopted_pets)
