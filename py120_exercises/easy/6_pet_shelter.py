@@ -7,12 +7,6 @@ class Pet:
         self.species = species
         self.name = name
 
-    # def __str__(self):
-    #     return self.name
-
-    # def __repr__(self):
-    #     return self.name
-
 class Owner:
     def __init__(self, name):
         """
@@ -37,12 +31,6 @@ class Owner:
         O: the number of pets owner instance has
         """
         return len(self.adopted_pets)
-
-    # def __str__(self):
-    #     return self.name
-
-    # def __repr__(self):
-    #     return f"{repr(self.name)}"
 
 class Shelter:
     def __init__(self):
