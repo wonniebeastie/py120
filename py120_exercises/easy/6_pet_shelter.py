@@ -11,8 +11,8 @@ class Owner:
         pass
 
 class Shelter:
-    pass
-
+    def adopt(self):
+        pass
 
 cocoa   = Pet('cat', 'Cocoa')
 cheddar = Pet('cat', 'Cheddar')
