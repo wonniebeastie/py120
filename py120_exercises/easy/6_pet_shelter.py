@@ -16,16 +16,16 @@ class Owner:
 
 class Shelter:
     def __init__(self):
-        self.masterlist = {}
+        self.shelter_record = {}
 
     def adopt(self, owner, pet):
         owner.add_pet(pet)
-        self.masterlist[owner] = owner.adopted_pets
+        self.shelter_record[owner] = owner.adopted_pets
 
     def print_adoptions(self):
-        for owner in self.masterlist:
+        for owner in self.shelter_record:
             print(f"{owner.name} has adopted the following pets:")
-            for pet in self.masterlist[owner]:
+            for pet in self.shelter_record[owner]:
                 print(f"a {pet.species} named {pet.name}")
             print("")
 
