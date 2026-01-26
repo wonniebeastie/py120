@@ -7,6 +7,9 @@ class Owner:
     def __init__(self, name):
         self.name = name
 
+    def number_of_pets(self):
+        pass
+
 class Shelter:
     pass
 
