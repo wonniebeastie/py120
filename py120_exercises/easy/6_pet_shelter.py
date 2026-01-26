@@ -1,7 +1,3 @@
-"""
-P: keep track of number of pets adopted per owner
-P: output which pets owner has adopted
-"""
 class Pet:
     def __init__(self, species, name):
         self.species = species
@@ -9,55 +5,21 @@ class Pet:
 
 class Owner:
     def __init__(self, name):
-        """
-        Each owner should have:
-        - a name
-        - a list of pets they adopted
-        """
+
         self.name = name
         self.adopted_pets = set()
 
     def add_pet(self, pet):
-        """
-        I: pet
-
-        - when a pet is adopted by owner,
-        - the `adopted_pets` collection is updated
-        """
         self.adopted_pets.add(pet)
 
     def number_of_pets(self):
-        """
-        O: the number of pets owner instance has
-        """
         return len(self.adopted_pets)
 
 class Shelter:
     def __init__(self):
-        """
-        - Each `Shelter` instance should have a masterlist of all owners
-          and which pets they adopted
-        
-        DS:
-        - dict (key: owner, value: list of pets)
-        """
         self.masterlist = {}
 
     def adopt(self, owner, pet):
-        """
-        I: `Owner` instance
-        I:: `Pet` instance
-
-        - each time someone adopts a pet, their collection of pets should be
-          updated
-        - the "masterlist" for that `Shelter` instance should be updated
-
-        Algo:
-        - call `add_pet` from `Owner` class with the pet
-        - update masterlist 
-            - owner key
-            - with their mutated `adopted_pets` collection
-        """
         owner.add_pet(pet)
         self.masterlist[owner] = owner.adopted_pets
 
