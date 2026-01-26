@@ -38,8 +38,11 @@ class Owner:
         """
         pass
 
+    # def __str__(self):
+    #     return self.name
+
     def __repr__(self):
-        return self.adopted_pets
+        return f"{repr(self.name)}"
 
 class Shelter:
     def __init__(self):
@@ -63,9 +66,12 @@ class Shelter:
 
         Algo:
         - call `add_pet` from `Owner` class with the pet
-        - update masterlist with owner & their `adopted_pets` list
+        - update masterlist 
+            - owner key
+            - with their mutated `adopted_pets` collection
         """
         owner.add_pet(pet)
+        self.masterlist[owner] = owner.adopted_pets
 
     def print_adoptions(self):
         """
@@ -96,15 +102,15 @@ bholmes = Owner('B Holmes')
 
 shelter = Shelter()
 shelter.adopt(phanson, cocoa)
-print(phanson.adopted_pets)
-# shelter.adopt(phanson, cheddar)
-# shelter.adopt(phanson, darwin)
-# shelter.adopt(bholmes, kennedy)
-# shelter.adopt(bholmes, sweetie)
-# shelter.adopt(bholmes, molly)
-# shelter.adopt(bholmes, chester)
+shelter.adopt(phanson, cheddar)
+shelter.adopt(phanson, darwin)
+shelter.adopt(bholmes, kennedy)
+shelter.adopt(bholmes, sweetie)
+shelter.adopt(bholmes, molly)
+shelter.adopt(bholmes, chester)
+print(shelter.masterlist)
 
-# shelter.print_adoptions()
+shelter.print_adoptions()
 # print(f"{phanson.name} has {phanson.number_of_pets()} "
 #       "adopted pets.")
 # print(f"{bholmes.name} has {bholmes.number_of_pets()} "
