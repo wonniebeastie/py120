@@ -7,11 +7,11 @@ class Pet:
         self.species = species
         self.name = name
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
-    def __repr__(self):
-        return self.name
+    # def __repr__(self):
+    #     return self.name
 
 class Owner:
     def __init__(self, name):
@@ -41,8 +41,8 @@ class Owner:
     # def __str__(self):
     #     return self.name
 
-    def __repr__(self):
-        return f"{repr(self.name)}"
+    # def __repr__(self):
+    #     return f"{repr(self.name)}"
 
 class Shelter:
     def __init__(self):
@@ -74,20 +74,11 @@ class Shelter:
         self.masterlist[owner] = owner.adopted_pets
 
     def print_adoptions(self):
-        """
-        Rules:
-        - print "masterlist"
-        - needs access to:
-            - owner
-            - their collection of pets
-
-        DS/Brainstorm:
-        - 
-
-        Algo:
-        - 
-        """
-        pass
+        for owner in self.masterlist:
+            print(f"{owner.name} has adopted the following pets:")
+            for pet in self.masterlist[owner]:
+                print(f"a {pet.species} named {pet.name}")
+            print("")
 
 cocoa   = Pet('cat', 'Cocoa')
 cheddar = Pet('cat', 'Cheddar')
@@ -108,7 +99,6 @@ shelter.adopt(bholmes, kennedy)
 shelter.adopt(bholmes, sweetie)
 shelter.adopt(bholmes, molly)
 shelter.adopt(bholmes, chester)
-print(shelter.masterlist)
 
 shelter.print_adoptions()
 # print(f"{phanson.name} has {phanson.number_of_pets()} "
