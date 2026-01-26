@@ -20,7 +20,8 @@ class Shelter:
 
     def adopt(self, owner, pet):
         owner.add_pet(pet)
-        self.shelter_record[owner] = owner.adopted_pets
+        if owner.name not in self.shelter_record:
+            self.shelter_record[owner] = owner.adopted_pets
 
     def print_adoptions(self):
         for owner in self.shelter_record:
