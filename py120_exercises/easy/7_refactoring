@@ -5,19 +5,16 @@ class Vehicle:
         self.make = make
         self.model = model
 
+    def info(self):
+        return f"{self.make} {self.model}"
+
 class Car(Vehicle):
     def get_wheels(self):
         return 4
 
-    def info(self):
-        return f"{self.make} {self.model}"
-
 class Motorcycle(Vehicle):
     def get_wheels(self):
         return 2
-
-    def info(self):
-        return f"{self.make} {self.model}"
 
 class Truck(Vehicle):
     def __init__(self, make, model, payload):
@@ -26,6 +23,3 @@ class Truck(Vehicle):
 
     def get_wheels(self):
         return 6
-
-    def info(self):
-        return f"{self.make} {self.model}"
