@@ -19,7 +19,7 @@ class Cheetah:
     def gait(self):
         return "runs"
 
-# Modify the code above so that these tests work:
+# Modify the code above so that these tests work (only one new method allowed):
 mike = Person("Mike")
 print(mike.walk())  # Expected: "Mike strolls forward"
 
