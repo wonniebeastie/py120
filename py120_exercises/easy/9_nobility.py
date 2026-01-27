@@ -28,6 +28,12 @@ class Noble(WalkMixin):
         self.name = name
         self.title = title
 
+    def gait(self):
+        return "struts"
+
+    def walk(self):
+        return f"{self.title} " + super().walk()
+
 # Test code
 byron = Noble("Byron", "Lord")
 print(byron.walk())  # "Lord Byron struts forward"
