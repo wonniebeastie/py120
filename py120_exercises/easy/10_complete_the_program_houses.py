@@ -10,8 +10,8 @@ class House:
     def price(self, value):
         self._price = value
 
-home1 = House(100000)
-home2 = House(150000)
+home1 = House(100_000)
+home2 = House(150_000)
 if home1 < home2:
     print("Home 1 is cheaper")
 if home2 > home1:
