@@ -2,6 +2,9 @@ class Pet:
     def __init__(self, species, name):
         self.species = species
         self.name = name
+    
+    def info(self):
+        return f"a {self.species} named {self.name}"
 
 class Owner:
     def __init__(self, name):
@@ -24,10 +27,10 @@ class Shelter:
             self.shelter_record[owner] = owner.adopted_pets
 
     def print_adoptions(self):
-        for owner in self.shelter_record:
+        for owner, pets in self.shelter_record.items():
             print(f"{owner.name} has adopted the following pets:")
-            for pet in self.shelter_record[owner]:
-                print(f"a {pet.species} named {pet.name}")
+            for pet in pets:
+                print(pet.info())
             print("")
 
 cocoa   = Pet('cat', 'Cocoa')
