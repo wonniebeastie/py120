@@ -1,3 +1,7 @@
+class WalkMixin:
+    def walk(self):
+        return f"{self.name} {self.gait()} forward"
+
 class Person(WalkMixin):
     def __init__(self, name):
         self.name = name
@@ -18,6 +22,11 @@ class Cheetah(WalkMixin):
 
     def gait(self):
         return "runs"
+
+class Noble(WalkMixin):
+    def __init__(self, name, title):
+        self.name = name
+        self.title = title
 
 # Test code
 byron = Noble("Byron", "Lord")
