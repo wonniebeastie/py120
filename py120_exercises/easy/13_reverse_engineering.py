@@ -1,4 +1,8 @@
 class Transform:
+    @classmethod
+    def lowercase(cls, text):
+        return text.lower()
+
     def __init__(self, data):
         self.data = data
 
