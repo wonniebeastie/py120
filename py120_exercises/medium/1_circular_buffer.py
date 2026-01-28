@@ -1,13 +1,44 @@
 class CircularBuffer:
+    """
+    Initializes a buffer for each instance
+    """
     def __init__(self, size):
         self.size = size
-        self.buffer = [None] * 3
+        self.buffer = [None] * size
 
     def put(self):
+        """
+        Adds an object to the buffer
+        """
         pass
 
     def get(self):
+        """
+        Removes & returns the oldest object in the buffer.
+        Returns `None` if buffer is empty
+
+        - Have to keep track of order of added
+        - 
+        """
         pass
+"""
+[0, 1, 2]
+
+[None, None, None] empty
+[1, None, None] -> None is replaced by newest (1)
+[1, 2, None] -> None is replaced by newest (2)
+[None, 2, None] -> oldest (1) removed, replaced by None
+[None, 2, 3] -> None is replaced by newest (3)
+[4, 2, 3] -> None is replaced by newest (4) - FULL
+[4, None, 3] -> oldest (2) removed, replaced by None
+[4, 5, 3] -> None is replaced by newest (5) - FULL
+[4, 5, 6] -> oldest (3) is replaced by newest (6) - FULL
+[7, 5, 6] -> oldest (4) is replaced by newest (7) - FULL
+[7, None, 6] -> oldest (5) is removed, replaced by None
+[7, None, None] -> oldest (6) is removed, replaced by None
+[None, None, None] -> oldest (7) is removed, replaced by None
+[] -> 
+"""
 
 buffer = CircularBuffer(3)
 
