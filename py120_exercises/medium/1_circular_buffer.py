@@ -1,10 +1,16 @@
 class CircularBuffer:
     """
     Initializes a buffer for each instance
+    
+    Need to know:
+    - where to insert (index where the NEXT inserted item will go)
+    - where to remove from (index of the OLDEST item)
     """
     def __init__(self, size):
         self.size = size
         self.buffer = [None] * size
+        self.next = 0
+        self.oldest = 0
 
     def put(self):
         """
