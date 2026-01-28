@@ -1,6 +1,13 @@
 class CircularBuffer:
     def __init__(self, size):
         self.size = size
+        self.buffer = [None] * 3
+
+    def put(self):
+        pass
+
+    def get(self):
+        pass
 
 buffer = CircularBuffer(3)
 
