@@ -12,11 +12,11 @@ class CircularBuffer:
         self.next = 0
         self.oldest = 0
 
-    def put(self):
+    def put(self, new):
         """
         Adds an object to the buffer
         """
-        pass
+        self.buffer[self.next] = new
 
     def get(self):
         """
