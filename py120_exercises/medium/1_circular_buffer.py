@@ -1,3 +1,7 @@
+class CircularBuffer:
+    def __init__(self, size):
+        self.size = size
+
 buffer = CircularBuffer(3)
 
 print(buffer.get() is None)          # True
