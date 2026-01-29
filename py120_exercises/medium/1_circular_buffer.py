@@ -1,6 +1,8 @@
 class CircularBuffer:
     """
     Initializes a buffer for each instance
+
+    P: Maintain a fixed-size list that "wraps around".
     
     Need to know:
     - where to insert (index where the NEXT inserted item will go)
@@ -15,6 +17,10 @@ class CircularBuffer:
     def put(self, new):
         """
         Adds an object to the buffer
+
+        P: 
+        - `put` always writes at the "next" position
+        - If buffer is full, `put` overwrites the oldest
         """
         self.buffer[self.next] = new
 
@@ -23,8 +29,9 @@ class CircularBuffer:
         Removes & returns the oldest object in the buffer.
         Returns `None` if buffer is empty
 
-        - Have to keep track of order of added
-        - 
+        P: 
+        -`get` always removes/returns the "oldest" item
+        - If buffer is empty, `get` returns `None`
         """
         pass
 """
