@@ -87,7 +87,8 @@ class CircularBuffer:
         self.oldest = 0
 
     def put(self, new):
-        pass
+        if self.buffer[self.next] is None:
+            self.buffer[self.next] = new
 
     def get(self):
         pass
