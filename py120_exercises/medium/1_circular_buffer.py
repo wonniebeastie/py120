@@ -88,8 +88,8 @@ class CircularBuffer:
             - set `next` to `next_index`
 
     - `get()`
-        - SET `item` with buffer[oldest]
-            - if `item` is `None` (means slot is empty):
+        - SET `oldest_item` with buffer[oldest]
+            - if `oldest_item` is `None` (means slot is empty):
                 - return `None`
             - else (means slot is filled):
                 - set `buffer[oldest]` to `None`
@@ -114,9 +114,15 @@ class CircularBuffer:
             self.next = next_index
 
     def get(self):
-        pass
+        # temporary local
+        oldest_item = self.buffer[self.oldest]
+    
+        if oldest_item is None:
+            return None
 
-
+        self.buffer[self.oldest] = None
+        self.oldest = (self.oldest + 1) % self.size
+        return oldest_item
 
 buffer = CircularBuffer(3)
 
