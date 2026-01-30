@@ -77,9 +77,9 @@ class CircularBuffer:
 
     ALGO:
     - `put(new)`
-        - if `buffer` slot at `next` is empty:
+        - if buffer[next] is `None`:
             - assign `new` to slot
-            - advance `next` (wrap with `% size`)
+            - set `next` to `(next + 1) % size`
         - else: (`next` slot is filled)
             - compute `next_index` by adding 1 to `next` and dividing by `size`
               to get the remainder
@@ -106,6 +106,13 @@ class CircularBuffer:
     def put(self, new):
         if self.buffer[self.next] is None:
             self.buffer[self.next] = new
+            self.next = (self.next + 1) % self.size
+        else:
+            # next_index doesn't need self - it's a temporary local
+            next_index = (self.next + 1) % self.size
+            self.buffer[self.next] = new
+            self.oldest = next_index
+            self.next = next_index
 
     def get(self):
         pass
