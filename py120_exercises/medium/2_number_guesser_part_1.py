@@ -53,7 +53,7 @@ What is "one turn"?:
     - while guesses remaining is greater than 0:
         - do one turn
         - if turn results in a correct guess:
-            - end game with win message
+            - print win message & end `play()`
     - if loop ends (guesses ran out) -> end with loss message
 """
 game = GuessingGame()
