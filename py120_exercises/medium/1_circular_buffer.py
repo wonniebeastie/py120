@@ -88,13 +88,13 @@ class CircularBuffer:
             - set `next` to `next_index`
 
     - `get()`
-        - check item at index `oldest`:
+        - SET `item` with buffer[oldest]
             - if item is `None` (means slot is empty):
                 - return `None`
             - else (means slot is filled):
                 - store that item in `oldest_item`
                 - set `buffer[oldest]` to `None`
-                - advance `oldest` (wrap with `% size`)
+                - set `oldest` to `(oldest + 1) % size`
                 - return `oldest_item`
     """
     def __init__(self, size):
