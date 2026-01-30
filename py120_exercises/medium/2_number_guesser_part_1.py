@@ -25,6 +25,12 @@ Flow:
             - display "That's the number!"
             - display that they won
             - end game
+
+`GuessingGame` Responsibilities:
+- start a new game each time (`play()`)
+- run the game loop (repeat turns until win/loss)
+- get and validate input (must be b/w 1-100; re-prompt for invalid)
+- give feedback/output (too high/low, guesses remaining, win/lose messages)
 """
 game = GuessingGame()
 game.play()
