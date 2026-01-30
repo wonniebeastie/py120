@@ -45,6 +45,16 @@ What is "one turn"?:
     - prompt until a valid guess (1-100)
     - compare to secret number -> print feedback (low/high/correct)
     - if valid & incorrect, decrement number of guesses
+
+`play()` Outline:
+    - reset per-game state
+        - new secret number
+        - guesses remaining = 7
+    - while guesses remaining is greater than 0:
+        - do one turn
+        - if turn results in a correct guess:
+            - end game with win message
+    - if loop ends (guesses ran out) -> end with loss message
 """
 game = GuessingGame()
 game.play()
