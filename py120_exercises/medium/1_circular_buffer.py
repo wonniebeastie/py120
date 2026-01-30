@@ -50,12 +50,19 @@ class CircularBuffer:
         - `next`: index to write to next
         - `oldest`: index of item to remove next
     - use `None` to mark "empty" slots
+    ----
+    - use modulo % for "wrap around" behavior so we stay inside a loop of
+      indices 0 ~ size-1
 
     METHODS:
     - `put`: Adds an object to the buffer
         ----
         I: int, new value to be added (`new`)
         O: N/A, mutates `buffer` list
+        ----
+        handle cases of `next` slot:
+        - is empty 
+        - is filled
     ====
     - `get`:
         Removes & returns the oldest object in the buffer.
@@ -63,16 +70,26 @@ class CircularBuffer:
         ----
         I: N/A
         O: `None` or `oldest_item`
+        ---
+        handle cases of `oldest` slot:
+        - is empty
+        - is filled
 
     ALGO:
     - `put(new)`
         - if `buffer` slot at `next` is empty:
             - assign `new` to slot
             - advance `next` (wrap with `% size`)
+        - else: (`next` slot is filled)
+            - compute `next_index` by adding 1 to `next` and dividing by `size`
+              to get the remainder
+            - overwrite that slot with `new`
+            - set `oldest` to `next_index`
+            - set `next` to `next_index`
 
     - `get()`
         - check item at index `oldest`:
-            - if item is `None` (means buffer is empty):
+            - if item is `None` (means slot is empty):
                 - return `None`
             - else (means slot is filled):
                 - store that item in `oldest_item`
