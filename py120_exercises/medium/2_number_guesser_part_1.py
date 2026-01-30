@@ -31,6 +31,14 @@ Flow:
 - run the game loop (repeat turns until win/loss)
 - get and validate input (must be b/w 1-100; re-prompt for invalid)
 - give feedback/output (too high/low, guesses remaining, win/lose messages)
+
+Pieces of State `GuessingGame` Will Need:
+Persistant: 
+    - max number of guesses
+    - number range boundary 1-100
+Per-Game:
+    - secret number
+    - guesses remaining
 """
 game = GuessingGame()
 game.play()
