@@ -48,14 +48,16 @@ What is "one turn"?:
 
 Methods:
 - `play()` -> play one full game
-    - reset per-game state
-        - new `secret_number`
-        - `guesses_remaining` = 7
+    - call `reset()`
     - while `guesses_remaining` is greater than 0:
         - do one turn
         - if turn results in a correct guess:
             - print win message & end `play()`
     - if loop ends (guesses ran out) -> end with loss message
+
+- `reset()` -> resets per-game state
+    - new `secret_number`
+    - `guesses_remaining` = 7
 
 - `play_turn()` -> returns True if correct guess, else False
     - display `guesses_remaining`
@@ -85,6 +87,12 @@ class GuessingGame:
     def __init__(self):
         self.secret_number
         self.guesses_remaining
+
+    def play(self):
+        self.reset()
+
+    def reset(self):
+        pass
 
 game = GuessingGame()
 game.play()
