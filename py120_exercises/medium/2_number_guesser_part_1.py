@@ -101,6 +101,10 @@ class GuessingGame:
         self.secret_number = None
         self.guesses_remaining = 0
 
+    def reset(self):
+        self.secret_number = random.choice(GuessingGame.SECRET_NUM_RANGE)
+        self.guesses_remaining = 7
+
     def play(self):
         self.reset()
         while self.guesses_remaining > 0:
@@ -109,10 +113,6 @@ class GuessingGame:
                 return
         
         print("You have no more guesses. You lost!")
-
-    def reset(self):
-        self.secret_number = random.choice(GuessingGame.SECRET_NUM_RANGE)
-        self.guesses_remaining = 7
 
 game = GuessingGame()
 game.play()
