@@ -105,6 +105,15 @@ class GuessingGame:
         self.secret_number = random.choice(GuessingGame.SECRET_NUM_RANGE)
         self.guesses_remaining = 7
 
+    def evaluate_guess(self):
+        pass
+
+    def get_guess(self):
+        pass
+
+    def play_turn(self):
+        pass
+
     def play(self):
         self.reset()
         while self.guesses_remaining > 0:
