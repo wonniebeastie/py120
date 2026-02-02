@@ -62,24 +62,35 @@ Methods:
 - `play_turn()` -> handles one guess attempt
     O: boolean
     - display `guesses_remaining`
-    - while True:
-        - SET `guess` with input from player: 
-          "Enter a number between 1 and 100: "
-        - if `validate_guess(guess)` is True:
-            - break out of loop
-        - else:
-            - print "Invalid guess" -> loop back `print(msg, end='')`
-    - compare to secret number -> print feedback (low/high/correct)
-    - if valid & incorrect, decrement number of guesses
+    - return `get_guess()`
 
-- `validate_guess(guess)` -> validate whether input is a number & within range
-    I: str, inputted guess
+- `get_guess(self)` -> gets a valid guess from player
     O: boolean
-    - if input is a digit:
-        - turn it into an integer
-        - if integer is within `SECRET_NUM_RANGE`:
+    - while True:
+        - SET `guess` with input from player
+        - check if `guess` is an integer and is within `SECRET_NUM_RANGE`:
+            - if it is:
+                - break out of loop
+            - else:
+                - print "Invalid guess" -> loop back `print(msg, end='')`
+    - return `evaluate_guess(self, guess)`
+
+- `evaluate_guess(self, guess)` -> 
+    I: int, guess
+    O: boolean
+    - compare `guess` with `secret_number`
+    - if `guess` is:
+        - less than `secret_number`:
+            - print "Your guess is too low."
+            - decrement `guesses_remaining`
+            - return False
+        - greater than `secret_number`:
+            - print "Your guess is too high."
+            - decrement `guesses_remaining`
+            - return False
+        - correct:
+            - print "That's the number!"
             - return True
-    - else: return False
 """
 import random
 class GuessingGame:
