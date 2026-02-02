@@ -51,7 +51,7 @@ Methods:
     - call `reset()`
     - while `guesses_remaining` is greater than 0:
         - do one turn
-        - if turn results in a correct guess:
+        - if turn results in a correct guess (`play_turn` returns True):
             - print win message & end `play()`
     - if loop ends (guesses ran out) -> end with loss message
 
@@ -59,7 +59,8 @@ Methods:
     - new `secret_number`
     - `guesses_remaining` = 7
 
-- `play_turn()` -> returns True if correct guess, else False
+- `play_turn()` -> handles one guess attempt
+    O: boolean
     - display `guesses_remaining`
     - while True:
         - SET `guess` with input from player: 
@@ -91,6 +92,12 @@ class GuessingGame:
 
     def play(self):
         self.reset()
+        while self.guesses_remaining > 0:
+            if self.play_turn():
+                print("You won!")
+                return
+        
+        print("You have no more guesses. You lost!")
 
     def reset(self):
         self.secret_number = random.choice(GuessingGame.SECRET_NUM_RANGE)
