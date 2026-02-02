@@ -34,11 +34,11 @@ Flow:
 
 Pieces of State `GuessingGame` Will Need:
     Persistant: 
-        - max number of guesses
-        - number range boundary 1-100
+        - max number of guesses 
+        - number range boundary 1-100 (`SECRET_NUM_RANGE`)
     Per-Game:
-        - secret number
-        - guesses remaining
+        - `secret_number`
+        - `guesses_remaining`
 
 What is "one turn"?:
     - display guesses remaining
@@ -46,15 +46,37 @@ What is "one turn"?:
     - compare to secret number -> print feedback (low/high/correct)
     - if valid & incorrect, decrement number of guesses
 
-`play()` Outline:
+Methods:
+- `play()` -> play one full game
     - reset per-game state
-        - new secret number
-        - guesses remaining = 7
-    - while guesses remaining is greater than 0:
+        - new `secret_number`
+        - `guesses_remaining` = 7
+    - while `guesses_remaining` is greater than 0:
         - do one turn
         - if turn results in a correct guess:
             - print win message & end `play()`
     - if loop ends (guesses ran out) -> end with loss message
+
+- `play_turn()` -> returns True if correct guess, else False
+    - display `guesses_remaining`
+    - while True:
+        - SET `guess` with input from player: 
+          "Enter a number between 1 and 100: "
+        - if `validate_guess(guess)` is True:
+            - break out of loop
+        - else:
+            - print "Invalid guess" -> loop back `print(msg, end='')`
+    - compare to secret number -> print feedback (low/high/correct)
+    - if valid & incorrect, decrement number of guesses
+
+- `validate_guess(guess)` -> validate whether input is a number & within range
+    I: str, inputted guess
+    O: boolean
+    - if input is a digit:
+        - turn it into an integer
+        - if integer is within `SECRET_NUM_RANGE`:
+            - return True
+    - else: return False
 """
 game = GuessingGame()
 game.play()
