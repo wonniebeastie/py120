@@ -82,7 +82,7 @@ Methods:
 """
 class GuessingGame:
     MAX_GUESSES = 7
-    SECRET_NUM_RANGE = range(1, 100+1)
+    SECRET_NUM_RANGE = range(1, 100 + 1)
 
     def __init__(self):
         self.secret_number
