@@ -80,19 +80,20 @@ Methods:
             - return True
     - else: return False
 """
+import random
 class GuessingGame:
     MAX_GUESSES = 7
     SECRET_NUM_RANGE = range(1, 100 + 1)
 
     def __init__(self):
-        self.secret_number
-        self.guesses_remaining
+        self.secret_number = None
+        # self.guesses_remaining
 
     def play(self):
         self.reset()
 
     def reset(self):
-        pass
+        self.secret_number = random.choice(GuessingGame.SECRET_NUM_RANGE)
 
 game = GuessingGame()
 game.play()
@@ -121,7 +122,7 @@ game.play()
 
 # You won!
 
-game.play()
+# game.play()
 
 # You have 7 guesses remaining.
 # Enter a number between 1 and 100: 50
