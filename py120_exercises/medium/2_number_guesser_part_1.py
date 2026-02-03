@@ -67,7 +67,7 @@ Methods:
 - `get_guess(self)` -> gets a valid guess from player
     O: boolean
     - while True:
-        - SET `guess` with input from player)
+        - SET `guess` with input from player
         - check if `guess` is an integer and is within `SECRET_NUM_RANGE`:
             - if it is:
                 - break out of loop
@@ -95,14 +95,14 @@ Methods:
 import random
 class GuessingGame:
     MAX_GUESSES = 7
-    SECRET_NUM_RANGE = range(1, 100 + 1)
+    NUMBER_RANGE = range(1, 100 + 1)
 
     def __init__(self):
         self.secret_number = None
         self.guesses_remaining = 0
 
     def reset(self):
-        self.secret_number = random.choice(GuessingGame.SECRET_NUM_RANGE)
+        self.secret_number = random.choice(GuessingGame.NUMBER_RANGE)
         self.guesses_remaining = 7
 
     def evaluate_guess(self, guess):
