@@ -3,7 +3,7 @@
     [x] accept a low & high value when `GuessingGame` objects are initialized
     [x] use the values to compute a `secret_number` for the game.
 
-[] Change number of guesses allowed
+[x] Change number of guesses allowed
     - so user can always win if she uses a good strategy.
 """
 # For computing the number of guesses:
@@ -11,7 +11,6 @@ import math
 import random
 
 class GuessingGame:
-    MAX_GUESSES = 7
 
     def __init__(self, low, high):
         self.secret_number = None
