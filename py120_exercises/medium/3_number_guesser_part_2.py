@@ -1,10 +1,10 @@
 """
-[x] Update Solution:
-    [x] accept a low & high value when `GuessingGame` objects are initialized
-    [x] use the values to compute a `secret_number` for the game.
-
-[x] Change number of guesses allowed
-    - so user can always win if she uses a good strategy.
+[x] Add a end of the game message function - add a space
+[] change loop in `play()` to work with `for` loop instead
+[] separate the 3 jobs that `evaluate_guess` is doing rn
+    [] returns true/false
+    [] prints feedback to user
+    [] mutates `self.guesses_remaining`
 """
 # For computing the number of guesses:
 import math
@@ -53,14 +53,23 @@ class GuessingGame:
             print(f"You have {self.guesses_remaining} guesses remaining.")
         return self.get_guess()
 
+    def display_end_message(result):
+        if result == 'win':
+            print("\n", "You won!")
+        else:
+            print("\n","You have no more guesses. You lost!")
+
     def play(self):
         self.reset()
+        print(self.secret_number) #TODO: REMOVE !!!!!
+
+        # change code below
         while self.guesses_remaining > 0:
             if self.play_turn():
-                print("You won!")
+                
                 return
-        
-        print("You have no more guesses. You lost!")
+
+        self.display_end_message(result)
 
 game = GuessingGame(501, 1500)
 game.play()
