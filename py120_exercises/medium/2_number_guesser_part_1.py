@@ -120,6 +120,11 @@ class GuessingGame:
     def get_guess(self):
         while True:
             guess = input("Enter a number between 1 and 100: ")
+            if guess.isdigit():
+                guess = int(guess)
+                if guess in GuessingGame.NUMBER_RANGE:
+                    return self.evaluate_guess(guess)
+            print("Invalid guess. ", end="")
 
     def play_turn(self):
         pass
