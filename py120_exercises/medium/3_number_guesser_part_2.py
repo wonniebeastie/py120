@@ -26,16 +26,23 @@ class GuessingGame:
 
     def evaluate_guess(self, guess):
         if guess < self.secret_number:
-            print("Your number is too low.")
-            self.guesses_remaining -= 1
-            return False
+            return "low"
         elif guess > self.secret_number:
-            print("Your number is too high.")
-            self.guesses_remaining -= 1
-            return False
+            return "high"
         else:
-            print("That's the number!")
-            return True
+            return "match"
+
+        # if guess < self.secret_number:
+        #     print("Your number is too low.")
+        #     self.guesses_remaining -= 1
+        #     return False
+        # elif guess > self.secret_number:
+        #     print("Your number is too high.")
+        #     self.guesses_remaining -= 1
+        #     return False
+        # else:
+        #     print("That's the number!")
+        #     return True
 
     def get_guess(self):
         while True:
@@ -57,8 +64,8 @@ class GuessingGame:
     def play_turn(self):
         for guess_number in self.guesses_remaining:
             self.display_guessses_remaining()
-            # get_guess
-            # guess_status = evaluate_guess()
+            guess = self.get_guess()
+            guess_status = self.evaluate_guess(guess)
             # display low/high/match
             # result = 
         # return game result
