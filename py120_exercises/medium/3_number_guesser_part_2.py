@@ -1,12 +1,3 @@
-"""
-[x] Add a end of the game message function - add a space
-[x] change loop in `play()` to work with `for` loop instead (extract to 
-   `play_turn`)
-[x] separate the 3 jobs that `evaluate_guess` is doing rn
-    [x] returns guess int
-    [x] prints feedback to user
-    [x] mutates `self.guesses_remaining`
-"""
 # For computing the number of guesses:
 import math
 import random
@@ -57,7 +48,6 @@ class GuessingGame:
 
     def play_turn(self):
         for remaining_guesses in self.guesses_remaining:
-            print(f"remaining_guesses: {remaining_guesses}")
             self.display_guesses_remaining(remaining_guesses)
             guess = self.get_guess()
             guess_status = self.evaluate_guess(guess)
@@ -65,22 +55,19 @@ class GuessingGame:
 
             if guess_status == "match":
                 return "win"
-            
-            # self.guesses_remaining -= 1
 
         return "lose"
 
     def display_end_message(self, result):
+        print()
         if result == 'win':
-            print("\n", "You won!")
+            print("You won!")
         else:
-            print("\n","You have no more guesses. You lost!")
+            print("You have no more guesses. You lost!")
 
     def play(self):
         self.reset()
-        print(self.secret_number) #TODO: REMOVE !!!!!
         game_result = self.play_turn()
-        print(f"game_result: {game_result}")
         self.display_end_message(game_result)
 
 game = GuessingGame(501, 1500)
