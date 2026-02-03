@@ -22,9 +22,10 @@ class GuessingGame:
         self.guesses_remaining = 0
         self.low = low
         self.high = high
+        self.number_range = range(self.low, self.high + 1)
 
     def reset(self):
-        self.secret_number = random.choice(GuessingGame.NUMBER_RANGE)
+        self.secret_number = random.choice(self.number_range)
         self.guesses_remaining = 7
 
     def evaluate_guess(self, guess):
@@ -45,7 +46,7 @@ class GuessingGame:
             guess = input(f"Enter a number between {self.low} and {self.high}: ")
             if guess.isdigit():
                 guess = int(guess)
-                if guess in GuessingGame.NUMBER_RANGE:
+                if guess in self.number_range:
                     return self.evaluate_guess(guess)
             print("Invalid guess. ", end="")
 
@@ -59,6 +60,7 @@ class GuessingGame:
 
     def play(self):
         self.reset()
+        # print(self.secret_number)
         while self.guesses_remaining > 0:
             if self.play_turn():
                 print("You won!")
