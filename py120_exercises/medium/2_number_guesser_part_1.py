@@ -80,11 +80,11 @@ Methods:
     - compare `guess` with `secret_number`
     - if `guess` is:
         - less than `secret_number`:
-            - print "Your guess is too low."
+            - print "Your number is too low."
             - decrement `guesses_remaining`
             - return False
         - greater than `secret_number`:
-            - print "Your guess is too high."
+            - print "Your number is too high."
             - decrement `guesses_remaining`
             - return False
         - correct:
@@ -106,15 +106,18 @@ class GuessingGame:
 
     def evaluate_guess(self, guess):
         if guess < self.secret_number:
-            print("Your guess is too low.")
+            print("Your number is too low.")
+            print()
             self.guesses_remaining -= 1
             return False
         elif guess > self.secret_number:
-            print("Your guess is too high.")
+            print("Your number is too high.")
+            print()
             self.guesses_remaining -= 1
             return False
         else:
             print("That's the number!")
+            print()
             return True
 
     def get_guess(self):
@@ -127,7 +130,8 @@ class GuessingGame:
             print("Invalid guess. ", end="")
 
     def play_turn(self):
-        pass
+        print(f"You have {self.guesses_remaining} guesses remaining.")
+        return self.get_guess()
 
     def play(self):
         self.reset()
@@ -165,7 +169,7 @@ game.play()
 
 # You won!
 
-# game.play()
+game.play()
 
 # You have 7 guesses remaining.
 # Enter a number between 1 and 100: 50
