@@ -15,14 +15,12 @@ class GuessingGame:
 
     def __init__(self, low, high):
         self.secret_number = None
-        self.guesses_remaining = 0
-        self.low = low
-        self.high = high
-        self.number_range = range(self.low, self.high + 1)
+        self.max_guesses = int(math.log2(self.high - self.low + 1)) + 1
+        self.guesses_remaining = range(self.max_guesses, 0, -1)
+        self.number_range = range(low, high + 1)
 
     def reset(self):
         self.secret_number = random.choice(self.number_range)
-        self.guesses_remaining = int(math.log2(self.high - self.low + 1)) + 1
 
     def get_guess(self):
         while True:
@@ -80,7 +78,7 @@ class GuessingGame:
     def play(self):
         self.reset()
         print(self.secret_number) #TODO: REMOVE !!!!!
-        game_result = play_turn()
+        game_result = self.play_turn()
         self.display_end_message(game_result)
 
 game = GuessingGame(501, 1500)
