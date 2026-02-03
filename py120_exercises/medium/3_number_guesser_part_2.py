@@ -1,5 +1,5 @@
 """
-[] Update Solution:
+[x] Update Solution:
     [x] accept a low & high value when `GuessingGame` objects are initialized
     [x] use the values to compute a `secret_number` for the game.
 
@@ -8,9 +8,6 @@
 """
 # For computing the number of guesses:
 import math
-# number_of_guesses = int(math.log2(high - low + 1)) + 1
-# "high" is the highest number in the range
-# "low" is the lowest number in the range
 import random
 
 class GuessingGame:
@@ -25,7 +22,7 @@ class GuessingGame:
 
     def reset(self):
         self.secret_number = random.choice(self.number_range)
-        self.guesses_remaining = 7
+        self.guesses_remaining = int(math.log2(self.high - self.low + 1)) + 1
 
     def evaluate_guess(self, guess):
         if guess < self.secret_number:
@@ -59,7 +56,7 @@ class GuessingGame:
 
     def play(self):
         self.reset()
-        # print(self.secret_number)
+        print(self.secret_number)
         while self.guesses_remaining > 0:
             if self.play_turn():
                 print("You won!")
