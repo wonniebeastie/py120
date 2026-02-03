@@ -1,9 +1,9 @@
 """
-- Update Solution:
-    - accept a low & high value when `GuessingGame` objects are initialized
-    - use the values to compute a `secret_number` for the game.
+[] Update Solution:
+    [x] accept a low & high value when `GuessingGame` objects are initialized
+    [] use the values to compute a `secret_number` for the game.
 
-- Change number of guesses allowed
+[] Change number of guesses allowed
     - so user can always win if she uses a good strategy.
 """
 # For computing the number of guesses:
@@ -17,9 +17,11 @@ class GuessingGame:
     MAX_GUESSES = 7
     NUMBER_RANGE = range(1, 100 + 1)
 
-    def __init__(self):
+    def __init__(self, low, high):
         self.secret_number = None
         self.guesses_remaining = 0
+        self.low = low
+        self.high = high
 
     def reset(self):
         self.secret_number = random.choice(GuessingGame.NUMBER_RANGE)
