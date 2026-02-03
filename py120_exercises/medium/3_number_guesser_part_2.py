@@ -24,6 +24,22 @@ class GuessingGame:
         self.secret_number = random.choice(self.number_range)
         self.guesses_remaining = int(math.log2(self.high - self.low + 1)) + 1
 
+    def get_guess(self):
+        while True:
+            guess = input(f"Enter a number between {self.low} and {self.high}: ")
+            if guess.isdigit():
+                guess = int(guess)
+                if guess in self.number_range:
+                    return guess
+            print("Invalid guess. ", end="")
+
+    def display_guessses_remaining(self):
+        print()
+        if self.guesses_remaining == 1:
+            print("You have 1 guess remaining.")
+        else:
+            print(f"You have {self.guesses_remaining} guesses remaining.")
+
     def evaluate_guess(self, guess):
         if guess < self.secret_number:
             return "low"
@@ -43,22 +59,6 @@ class GuessingGame:
         # else:
         #     print("That's the number!")
         #     return True
-
-    def get_guess(self):
-        while True:
-            guess = input(f"Enter a number between {self.low} and {self.high}: ")
-            if guess.isdigit():
-                guess = int(guess)
-                if guess in self.number_range:
-                    return guess
-            print("Invalid guess. ", end="")
-
-    def display_guessses_remaining(self):
-        print()
-        if self.guesses_remaining == 1:
-            print("You have 1 guess remaining.")
-        else:
-            print(f"You have {self.guesses_remaining} guesses remaining.")
 
     # change 
     def play_turn(self):
