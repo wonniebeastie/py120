@@ -48,17 +48,14 @@ class GuessingGame:
         else:
             return "match"
 
-        # if guess < self.secret_number:
-        #     print("Your number is too low.")
-        #     self.guesses_remaining -= 1
-        #     return False
-        # elif guess > self.secret_number:
-        #     print("Your number is too high.")
-        #     self.guesses_remaining -= 1
-        #     return False
-        # else:
-        #     print("That's the number!")
-        #     return True
+    def display_status_message(self, status):
+        match status:
+            case "low":
+                print("Your number is too low.")
+            case "high":
+                print("Your number is too high.")
+            case "match":
+                print("That's the number!")
 
     # change 
     def play_turn(self):
@@ -66,6 +63,7 @@ class GuessingGame:
             self.display_guessses_remaining()
             guess = self.get_guess()
             guess_status = self.evaluate_guess(guess)
+            # decrement or not
             # display low/high/match
             # result = 
         # return game result
