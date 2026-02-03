@@ -1,6 +1,6 @@
 """
 [x] Add a end of the game message function - add a space
-[] change loop in `play()` to work with `for` loop instead (extract to 
+[x] change loop in `play()` to work with `for` loop instead (extract to 
    `play_turn`)
 [] separate the 3 jobs that `evaluate_guess` is doing rn
     [] returns true/false
@@ -43,7 +43,7 @@ class GuessingGame:
             if guess.isdigit():
                 guess = int(guess)
                 if guess in self.number_range:
-                    return self.evaluate_guess(guess)
+                    return guess
             print("Invalid guess. ", end="")
 
     def display_guessses_remaining(self):
@@ -56,9 +56,11 @@ class GuessingGame:
     # change 
     def play_turn(self):
         for guess_number in self.guesses_remaining:
-            # display guesses remaining
+            self.display_guessses_remaining()
+            # get_guess
+            # guess_status = evaluate_guess()
+            # display low/high/match
             # result = 
-
         # return game result
 
     def display_end_message(result):
