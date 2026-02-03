@@ -42,6 +42,10 @@ class Card:
     def __str__(self):
         return f"{self.rank} of {self.suit}"
 
+    @property
+    def value(self):
+        return Card.RANK_NUMBERS.get(self.rank, self.rank)
+
 # Test code
 cards = [Card(2, 'Hearts'),
          Card(10, 'Diamonds'),
