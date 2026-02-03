@@ -55,7 +55,6 @@ class GuessingGame:
 
     def play(self):
         self.reset()
-        print(self.secret_number)
         while self.guesses_remaining > 0:
             if self.play_turn():
                 print("You won!")
