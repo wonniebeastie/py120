@@ -45,7 +45,13 @@ class GuessingGame:
                     return self.evaluate_guess(guess)
             print("Invalid guess. ", end="")
 
+    # change 
     def play_turn(self):
+        for guess_number in self.guesses_remaining:
+            # display guesses remaining
+            # result = 
+
+        # extract
         print()
         if self.guesses_remaining == 1:
             print("You have 1 guess remaining.")
@@ -62,14 +68,8 @@ class GuessingGame:
     def play(self):
         self.reset()
         print(self.secret_number) #TODO: REMOVE !!!!!
-
-        # change code below
-        while self.guesses_remaining > 0:
-            if self.play_turn():
-                
-                return
-
-        self.display_end_message(result)
+        game_result = play_turn()
+        self.display_end_message(game_result)
 
 game = GuessingGame(501, 1500)
 game.play()
