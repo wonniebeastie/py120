@@ -107,17 +107,14 @@ class GuessingGame:
     def evaluate_guess(self, guess):
         if guess < self.secret_number:
             print("Your number is too low.")
-            print()
             self.guesses_remaining -= 1
             return False
         elif guess > self.secret_number:
             print("Your number is too high.")
-            print()
             self.guesses_remaining -= 1
             return False
         else:
             print("That's the number!")
-            print()
             return True
 
     def get_guess(self):
@@ -130,7 +127,11 @@ class GuessingGame:
             print("Invalid guess. ", end="")
 
     def play_turn(self):
-        print(f"You have {self.guesses_remaining} guesses remaining.")
+        print()
+        if self.guesses_remaining == 1:
+            print("You have 1 guess remaining.")
+        else:
+            print(f"You have {self.guesses_remaining} guesses remaining.")
         return self.get_guess()
 
     def play(self):
