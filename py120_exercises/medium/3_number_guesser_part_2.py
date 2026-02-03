@@ -58,7 +58,7 @@ class GuessingGame:
     def play_turn(self):
         for remaining_guesses in self.guesses_remaining:
             print(f"remaining_guesses: {remaining_guesses}")
-            self.display_guessses_remaining(remaining_guesses)
+            self.display_guesses_remaining(remaining_guesses)
             guess = self.get_guess()
             guess_status = self.evaluate_guess(guess)
             self.display_status_message(guess_status)
@@ -70,7 +70,7 @@ class GuessingGame:
 
         return "lose"
 
-    def display_end_message(result):
+    def display_end_message(self, result):
         if result == 'win':
             print("\n", "You won!")
         else:
