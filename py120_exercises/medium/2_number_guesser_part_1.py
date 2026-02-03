@@ -105,8 +105,18 @@ class GuessingGame:
         self.secret_number = random.choice(GuessingGame.SECRET_NUM_RANGE)
         self.guesses_remaining = 7
 
-    def evaluate_guess(self):
-        pass
+    def evaluate_guess(self, guess):
+        if guess < self.secret_number:
+            print("Your guess is too low.")
+            self.guesses_remaining -= 1
+            return False
+        elif guess > self.secret_number:
+            print("Your guess is too high.")
+            self.guesses_remaining -= 1
+            return False
+        else:
+            print("That's the number!")
+            return True
 
     def get_guess(self):
         pass
