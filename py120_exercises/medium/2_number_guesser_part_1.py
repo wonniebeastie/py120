@@ -67,7 +67,7 @@ Methods:
 - `get_guess(self)` -> gets a valid guess from player
     O: boolean
     - while True:
-        - SET `guess` with input from player
+        - SET `guess` with input from player)
         - check if `guess` is an integer and is within `SECRET_NUM_RANGE`:
             - if it is:
                 - break out of loop
@@ -119,7 +119,8 @@ class GuessingGame:
             return True
 
     def get_guess(self):
-        pass
+        while True:
+            guess = input("Enter a number between 1 and 100: ")
 
     def play_turn(self):
         pass
