@@ -8,7 +8,7 @@
 """
 # For computing the number of guesses:
 import math
-number_of_guesses = int(math.log2(high - low + 1)) + 1
+# number_of_guesses = int(math.log2(high - low + 1)) + 1
 # "high" is the highest number in the range
 # "low" is the lowest number in the range
 import random
@@ -42,7 +42,7 @@ class GuessingGame:
 
     def get_guess(self):
         while True:
-            guess = input("Enter a number between 1 and 100: ")
+            guess = input(f"Enter a number between {self.low} and {self.high}: ")
             if guess.isdigit():
                 guess = int(guess)
                 if guess in GuessingGame.NUMBER_RANGE:
