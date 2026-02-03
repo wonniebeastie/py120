@@ -68,12 +68,11 @@ Methods:
     O: boolean
     - while True:
         - SET `guess` with input from player
-        - check if `guess` is an integer and is within `SECRET_NUM_RANGE`:
-            - if it is:
-                - break out of loop
-            - else:
-                - print "Invalid guess" -> loop back `print(msg, end='')`
-    - return `evaluate_guess(self, guess)`
+        - if the string assigned to `guess` are only digits:
+            - convert `guess` to an integer 
+            - if `guess` is within `NUMBER_RANGE`:
+                - return result of `evaluate_guess(guess)`
+        - print "Invalid guess" -> loop back with `end=""`
 
 - `evaluate_guess(self, guess)` -> 
     I: int, guess
