@@ -14,13 +14,27 @@ Rules:
 
 Methods:
 - any needed to determine lowest & highest
-[] custom `__str__` method:
+[x] custom `__str__` method:
     - returns a str representation of the card like "Jack of Diamonds"
       or "4 of Clubs", etc.
+
+Brainstorm:
+- assign numbers to each card to determine rank
+    - since numeric cards already have a number, just assign a number to
+      the non-numeric cards (dictionary, class constant)
+        - Jack: 11
+        - Queen: 12
+        - King: 13
+        - Ace: 14
+    - use those numbers to determine rank
+- `min()` & `max()` need to treat the cards as their numbers, but no direct way
+  to compare custom objects.
 """
 # Update this class to determine lowest & highest ranking cards in a list of
 # `Card` objects:
 class Card:
+    RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
+
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
@@ -32,7 +46,7 @@ class Card:
 cards = [Card(2, 'Hearts'),
          Card(10, 'Diamonds'),
          Card('Ace', 'Clubs')]
-# print(min(cards) == Card(2, 'Hearts'))             # True
+print(min(cards) == Card(2, 'Hearts'))             # True
 # print(max(cards) == Card('Ace', 'Clubs'))          # True
 # print(str(min(cards)) == "2 of Hearts")            # True
 # print(str(max(cards)) == "Ace of Clubs")           # True
