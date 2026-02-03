@@ -1,6 +1,7 @@
 """
 [x] Add a end of the game message function - add a space
-[] change loop in `play()` to work with `for` loop instead
+[] change loop in `play()` to work with `for` loop instead (extract to 
+   `play_turn`)
 [] separate the 3 jobs that `evaluate_guess` is doing rn
     [] returns true/false
     [] prints feedback to user
@@ -45,19 +46,20 @@ class GuessingGame:
                     return self.evaluate_guess(guess)
             print("Invalid guess. ", end="")
 
+    def display_guessses_remaining(self):
+        print()
+        if self.guesses_remaining == 1:
+            print("You have 1 guess remaining.")
+        else:
+            print(f"You have {self.guesses_remaining} guesses remaining.")
+
     # change 
     def play_turn(self):
         for guess_number in self.guesses_remaining:
             # display guesses remaining
             # result = 
 
-        # extract
-        print()
-        if self.guesses_remaining == 1:
-            print("You have 1 guess remaining.")
-        else:
-            print(f"You have {self.guesses_remaining} guesses remaining.")
-        return self.get_guess()
+        # return game result
 
     def display_end_message(result):
         if result == 'win':
