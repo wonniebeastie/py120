@@ -11,13 +11,17 @@ class Deck:
     
     Methods:
     - init:
-        - create deck of cards
-            - create a card (use `Card(rank, suit)`)
-        - shuffle deck of cards
+        - call reset
     
     - draw -> deal one card
         O: a Card instance from self.deck
+        - if deck is empty:
+            - reset
         - draw a card at random (pop)
+    
+    - reset -> reset the creation of a deck & reshuffling
+        - create_deck()
+        - shuffle deck
     """
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
     # [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
@@ -27,10 +31,10 @@ class Deck:
         self.deck = self.create_deck()
         random.shuffle(self.deck)
         print([str(card) for card in self.deck]) # TODO: REMOVE!!
-    
+
     def create_deck(self):
         self.deck = []
-
+        
         for rank in Deck.RANKS:
             for suit in Deck.SUITS:
                 self.deck.append(Card(rank, suit))
