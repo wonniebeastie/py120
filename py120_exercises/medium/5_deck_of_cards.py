@@ -1,6 +1,41 @@
 class Deck:
+    """
+    Requirements:
+    - contains all standard 52 playing cards.
+    - provide `draw()` to deal one card
+    - deck instance should be shuffled when initialized
+    - if no more cards remain when `draw()` is called:
+        - generate new set of 52 suffled cards
+        - deal one card from the new cards
+    
+    Methods:
+    - init:
+        - create deck of cards
+            - create a card (use `Card(rank, suit)`)
+        - shuffle deck of cards
+    
+    - draw -> deal one card
+        O: a Card instance from self.deck
+        - draw a card at random
+    """
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
+    # [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
+
+    def __init__(self):
+        self.deck = self.create_deck()
+        print([str(card) for card in self.deck]) # TODO: REMOVE!!
+    
+    def create_deck(self):
+        self.deck = []
+
+        for rank in Deck.RANKS:
+            for suit in Deck.SUITS:
+                self.deck.append(Card(rank, suit))
+        
+        return self.deck
+
+    # def draw(self)
 
 class Card:
     RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
