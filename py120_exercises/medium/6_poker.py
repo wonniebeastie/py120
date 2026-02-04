@@ -1,5 +1,8 @@
 import random
 class Card:
+    """
+    Produce a single card & allow for comparison
+    """
     RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
 
     def __init__(self, rank, suit):
@@ -20,6 +23,9 @@ class Card:
         return self.rank == other.rank and self.suit == other.suit
 
 class Deck:
+    """
+    Produce a deck of cards & allow for drawing of 1 card
+    """
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
 
@@ -81,55 +87,75 @@ class PokerHand:
 
     def _is_royal_flush(self):
         """
-
+        # 1
+        MOST POWERFUL
+        Highest 5 cards in the same suit
+        (A K Q J 10) - all diamonds
         """
         pass
 
     def _is_straight_flush(self):
         """
-
+        # 2
+        5 cards in consecutive order of the same suit
+        8 7 6 5 4 - all spades
         """
         pass
 
     def _is_four_of_a_kind(self):
         """
-        
+        # 3
+        4 cards of the same rank & one different kind ("kicker")
+        JH JD JS JC 7D
         """
         pass
 
     def _is_full_house(self):
         """
-        
+        # 4
+        3 cards of the same rank & 2 cards of another rank
+        10H 10D 10C 9S 9D
         """
         pass
 
     def _is_flush(self):
         """
-        
+        # 5
+        Any 5 cards in the same suit not in sequence
+        4 J 8 2 9 (suits are not involved)
         """
         pass
 
     def _is_straight(self):
         """
-        
+        # 6
+        5 consecutive cards but with different suits
+        Highest: A K Q J 10
+        Lowest: 5 4 3 2 A ("wheel")
         """
         pass
 
     def _is_three_of_a_kind(self):
         """
-        
+        # 7
+        3 cards of the same rank & 2 unrelated cards
+        7S 7D 7C KC 3D 
         """
         pass
 
     def _is_two_pair(self):
         """
-        
+        # 8
+        2 cards with same rank in pairs & a different kind ("kicker")
+        4S 4C 3S 3D QS
         """
         pass
 
     def _is_pair(self):
         """
-        
+        # 9
+        2 cards of same rank & 3 independent cards
+        AH AD 8S 4C 7H
         """
         pass
 
