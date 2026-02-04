@@ -1,28 +1,26 @@
 import random
+class Card:
+    RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
+
+    def __init__(self, rank, suit):
+        self.rank = rank
+        self.suit = suit
+
+    def __str__(self):
+        return f"{self.rank} of {self.suit}"
+
+    @property
+    def value(self):
+        return Card.RANK_NUMBERS.get(self.rank, self.rank)
+
+    def __lt__(self, other):
+        return self.value < other.value
+
+    def __eq__(self, other):
+        return self.rank == other.rank and self.suit == other.suit
+
 class Deck:
-    """
-    Requirements:
-    - contains all standard 52 playing cards.
-    - provide `draw()` to deal one card
-    - deck instance should be shuffled when initialized
-    - if no more cards remain when `draw()` is called:
-        - generate new set of 52 suffled cards
-        - deal one card from the new cards
-    
-    Methods:
-    - init:
-        - call reset
-    
-    - draw -> deal one card
-        O: a Card instance from self.deck
-        - if deck is empty:
-            - reset
-        - draw a card at random (pop)
-    
-    - reset -> reset the creation of a deck & reshuffling
-        - create_deck()
-        - shuffle deck
-    """
+
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
     # [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
@@ -47,26 +45,6 @@ class Deck:
         if self.deck == []:
             self.reset_deck()
         return self.deck.pop()
-
-class Card:
-    RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
-
-    def __init__(self, rank, suit):
-        self.rank = rank
-        self.suit = suit
-
-    def __str__(self):
-        return f"{self.rank} of {self.suit}"
-
-    @property
-    def value(self):
-        return Card.RANK_NUMBERS.get(self.rank, self.rank)
-
-    def __lt__(self, other):
-        return self.value < other.value
-
-    def __eq__(self, other):
-        return self.rank == other.rank and self.suit == other.suit
 
 # Test code
 deck = Deck()
