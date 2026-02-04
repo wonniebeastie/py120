@@ -24,9 +24,9 @@ class Deck:
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
 
     def __init__(self):
-        self.reset_deck()
+        self._reset()
 
-    def reset_deck(self):
+    def _reset(self):
         self._deck = self.create_deck()
         random.shuffle(self._deck)
 
@@ -39,7 +39,7 @@ class Deck:
 
     def draw(self):
         if self._deck == []:
-            self.reset_deck()
+            self._reset()
         return self._deck.pop()
 
 # Test code
