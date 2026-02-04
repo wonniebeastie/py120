@@ -17,7 +17,7 @@ class Deck:
     
     - draw -> deal one card
         O: a Card instance from self.deck
-        - draw a card at random
+        - draw a card at random (pop)
     """
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
     # [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
@@ -37,7 +37,8 @@ class Deck:
         
         return self.deck
 
-    # def draw(self)
+    def draw(self):
+        return self.deck.pop()
 
 class Card:
     RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
