@@ -1,3 +1,4 @@
+import random
 class Deck:
     """
     Requirements:
@@ -24,6 +25,7 @@ class Deck:
 
     def __init__(self):
         self.deck = self.create_deck()
+        random.shuffle(self.deck)
         print([str(card) for card in self.deck]) # TODO: REMOVE!!
     
     def create_deck(self):
