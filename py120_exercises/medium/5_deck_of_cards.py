@@ -29,22 +29,22 @@ class Deck:
         self.reset_deck()
 
     def reset_deck(self):
-        self.deck = self.create_deck()
-        random.shuffle(self.deck)
+        self._deck = self.create_deck()
+        random.shuffle(self._deck)
 
     def create_deck(self):
-        self.deck = []
+        self._deck = []
         
         for rank in Deck.RANKS:
             for suit in Deck.SUITS:
-                self.deck.append(Card(rank, suit))
+                self._deck.append(Card(rank, suit))
         
-        return self.deck
+        return self._deck
 
     def draw(self):
-        if self.deck == []:
+        if self._deck == []:
             self.reset_deck()
-        return self.deck.pop()
+        return self._deck.pop()
 
 # Test code
 deck = Deck()
