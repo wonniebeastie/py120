@@ -33,7 +33,6 @@ class Deck:
     def reset_deck(self):
         self.deck = self.create_deck()
         random.shuffle(self.deck)
-        print([str(card) for card in self.deck]) # TODO: REMOVE!!
 
     def create_deck(self):
         self.deck = []
@@ -45,6 +44,8 @@ class Deck:
         return self.deck
 
     def draw(self):
+        if self.deck == []:
+            self.reset_deck()
         return self.deck.pop()
 
 class Card:
