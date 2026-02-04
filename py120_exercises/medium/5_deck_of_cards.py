@@ -28,6 +28,9 @@ class Deck:
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
 
     def __init__(self):
+        self.reset_deck()
+
+    def reset_deck(self):
         self.deck = self.create_deck()
         random.shuffle(self.deck)
         print([str(card) for card in self.deck]) # TODO: REMOVE!!
