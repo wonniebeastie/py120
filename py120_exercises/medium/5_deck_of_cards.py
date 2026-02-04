@@ -33,11 +33,9 @@ class Deck:
         random.shuffle(self._deck)
 
     def create_deck(self):
-        self._deck = []
-        
-        for rank in Deck.RANKS:
-            for suit in Deck.SUITS:
-                self._deck.append(Card(rank, suit))
+        self._deck = [Card(rank, suit)
+                      for rank in Deck.RANKS
+                      for suit in Deck.SUITS]
         
         return self._deck
 
