@@ -83,7 +83,7 @@ class PokerHand:
         elif self._is_pair():
             return "Pair"
         else:
-          return "High card"
+          return "High card" # The highest card in hand when no winning combos
 
     def _is_royal_flush(self):
         """
