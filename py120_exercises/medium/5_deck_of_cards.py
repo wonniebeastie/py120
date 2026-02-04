@@ -20,9 +20,7 @@ class Card:
         return self.rank == other.rank and self.suit == other.suit
 
 class Deck:
-
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
-    # [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
 
     def __init__(self):
