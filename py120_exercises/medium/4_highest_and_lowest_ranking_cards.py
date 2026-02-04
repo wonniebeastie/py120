@@ -69,8 +69,8 @@ print(str(Card(5, 'Hearts')) == "5 of Hearts")     # True
 cards = [Card(4, 'Hearts'),
          Card(4, 'Diamonds'),
          Card(10, 'Clubs')]
-# print(min(cards).rank == 4)                        # True
-# print(max(cards) == Card(10, 'Clubs'))             # True
+print(min(cards).rank == 4)                        # True
+print(max(cards) == Card(10, 'Clubs'))             # True
 print(str(Card(10, 'Clubs')) == "10 of Clubs")     # True
 
 cards = [Card(7, 'Diamonds'),
