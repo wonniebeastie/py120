@@ -56,12 +56,14 @@ class PokerHand:
     """
     Takes 5 cards from a `Deck` of `Cards` & evaluates those cards as a poker
     hand.
+
+    All methods for winning combos return a boolean.
     """
     def __init__(self, deck):
         pass
 
     def print(self):
-       pass
+        pass
 
     def evaluate(self):
         if self._is_royal_flush():
@@ -92,6 +94,12 @@ class PokerHand:
         Highest 5 cards in the same suit
         (A K Q J 10) - all diamonds
         """
+        """
+        - if all cards have the same suit:
+            - check if the set of ranks is {"Ace", "Queen", "King", "Jack", 10}
+                - if yes, return True
+        - return False
+        """
         pass
 
     def _is_straight_flush(self):
@@ -99,6 +107,14 @@ class PokerHand:
         # 2
         5 cards in consecutive order of the same suit
         8 7 6 5 4 - all spades
+        """
+        """
+        - if all cards have the same suit:
+            - get numeric values of all cards
+            - sort those values
+            - check whether they form consecutive numbers:
+                - if yes, return True
+        - return False
         """
         pass
 
@@ -108,6 +124,15 @@ class PokerHand:
         4 cards of the same rank & one different kind ("kicker")
         JH JD JS JC 7D
         """
+        """
+        - SET `all_ranks` with ranks of all cards as a list
+        - SET `unique_ranks` with a set version of `all_ranks`
+        - for `rank` in `unique_ranks`:
+            - count how many times that `rank` appears in `all_ranks`
+            - if that `rank` appears 4 times:
+                - return True
+        - return False
+        """
         pass
 
     def _is_full_house(self):
@@ -115,6 +140,14 @@ class PokerHand:
         # 4
         3 cards of the same rank & 2 cards of another rank
         10H 10D 10C 9S 9D
+        """
+        """
+        - SET `all_ranks` with ranks of all cards as a list
+        - SET `rank_counts` with a frequency count of all the ranks
+        - look at the counts in `rank_counts`:
+            - if there is a count of 3 AND a count of 2:
+                - return True
+        - return False
         """
         pass
 
