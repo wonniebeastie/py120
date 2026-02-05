@@ -155,7 +155,10 @@ class PokerHand:
         """
         # 5
         Any 5 cards in the same suit not in sequence
-        4 J 8 2 9 (suits are not involved)
+        4C JC 8C 2C 9C
+        """
+        """
+
         """
         pass
 
