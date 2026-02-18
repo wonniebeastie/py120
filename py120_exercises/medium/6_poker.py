@@ -102,7 +102,7 @@ class PokerHand:
 
     def get_suits(self):
         """
-        Collect all the suits of a hand into a list
+        Collect all the suits of a hand into a list & return it
         I: a list, poker hand
         O: a list, of suits
 
@@ -116,7 +116,7 @@ class PokerHand:
 
     def get_ranks(self):
         """
-        Collect all ranks of a hand into a list
+        Collect all ranks of a hand into a list & return it
         I: a list, poker hand
         O: a list, of ranks
         """
@@ -138,7 +138,7 @@ class PokerHand:
         (A K Q J 10) - all diamonds
         """
         """
-        - SET `all_suits` with suits of all cards 
+        - SET `all_suits` with returning list from `get_suits`
         - if all cards have the same suit:
             - check if the set of ranks is {"Ace", "Queen", "King", "Jack", 10}
                 - if yes, return True
