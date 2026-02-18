@@ -72,10 +72,11 @@ class PokerHand:
     All methods for winning combos return a boolean.
     """
     def __init__(self, deck):
-        pass
+        self._cards = [deck.draw() for _ in range(5)]
 
     def print(self):
-        pass
+        for card in self._cards:
+            print(card)
 
     def evaluate(self):
         if self._is_royal_flush():
@@ -98,6 +99,39 @@ class PokerHand:
             return "Pair"
         else:
           return "High card" # The highest card in hand when no winning combos
+
+    def get_suits(self):
+        """
+        Collect all the suits of a hand into a list
+        I: a list, poker hand
+        O: a list, of suits
+
+        - start out with empty list
+        - for each card in hand:
+            - extract the suit from the card
+            - add it to list
+        - return list
+        """
+        suits = []
+        for card in self._cards:
+            suits.append(card.suit)
+        return suits
+
+    def get_ranks(self):
+        """
+        Collect all ranks of a hand into a list
+        I: a list, poker hand
+        O: a list, of ranks
+        """
+        pass
+
+    def count_ranks(self):
+        """
+        Create a frequency map of the ranks in a hand
+        I: a list, of ranks
+        O: a dict, counts
+        """
+        pass
 
     def _is_royal_flush(self):
         """
@@ -292,7 +326,7 @@ class PokerHand:
         pass
 
 # Test code
-hand = PokerHand(Deck())
+hand = PokerHand(Deck())  # from "real" shuffled deck
 hand.print()
 print(hand.evaluate())
 print()
@@ -316,6 +350,7 @@ hand = PokerHand(
         ]
     )
 )
+print(hand.get_suits()) # TODO: ERASE ME!!!!!!!!!
 print(hand.evaluate() == "Royal flush")
 
 hand = PokerHand(
