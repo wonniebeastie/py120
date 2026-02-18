@@ -112,10 +112,7 @@ class PokerHand:
             - add it to list
         - return list
         """
-        suits = []
-        for card in self._cards:
-            suits.append(card.suit)
-        return suits
+        return [card.suit for card in self._cards]
 
     def get_ranks(self):
         """
