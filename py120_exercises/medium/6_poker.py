@@ -1,7 +1,13 @@
 import random
 class Card:
     """
-    Produce a single card & allow for comparison
+    FUNCTIONS:
+    - produces a single card
+    - prints how you'd call a card in English
+    - allows for comparison of cards
+    Ex:
+    - an instance => Card("Ace", "Hearts")
+    - print(card) => Ace of Hearts
     """
     RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
 
@@ -24,7 +30,13 @@ class Card:
 
 class Deck:
     """
-    Produce a deck of cards & allow for drawing of 1 card
+    FUNCTIONS:
+    - produces a new, shuffled 52-card deck of cards
+    - allows for drawing of 1 card
+    Ex:
+    - an instance => Deck()
+        - an internal list like [Card(...), Card(...), ...]
+    - card1 = deck.draw() => "7 of Hearts" or "Ace of Spades"
     """
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
@@ -95,6 +107,7 @@ class PokerHand:
         (A K Q J 10) - all diamonds
         """
         """
+        - SET `all_suits` with suits of all cards 
         - if all cards have the same suit:
             - check if the set of ranks is {"Ace", "Queen", "King", "Jack", 10}
                 - if yes, return True
@@ -158,7 +171,10 @@ class PokerHand:
         4C JC 8C 2C 9C
         """
         """
-
+        - pick first suit
+        - check if rest of the suits match the first suit:
+            - if yes, return True
+        - return False
         """
         pass
 
@@ -169,6 +185,43 @@ class PokerHand:
         Highest: A K Q J 10
         Lowest: 5 4 3 2 A ("wheel")
         """
+        """
+        VIS:
+        So we want these combos:
+        2 3 4 5 6
+        3 4 5 6 7
+        4 5 6 7 8
+        5 6 7 8 9
+        6 7 8 9 10
+        7 8 9 10 11
+        8 9 10 11 12
+        9 10 11 12 13
+        10 11 12 13 14
+
+        RULES:
+        - all 5 values have to be distinct
+        - the ranks have to be consecutive (difference of 1)
+
+        BRAINSTORM:
+        - check for duplicates
+            - if there are duplicates, then return False
+        - sort it by ascending order
+            - check if adding 1 to each number produces the same number as the
+              card after it
+        
+        ALGO:
+        - convert cards to numeric values
+        - sort values in ascending order
+        - if there are any duplicate values:
+            - return False
+        - iterate through values:
+            - add 1 to current value
+            - check if new value is the same as the value that comes after the
+              current value (stop before second to last - index 3)
+                - if it's not the same:
+                    - return False
+        - return True
+        """
         pass
 
     def _is_three_of_a_kind(self):
@@ -176,6 +229,22 @@ class PokerHand:
         # 7
         3 cards of the same rank & 2 unrelated cards
         7S 7D 7C KC 3D 
+        """
+        """
+        RULES:
+        - 3 of one rank
+        - remaining 2 cards must be:
+            - different ranks from each other
+            - different rank from the triple
+        [NOTE: Be careful not to return True for a full house]
+        
+        ALGO:
+        - SET `all_ranks` with ranks of all cards as a list
+        - SET `rank_counts` with a frequency count of all the ranks
+        - look at the collection of counts in `rank_counts`:
+            - if `rank_counts` matches exactly `{3, 1, 1}` [NOTE: any order]:
+                - return True
+        - return False
         """
         pass
 
@@ -185,6 +254,20 @@ class PokerHand:
         2 cards with same rank in pairs & a different kind ("kicker")
         4S 4C 3S 3D QS
         """
+        """
+        RULES:
+        - 2 cards share the same rank
+        - another pair of 2 cards share the same rank (disctinct from previous 
+          pair)
+        
+        ALGO:
+        - SET `all_ranks` with ranks of all cards as a list
+        - SET `rank_counts` with a frequency count of all the ranks
+        - look at the collection of counts in `rank_counts`:
+            - if `rank_counts` matches exactly `{2, 2, 1}` [NOTE: any order]:
+                - return True
+        - return False
+        """
         pass
 
     def _is_pair(self):
@@ -192,6 +275,19 @@ class PokerHand:
         # 9
         2 cards of same rank & 3 independent cards
         AH AD 8S 4C 7H
+        """
+        """
+        RULES:
+        - 2 cards share the same rank
+        - 3 cards have distinct ranks from each other & above pair
+
+        ALGO:
+        - SET `all_ranks` with ranks of all cards as a list
+        - SET `rank_counts` with a frequency count of all the ranks
+        - look at the collection of counts in `rank_counts` as a dict view object:
+            - if 2 appears once & 1 appears three times:
+                - return True
+        - return False
         """
         pass
 
