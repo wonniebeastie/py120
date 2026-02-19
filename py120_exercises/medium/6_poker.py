@@ -163,7 +163,8 @@ class PokerHand:
                 - if yes, return True
         - return False
         """
-        pass
+        all_suits = self.get_suits(self._cards)
+        return all_suits
 
     def _is_straight_flush(self):
         """
@@ -343,7 +344,7 @@ class PokerHand:
 # Test code
 hand = PokerHand(Deck())  # from "real" shuffled deck
 hand.print()
-print(hand.evaluate())
+# print(hand.evaluate()) TODO: UNCOMMENT ME
 print()
 
 # Adding TestDeck class for testing purposes
