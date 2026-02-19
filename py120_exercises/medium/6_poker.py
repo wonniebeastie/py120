@@ -114,18 +114,18 @@ class PokerHand:
         """
         return [card.suit for card in self._cards]
 
-    def check_suit(self):
+    def check_suit(self, suits):
         """
         Checks if all suits are the same one.
         I: a list, of suits
         O: boolean
 
-        - SET `suits` with input list
         - SET `first` with the first element of `suits`
         - return result of checking if `suits` & `first` are the same value
           using `all()`
         """
-        pass
+        first = suits[0]
+        return all(suit == first for suit in suits)
 
     def get_ranks(self):
         """
@@ -158,13 +158,17 @@ class PokerHand:
         """
         """
         - SET `all_suits` with returning list from `get_suits`
-        - if `check_suit()` returns true:
+        - if `check_suit(all_suits)` returns true:
+            - 
             - check if the set of ranks is {"Ace", "Queen", "King", "Jack", 10}
                 - if yes, return True
         - return False
         """
-        all_suits = self.get_suits(self._cards)
-        return all_suits
+        all_suits = self.get_suits()
+
+        if self.check_suit(all_suits):
+            return True
+        return False
 
     def _is_straight_flush(self):
         """
