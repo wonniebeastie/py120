@@ -139,7 +139,7 @@ class PokerHand:
             - add it to list
         - return list
         """
-        pass
+        return [card.rank for card in self._cards]
 
     def count_ranks(self):
         """
@@ -370,7 +370,7 @@ hand = PokerHand(
         ]
     )
 )
-print(hand.get_suits()) # TODO: ERASE ME!!!!!!!!!
+print(hand.get_ranks()) # TODO: ERASE ME!!!!!!!!!
 print(hand.evaluate() == "Royal flush")
 
 hand = PokerHand(
