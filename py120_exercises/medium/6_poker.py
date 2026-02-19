@@ -103,14 +103,6 @@ class PokerHand:
     def get_suits(self):
         """
         Collect all the suits of a hand into a list & return it
-        I: a list, poker hand
-        O: a list, of suits
-
-        - start out with empty list
-        - for each card in hand:
-            - extract the suit from the card
-            - add it to list
-        - return list
         """
         return [card.suit for card in self._cards]
 
@@ -130,14 +122,6 @@ class PokerHand:
     def get_ranks(self):
         """
         Collect all ranks of a hand into a list & return it
-        I: a list, poker hand
-        O: a list, of ranks
-
-        - start out with empty list
-        - for each card in hand:
-            - extract the rank from the card
-            - add it to list
-        - return list
         """
         return [card.rank for card in self._cards]
 
