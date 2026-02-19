@@ -114,11 +114,30 @@ class PokerHand:
         """
         return [card.suit for card in self._cards]
 
+    def check_suit(self):
+        """
+        Checks if all suits are the same one.
+        I: a list, of suits
+        O: boolean
+
+        - SET `suits` with input list
+        - SET `first` with the first element of `suits`
+        - return result of checking if `suits` & `first` are the same value
+          using `all()`
+        """
+        pass
+
     def get_ranks(self):
         """
         Collect all ranks of a hand into a list & return it
         I: a list, poker hand
         O: a list, of ranks
+
+        - start out with empty list
+        - for each card in hand:
+            - extract the rank from the card
+            - add it to list
+        - return list
         """
         pass
 
@@ -139,7 +158,7 @@ class PokerHand:
         """
         """
         - SET `all_suits` with returning list from `get_suits`
-        - if all cards have the same suit:
+        - if `check_suit()` returns true:
             - check if the set of ranks is {"Ace", "Queen", "King", "Jack", 10}
                 - if yes, return True
         - return False
@@ -153,7 +172,8 @@ class PokerHand:
         8 7 6 5 4 - all spades
         """
         """
-        - if all cards have the same suit:
+        - SET `all_suits` with returning list from `get_suits`
+        - if `check_suit()` returns true:
             - get numeric values of all cards
             - sort those values
             - check whether they form consecutive numbers:
@@ -202,10 +222,8 @@ class PokerHand:
         4C JC 8C 2C 9C
         """
         """
-        - pick first suit
-        - check if rest of the suits match the first suit:
-            - if yes, return True
-        - return False
+        - SET `all_suits` with returning list from `get_suits`
+        - return result of `check_suit(all_suits)`
         """
         pass
 
