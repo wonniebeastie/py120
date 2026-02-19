@@ -140,14 +140,6 @@ class PokerHand:
         Highest 5 cards in the same suit
         (A K Q J 10) - all diamonds
         """
-        """
-        - SET `all_suits` with returning list from `get_suits()`
-        - if `check_suit(all_suits)` returns true:
-            - SET `all_ranks` with returning list from `get_ranks()`
-            - check if `all_ranks` turned into a set is {"Ace", "Queen", "King", "Jack", 10}
-                - if yes, return True
-        - return False
-        """
         all_suits = self.get_suits()
 
         if self.check_suit(all_suits):
