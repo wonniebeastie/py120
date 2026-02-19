@@ -141,17 +141,20 @@ class PokerHand:
         (A K Q J 10) - all diamonds
         """
         """
-        - SET `all_suits` with returning list from `get_suits`
+        - SET `all_suits` with returning list from `get_suits()`
         - if `check_suit(all_suits)` returns true:
-            - 
-            - check if the set of ranks is {"Ace", "Queen", "King", "Jack", 10}
+            - SET `all_ranks` with returning list from `get_ranks()`
+            - check if `all_ranks` turned into a set is {"Ace", "Queen", "King", "Jack", 10}
                 - if yes, return True
         - return False
         """
         all_suits = self.get_suits()
 
         if self.check_suit(all_suits):
-            return True
+            all_ranks = self.get_ranks()
+            highest_five = {"Ace", "Queen", "King", "Jack", 10}
+            if set(all_ranks) == highest_five:
+                return True
         return False
 
     def _is_straight_flush(self):
@@ -354,7 +357,6 @@ hand = PokerHand(
         ]
     )
 )
-print(hand.get_ranks()) # TODO: ERASE ME!!!!!!!!!
 print(hand.evaluate() == "Royal flush")
 
 hand = PokerHand(
