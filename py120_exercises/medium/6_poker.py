@@ -133,6 +133,26 @@ class PokerHand:
         """
         pass
 
+    def convert_to_numeric(self, ranks):
+        """
+        Convert all ranks to numeric value if not already numeric.
+        I: a list, of ranks
+        O: a list, of ranks but in their numeric form
+
+        Ex:
+        ['Jack', 10, 'Queen', 9, 8] => [11, 10, 12, 9, 8]
+
+        - empty list
+        - for rank in ranks:
+            - if rank is not a number:
+                - get the value (number) of rank from `RANK_NUMBERS`
+                - add it to empty list
+            - else:
+                - add it to empty list
+        - return list
+        """
+        pass
+
     def _is_royal_flush(self):
         """
         # 1
@@ -156,15 +176,19 @@ class PokerHand:
         8 7 6 5 4 - all spades
         """
         """
-        - SET `all_suits` with returning list from `get_suits`
-        - if `check_suit()` returns true:
-            - get numeric values of all cards
+        - SET `all_suits` with returning list from `get_suits()`
+        - if `check_suit(all_suits)` returns true:
+            - SET `all_ranks` with returning list from `get_ranks()`
+            - SET `numeric_ranks` with returning list from `convert_to_numeric(all_ranks)`
             - sort those values
             - check whether they form consecutive numbers:
                 - if yes, return True
         - return False
         """
-        pass
+        all_suits = self.get_suits()
+        if self.check_suit(all_suits):
+            all_ranks = self.get_ranks()
+            print(f"all_ranks: {all_ranks}") # all_ranks: ['Jack', 10, 'Queen', 9, 8]
 
     def _is_four_of_a_kind(self):
         """
