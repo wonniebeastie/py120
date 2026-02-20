@@ -144,14 +144,20 @@ class PokerHand:
 
         - empty list
         - for rank in ranks:
-            - if rank is not a number:
+            - if rank is a string:
                 - get the value (number) of rank from `RANK_NUMBERS`
                 - add it to empty list
             - else:
                 - add it to empty list
         - return list
         """
-        pass
+        result = []
+        for rank in ranks:
+            if isinstance(rank, str):
+                print(rank)
+            else:
+                result.append(rank)
+        print(result)
 
     def _is_royal_flush(self):
         """
@@ -188,7 +194,7 @@ class PokerHand:
         all_suits = self.get_suits()
         if self.check_suit(all_suits):
             all_ranks = self.get_ranks()
-            print(f"all_ranks: {all_ranks}") # all_ranks: ['Jack', 10, 'Queen', 9, 8]
+            numeric_ranks = self.convert_to_numeric(all_ranks)
 
     def _is_four_of_a_kind(self):
         """
