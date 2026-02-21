@@ -212,11 +212,14 @@ class PokerHand:
         - return False
         """
         all_suits = self.get_suits()
+
         if self.check_suit(all_suits):
             all_ranks = self.get_ranks()
             numeric_ranks = self.convert_to_numeric(all_ranks)
             numeric_ranks.sort()
-            self.check_consecutive(numeric_ranks)
+            return self.check_consecutive(numeric_ranks)
+        else:
+            return False
 
     def _is_four_of_a_kind(self):
         """
