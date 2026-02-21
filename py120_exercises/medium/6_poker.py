@@ -103,15 +103,6 @@ class PokerHand:
     def check_consecutive(self, numeric_ranks):
         """
         Return true if the numbers in the list are consecutive, false otherwise
-        I: a list, of ranks as integers
-        O: boolean
-
-        - for each number:
-            - add 1 to that number
-            - if that number is different to the the one that comes after the
-              current number:
-                - return False
-        - return True
         """
         for idx in range(len(numeric_ranks) - 1):
             if numeric_ranks[idx] + 1 != numeric_ranks[idx + 1]:
@@ -121,12 +112,6 @@ class PokerHand:
     def check_suit(self, suits):
         """
         Checks if all suits are the same one.
-        I: a list, of suits
-        O: boolean
-
-        - SET `first` with the first element of `suits`
-        - return numeric_ranks of checking if `suits` & `first` are the same value
-          using `all()`
         """
         first = suits[0]
         return all(suit == first for suit in suits)
@@ -134,8 +119,6 @@ class PokerHand:
     def compare_ranks(self, rank_count_match):
         """
         Checks if a sorted ranks list is the same as the hand we want
-        I: a list, the match we want the ranks of a hand to be compared to
-        O: boolean
         """
         all_ranks = self.get_ranks()
         rank_counts = list(self.count_ranks(all_ranks).values())
@@ -146,20 +129,6 @@ class PokerHand:
     def convert_to_numeric(self, ranks):
         """
         Convert all ranks to numeric value if not already numeric.
-        I: a list, of ranks
-        O: a list, of ranks but in their numeric form
-
-        Ex:
-        ['Jack', 10, 'Queen', 9, 8] => [11, 10, 12, 9, 8]
-
-        - empty list
-        - for rank in ranks:
-            - if rank is a string:
-                - get the value (number) of rank from `RANK_NUMBERS`
-                - add it to empty list
-            - else:
-                - add it to empty list
-        - return list
         """
         numeric_ranks = []
         for rank in ranks:
@@ -172,8 +141,6 @@ class PokerHand:
     def count_ranks(self, all_ranks):
         """
         Create a frequency map of the ranks in a hand
-        I: a list, of ranks
-        O: a dict, counts
         """
         rank_counts = {}
         for rank in all_ranks:
@@ -215,26 +182,12 @@ class PokerHand:
         5 cards in consecutive order of the same suit
         8 7 6 5 4 - all spades
         """
-        """
-        - SET `all_suits` with returning list from `get_suits()`
-        - if `check_suit(all_suits)` returns true:
-            - SET `all_ranks` with returning list from `get_ranks()`
-            - SET `numeric_ranks` with returning list from 
-              `convert_to_numeric(all_ranks)`
-            - sort those values
-            - check whether they form consecutive numbers: [TODO: extract to 
-            another helper?]
-                - if yes, return True
-        - return False
-        """
         all_suits = self.get_suits()
 
         if self.check_suit(all_suits):
-            # TODO: Extract me from here?
             all_ranks = self.get_ranks()
             numeric_ranks = self.convert_to_numeric(all_ranks)
             numeric_ranks.sort()
-            # TODO: to here (maybe)
             return self.check_consecutive(numeric_ranks)
         else:
             return False
@@ -244,15 +197,6 @@ class PokerHand:
         # 3
         4 cards of the same rank & one different kind ("kicker")
         JH JD JS JC 7D
-        """
-        """
-        - SET `all_ranks` with ranks of all cards as a list
-        - SET `unique_ranks` with a set version of `all_ranks`
-        - for `rank` in `unique_ranks`:
-            - count how many times that `rank` appears in `all_ranks`
-            - if that `rank` appears 4 times:
-                - return True
-        - return False
         """
         all_ranks = self.get_ranks()
         unique_ranks = set(all_ranks)
@@ -270,14 +214,6 @@ class PokerHand:
         3 cards of the same rank & 2 cards of another rank
         10H 10D 10C 9S 9D
         """
-        """
-        - SET `all_ranks` with ranks of all cards as a list
-        - SET `rank_counts` with a frequency count of all the ranks
-        - look at the counts in `rank_counts`:
-            - if there is a count of 3 AND a count of 2:
-                - return True
-        - return False
-        """
         all_ranks = self.get_ranks()
         rank_counts = self.count_ranks(all_ranks)
         return 2 in rank_counts.values() and 3 in rank_counts.values()
@@ -287,10 +223,6 @@ class PokerHand:
         # 5
         Any 5 cards in the same suit not in sequence
         4C JC 8C 2C 9C
-        """
-        """
-        - SET `all_suits` with returning list from `get_suits`
-        - return result of `check_suit(all_suits)`
         """
         all_suits = self.get_suits()
         return self.check_suit(all_suits)
@@ -302,44 +234,9 @@ class PokerHand:
         Highest: A K Q J 10
         Lowest: 5 4 3 2 A ("wheel")
         """
-        """
-        VIS:
-        So we want these combos:
-        2 3 4 5 6
-        3 4 5 6 7
-        4 5 6 7 8
-        5 6 7 8 9
-        6 7 8 9 10
-        7 8 9 10 11
-        8 9 10 11 12
-        9 10 11 12 13
-        10 11 12 13 14
-
-        RULES:
-        - all 5 values (ranks) have to be distinct
-        - the ranks have to be consecutive (difference of 1)
-
-        BRAINSTORM:
-        - check for duplicates
-            - if there are duplicates, then return False
-        - sort it by ascending order
-            - check if adding 1 to each number produces the same number as the
-              card after it
-        
-        ALGO:
-        - SET `all_ranks` with returning list from `get_ranks()`
-        - SET `numeric_ranks` with returning list from 
-              `convert_to_numeric(all_ranks)`
-        - sort values in ascending order
-        - if `check_duplicates(numeric_ranks)` returns True (yes, duplicates):
-            - return False
-        - return boolean from `check_consecutive(numeric_ranks)`
-        """
-        # TODO: Extract me from here
         all_ranks = self.get_ranks()
         numeric_ranks = self.convert_to_numeric(all_ranks)
         numeric_ranks.sort()
-        # TODO: to here (maybe)
 
         if self.check_duplicates(numeric_ranks):
             return False
@@ -349,15 +246,6 @@ class PokerHand:
     def check_duplicates(self, numeric_ranks):
         """
         Returns True if there are duplicates, False otherwise.
-        I: a list, of ranks as integers
-        O: boolean
-        
-        - SET `seen` with an empty set
-        - for `rank` in `numeric_ranks`:
-            - if `rank` is already in `seen`:
-                return True
-            - add `rank` to `seen`
-        - return False
         """
         seen = set()
         for rank in numeric_ranks:
@@ -373,23 +261,6 @@ class PokerHand:
         3 cards of the same rank & 2 unrelated cards
         7S 7D 7C KC 3D 
         """
-        """
-        RULES:
-        - 3 of one rank
-        - remaining 2 cards must be:
-            - different ranks from each other
-            - different rank from the triple
-        [NOTE: Be careful not to return True for a full house]
-        
-        ALGO:
-        - SET `all_ranks` with ranks of all cards as a list
-        - SET `rank_counts` with a frequency count of all the ranks
-        - turn the collection of counts in `rank_counts` into a list
-        - sort this list in ascending order
-        - if it matches `[1, 1, 3]`:
-                - return True
-        - return False
-        """
         return self.compare_ranks([1, 1, 3])
 
     def _is_two_pair(self):
@@ -397,21 +268,6 @@ class PokerHand:
         # 8
         2 cards with same rank in pairs & a different kind ("kicker")
         4S 4C 3S 3D QS
-        """
-        """
-        RULES:
-        - 2 cards share the same rank
-        - another pair of 2 cards share the same rank (disctinct from previous 
-          pair)
-        
-        ALGO:
-        - SET `all_ranks` with ranks of all cards as a list
-        - SET `rank_counts` with a frequency count of all the ranks
-        - turn the collection of counts in `rank_counts` into a list
-        - sort it in ascending order
-        - if it matches `[1, 2, 2]`:
-            - return true
-        - return false
         """
         return self.compare_ranks([1, 2, 2])
 
@@ -421,26 +277,12 @@ class PokerHand:
         2 cards of same rank & 3 independent cards
         AH AD 8S 4C 7H
         """
-        """
-        RULES:
-        - 2 cards share the same rank
-        - 3 cards have distinct ranks from each other & above pair
-
-        ALGO:
-        - SET `all_ranks` with ranks of all cards as a list
-        - SET `rank_counts` with a frequency count of all the ranks
-        - turn the collection of counts in `rank_counts` into a list
-        - sort it in ascending order
-        - if it matches `[1, 1, 1, 2]`:
-            - return true
-        - return false
-        """
         return self.compare_ranks([1, 1, 1, 2])
 
 # Test code
 hand = PokerHand(Deck())  # from "real" shuffled deck
 hand.print()
-# print(hand.evaluate()) TODO: UNCOMMENT ME
+print(hand.evaluate())
 print()
 
 # Adding TestDeck class for testing purposes
