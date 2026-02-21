@@ -131,6 +131,18 @@ class PokerHand:
         first = suits[0]
         return all(suit == first for suit in suits)
 
+    def compare_ranks(self, rank_count_match):
+        """
+        Checks if a sorted ranks list is the same as the hand we want
+        I: a list, the match we want the ranks of a hand to be compared to
+        O: boolean
+        """
+        all_ranks = self.get_ranks()
+        rank_counts = list(self.count_ranks(all_ranks).values())
+        rank_counts.sort()
+
+        return rank_counts == rank_count_match
+
     def convert_to_numeric(self, ranks):
         """
         Convert all ranks to numeric value if not already numeric.
@@ -218,7 +230,7 @@ class PokerHand:
         all_suits = self.get_suits()
 
         if self.check_suit(all_suits):
-            # TODO: Extract me from here
+            # TODO: Extract me from here?
             all_ranks = self.get_ranks()
             numeric_ranks = self.convert_to_numeric(all_ranks)
             numeric_ranks.sort()
