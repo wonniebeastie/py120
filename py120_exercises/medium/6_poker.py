@@ -1,14 +1,5 @@
 import random
 class Card:
-    """
-    FUNCTIONS:
-    - produces a single card
-    - prints how you'd call a card in English
-    - allows for comparison of cards
-    Ex:
-    - an instance => Card("Ace", "Hearts")
-    - print(card) => Ace of Hearts
-    """
     RANK_NUMBERS = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
 
     def __init__(self, rank, suit):
@@ -29,15 +20,6 @@ class Card:
         return self.rank == other.rank and self.suit == other.suit
 
 class Deck:
-    """
-    FUNCTIONS:
-    - produces a new, shuffled 52-card deck of cards
-    - allows for drawing of 1 card
-    Ex:
-    - an instance => Deck()
-        - an internal list like [Card(...), Card(...), ...]
-    - card1 = deck.draw() => "7 of Hearts" or "Ace of Spades"
-    """
     RANKS = list(range(2, 11)) + ['Jack', 'Queen', 'King', 'Ace']
     SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
 
@@ -65,12 +47,6 @@ class Deck:
 # Ace-low (A, 2, 3, 4, 5) straights. 
 # For simplicity, your code only needs to recognize Ace-high straights.
 class PokerHand:
-    """
-    Takes 5 cards from a `Deck` of `Cards` & evaluates those cards as a poker
-    hand.
-
-    All methods for winning combos return a boolean.
-    """
     def __init__(self, deck):
         self._cards = [deck.draw() for _ in range(5)]
 
@@ -101,25 +77,16 @@ class PokerHand:
           return "High card" # The highest card in hand when no winning combos
 
     def check_consecutive(self, numeric_ranks):
-        """
-        Return true if the numbers in the list are consecutive, false otherwise
-        """
         for idx in range(len(numeric_ranks) - 1):
             if numeric_ranks[idx] + 1 != numeric_ranks[idx + 1]:
                 return False
         return True
 
     def check_suit(self, suits):
-        """
-        Checks if all suits are the same one.
-        """
         first = suits[0]
         return all(suit == first for suit in suits)
 
     def compare_ranks(self, rank_count_match):
-        """
-        Checks if a sorted ranks list is the same as the hand we want
-        """
         all_ranks = self.get_ranks()
         rank_counts = list(self.count_ranks(all_ranks).values())
         rank_counts.sort()
@@ -127,9 +94,6 @@ class PokerHand:
         return rank_counts == rank_count_match
 
     def convert_to_numeric(self, ranks):
-        """
-        Convert all ranks to numeric value if not already numeric.
-        """
         numeric_ranks = []
         for rank in ranks:
             if isinstance(rank, str):
@@ -139,9 +103,6 @@ class PokerHand:
         return numeric_ranks
 
     def count_ranks(self, all_ranks):
-        """
-        Create a frequency map of the ranks in a hand
-        """
         rank_counts = {}
         for rank in all_ranks:
             rank_counts[rank] = rank_counts.get(rank, 0) + 1
@@ -149,24 +110,12 @@ class PokerHand:
         return rank_counts
 
     def get_ranks(self):
-        """
-        Collect all ranks of a hand into a list & return it
-        """
         return [card.rank for card in self._cards]
 
     def get_suits(self):
-        """
-        Collect all the suits of a hand into a list & return it
-        """
         return [card.suit for card in self._cards]
 
     def _is_royal_flush(self):
-        """
-        # 1
-        MOST POWERFUL
-        Highest 5 cards in the same suit
-        (A K Q J 10) - all diamonds
-        """
         all_suits = self.get_suits()
 
         if self.check_suit(all_suits):
@@ -177,11 +126,6 @@ class PokerHand:
         return False
 
     def _is_straight_flush(self):
-        """
-        # 2
-        5 cards in consecutive order of the same suit
-        8 7 6 5 4 - all spades
-        """
         all_suits = self.get_suits()
 
         if self.check_suit(all_suits):
@@ -193,11 +137,6 @@ class PokerHand:
             return False
 
     def _is_four_of_a_kind(self):
-        """
-        # 3
-        4 cards of the same rank & one different kind ("kicker")
-        JH JD JS JC 7D
-        """
         all_ranks = self.get_ranks()
         unique_ranks = set(all_ranks)
 
@@ -209,31 +148,15 @@ class PokerHand:
         return False
 
     def _is_full_house(self):
-        """
-        # 4
-        3 cards of the same rank & 2 cards of another rank
-        10H 10D 10C 9S 9D
-        """
         all_ranks = self.get_ranks()
         rank_counts = self.count_ranks(all_ranks)
         return 2 in rank_counts.values() and 3 in rank_counts.values()
 
     def _is_flush(self):
-        """
-        # 5
-        Any 5 cards in the same suit not in sequence
-        4C JC 8C 2C 9C
-        """
         all_suits = self.get_suits()
         return self.check_suit(all_suits)
 
     def _is_straight(self):
-        """
-        # 6
-        5 consecutive cards but with different suits
-        Highest: A K Q J 10
-        Lowest: 5 4 3 2 A ("wheel")
-        """
         all_ranks = self.get_ranks()
         numeric_ranks = self.convert_to_numeric(all_ranks)
         numeric_ranks.sort()
@@ -244,9 +167,6 @@ class PokerHand:
         return self.check_consecutive(numeric_ranks)
 
     def check_duplicates(self, numeric_ranks):
-        """
-        Returns True if there are duplicates, False otherwise.
-        """
         seen = set()
         for rank in numeric_ranks:
             if rank in seen:
@@ -256,27 +176,12 @@ class PokerHand:
         return False
 
     def _is_three_of_a_kind(self):
-        """
-        # 7
-        3 cards of the same rank & 2 unrelated cards
-        7S 7D 7C KC 3D 
-        """
         return self.compare_ranks([1, 1, 3])
 
     def _is_two_pair(self):
-        """
-        # 8
-        2 cards with same rank in pairs & a different kind ("kicker")
-        4S 4C 3S 3D QS
-        """
         return self.compare_ranks([1, 2, 2])
 
     def _is_pair(self):
-        """
-        # 9
-        2 cards of same rank & 3 independent cards
-        AH AD 8S 4C 7H
-        """
         return self.compare_ranks([1, 1, 1, 2])
 
 # Test code
