@@ -260,7 +260,8 @@ class PokerHand:
                 - return True
         - return False
         """
-        pass
+        all_ranks = self.get_ranks()
+        # rank_counts = 
 
     def _is_flush(self):
         """
