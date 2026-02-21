@@ -266,7 +266,7 @@ class PokerHand:
         """
         all_ranks = self.get_ranks()
         rank_counts = self.count_ranks(all_ranks)
-        print(rank_counts)
+        return 2 in rank_counts.values() and 3 in rank_counts.values()
 
     def _is_flush(self):
         """
