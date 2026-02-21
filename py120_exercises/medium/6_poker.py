@@ -195,6 +195,7 @@ class PokerHand:
         if self.check_suit(all_suits):
             all_ranks = self.get_ranks()
             numeric_ranks = self.convert_to_numeric(all_ranks)
+            numeric_ranks.sort()
             print(numeric_ranks)
 
     def _is_four_of_a_kind(self):
