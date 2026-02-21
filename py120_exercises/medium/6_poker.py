@@ -347,7 +347,13 @@ class PokerHand:
             - add `rank` to `seen`
         - return False
         """
-        pass
+        seen = set()
+        for rank in numeric_ranks:
+            if rank in seen:
+                return True
+            seen.add(rank)
+
+        return False
 
     def _is_three_of_a_kind(self):
         """
