@@ -159,6 +159,24 @@ class PokerHand:
                 numeric_ranks.append(rank)
         return numeric_ranks
 
+    def check_consecutive(self, numeric_ranks):
+        """
+        Return true if the numbers in the list are consecutive, false otherwise
+        I: a list, of ranks as integers
+        O: boolean
+
+        - for each number:
+            - add 1 to that number
+            - if that number is different to the the one that comes after the
+              current number:
+                - return False
+        - return True
+        """
+        for idx in range(len(numeric_ranks) - 1):
+            if numeric_ranks[idx] + 1 != numeric_ranks[idx + 1]:
+                return False
+        return True
+
     def _is_royal_flush(self):
         """
         # 1
@@ -185,9 +203,11 @@ class PokerHand:
         - SET `all_suits` with returning list from `get_suits()`
         - if `check_suit(all_suits)` returns true:
             - SET `all_ranks` with returning list from `get_ranks()`
-            - SET `numeric_ranks` with returning list from `convert_to_numeric(all_ranks)`
+            - SET `numeric_ranks` with returning list from 
+              `convert_to_numeric(all_ranks)`
             - sort those values
-            - check whether they form consecutive numbers:
+            - check whether they form consecutive numbers: [TODO: extract to 
+            another helper?]
                 - if yes, return True
         - return False
         """
@@ -196,7 +216,7 @@ class PokerHand:
             all_ranks = self.get_ranks()
             numeric_ranks = self.convert_to_numeric(all_ranks)
             numeric_ranks.sort()
-            print(numeric_ranks)
+            self.check_consecutive(numeric_ranks)
 
     def _is_four_of_a_kind(self):
         """
