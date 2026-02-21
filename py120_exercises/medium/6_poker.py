@@ -100,11 +100,23 @@ class PokerHand:
         else:
           return "High card" # The highest card in hand when no winning combos
 
-    def get_suits(self):
+    def check_consecutive(self, numeric_ranks):
         """
-        Collect all the suits of a hand into a list & return it
+        Return true if the numbers in the list are consecutive, false otherwise
+        I: a list, of ranks as integers
+        O: boolean
+
+        - for each number:
+            - add 1 to that number
+            - if that number is different to the the one that comes after the
+              current number:
+                - return False
+        - return True
         """
-        return [card.suit for card in self._cards]
+        for idx in range(len(numeric_ranks) - 1):
+            if numeric_ranks[idx] + 1 != numeric_ranks[idx + 1]:
+                return False
+        return True
 
     def check_suit(self, suits):
         """
@@ -118,20 +130,6 @@ class PokerHand:
         """
         first = suits[0]
         return all(suit == first for suit in suits)
-
-    def get_ranks(self):
-        """
-        Collect all ranks of a hand into a list & return it
-        """
-        return [card.rank for card in self._cards]
-
-    def count_ranks(self):
-        """
-        Create a frequency map of the ranks in a hand
-        I: a list, of ranks
-        O: a dict, counts
-        """
-        pass
 
     def convert_to_numeric(self, ranks):
         """
@@ -159,23 +157,26 @@ class PokerHand:
                 numeric_ranks.append(rank)
         return numeric_ranks
 
-    def check_consecutive(self, numeric_ranks):
+    def count_ranks(self):
         """
-        Return true if the numbers in the list are consecutive, false otherwise
-        I: a list, of ranks as integers
-        O: boolean
+        Create a frequency map of the ranks in a hand
+        I: a list, of ranks
+        O: a dict, counts
+        """
+        pass
 
-        - for each number:
-            - add 1 to that number
-            - if that number is different to the the one that comes after the
-              current number:
-                - return False
-        - return True
+    def get_ranks(self):
         """
-        for idx in range(len(numeric_ranks) - 1):
-            if numeric_ranks[idx] + 1 != numeric_ranks[idx + 1]:
-                return False
-        return True
+        Collect all ranks of a hand into a list & return it
+        """
+        return [card.rank for card in self._cards]
+
+
+    def get_suits(self):
+        """
+        Collect all the suits of a hand into a list & return it
+        """
+        return [card.suit for card in self._cards]
 
     def _is_royal_flush(self):
         """
