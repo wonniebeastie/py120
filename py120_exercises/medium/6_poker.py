@@ -302,7 +302,7 @@ class PokerHand:
         10 11 12 13 14
 
         RULES:
-        - all 5 values have to be distinct
+        - all 5 values (ranks) have to be distinct
         - the ranks have to be consecutive (difference of 1)
 
         BRAINSTORM:
@@ -313,17 +313,13 @@ class PokerHand:
               card after it
         
         ALGO:
-        - convert cards to numeric values
+        - SET `all_ranks` with returning list from `get_ranks()`
+        - SET `numeric_ranks` with returning list from 
+              `convert_to_numeric(all_ranks)`
         - sort values in ascending order
-        - if there are any duplicate values:
+        - if there are any duplicate values: [TODO: Extract to another helper]
             - return False
-        - iterate through values:
-            - add 1 to current value
-            - check if new value is the same as the value that comes after the
-              current value (stop before second to last - index 3)
-                - if it's not the same:
-                    - return False
-        - return True
+        - return boolean from `check_consecutive(numeric_ranks)`
         """
         pass
 
