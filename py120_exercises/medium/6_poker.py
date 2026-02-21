@@ -276,9 +276,10 @@ class PokerHand:
         """
         """
         - SET `all_suits` with returning list from `get_suits`
-        - return numeric_ranks of `check_suit(all_suits)`
+        - return result of `check_suit(all_suits)`
         """
-        pass
+        all_suits = self.get_suits()
+        return self.check_suit(all_suits)
 
     def _is_straight(self):
         """
