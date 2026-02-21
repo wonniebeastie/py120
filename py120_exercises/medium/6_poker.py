@@ -323,6 +323,21 @@ class PokerHand:
         """
         pass
 
+    def check_duplicates(self, numeric_ranks):
+        """
+        Returns True if there are duplicates, False otherwise.
+        I: a list, of ranks as integers
+        O: boolean
+        
+        - SET `seen` with an empty set
+        - for `rank` in `numeric_ranks`:
+            - if `rank` is already in `seen`:
+                return True
+            - add `rank` to `seen`
+        - return False
+        """
+        pass
+
     def _is_three_of_a_kind(self):
         """
         # 7
