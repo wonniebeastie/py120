@@ -157,13 +157,17 @@ class PokerHand:
                 numeric_ranks.append(rank)
         return numeric_ranks
 
-    def count_ranks(self):
+    def count_ranks(self, all_ranks):
         """
         Create a frequency map of the ranks in a hand
         I: a list, of ranks
         O: a dict, counts
         """
-        pass
+        rank_counts = {}
+        for rank in all_ranks:
+            rank_counts[rank] = rank_counts.get(rank, 0) + 1
+
+        return rank_counts
 
     def get_ranks(self):
         """
@@ -261,7 +265,8 @@ class PokerHand:
         - return False
         """
         all_ranks = self.get_ranks()
-        # rank_counts = 
+        rank_counts = self.count_ranks(all_ranks)
+        print(rank_counts)
 
     def _is_flush(self):
         """
