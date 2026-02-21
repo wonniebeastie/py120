@@ -390,11 +390,7 @@ class PokerHand:
                 - return True
         - return False
         """
-        all_ranks = self.get_ranks()
-        rank_counts = list(self.count_ranks(all_ranks).values())
-        rank_counts.sort()
-
-        return rank_counts == [1, 1, 3]
+        return self.compare_ranks([1, 1, 3])
 
     def _is_two_pair(self):
         """
@@ -417,11 +413,7 @@ class PokerHand:
             - return true
         - return false
         """
-        all_ranks = self.get_ranks()
-        rank_counts = list(self.count_ranks(all_ranks).values())
-        rank_counts.sort()
-
-        return rank_counts == [1, 2, 2]
+        return self.compare_ranks([1, 2, 2])
 
     def _is_pair(self):
         """
@@ -443,11 +435,7 @@ class PokerHand:
             - return true
         - return false
         """
-        all_ranks = self.get_ranks()
-        rank_counts = list(self.count_ranks(all_ranks).values())
-        rank_counts.sort()
-
-        return rank_counts == [1, 1, 1, 2]
+        return self.compare_ranks([1, 1, 1, 2])
 
 # Test code
 hand = PokerHand(Deck())  # from "real" shuffled deck
