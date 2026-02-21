@@ -372,12 +372,17 @@ class PokerHand:
         ALGO:
         - SET `all_ranks` with ranks of all cards as a list
         - SET `rank_counts` with a frequency count of all the ranks
-        - look at the collection of counts in `rank_counts`:
-            - if `rank_counts` matches exactly `{3, 1, 1}` [NOTE: any order]:
+        - turn the collection of counts in `rank_counts` into a list
+        - sort this list in ascending order
+        - if it matches `[1, 1, 3]`:
                 - return True
         - return False
         """
-        pass
+        all_ranks = self.get_ranks()
+        rank_counts = list(self.count_ranks(all_ranks).values())
+        rank_counts.sort()
+
+        return rank_counts == [1, 1, 3]
 
     def _is_two_pair(self):
         """
