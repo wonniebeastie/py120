@@ -113,7 +113,7 @@ class PokerHand:
         O: boolean
 
         - SET `first` with the first element of `suits`
-        - return result of checking if `suits` & `first` are the same value
+        - return numeric_ranks of checking if `suits` & `first` are the same value
           using `all()`
         """
         first = suits[0]
@@ -151,13 +151,13 @@ class PokerHand:
                 - add it to empty list
         - return list
         """
-        result = []
+        numeric_ranks = []
         for rank in ranks:
             if isinstance(rank, str):
-                print(rank)
+                numeric_ranks.append(Card.RANK_NUMBERS[rank])
             else:
-                result.append(rank)
-        print(result)
+                numeric_ranks.append(rank)
+        return numeric_ranks
 
     def _is_royal_flush(self):
         """
@@ -195,6 +195,7 @@ class PokerHand:
         if self.check_suit(all_suits):
             all_ranks = self.get_ranks()
             numeric_ranks = self.convert_to_numeric(all_ranks)
+            print(numeric_ranks)
 
     def _is_four_of_a_kind(self):
         """
@@ -237,7 +238,7 @@ class PokerHand:
         """
         """
         - SET `all_suits` with returning list from `get_suits`
-        - return result of `check_suit(all_suits)`
+        - return numeric_ranks of `check_suit(all_suits)`
         """
         pass
 
