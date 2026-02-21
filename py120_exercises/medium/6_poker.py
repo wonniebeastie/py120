@@ -430,16 +430,12 @@ class PokerHand:
         - if it matches `[1, 1, 1, 2]`:
             - return true
         - return false
-
-
-        - SET `all_ranks` with ranks of all cards as a list
-        - SET `rank_counts` with a frequency count of all the ranks
-        - look at the collection of counts in `rank_counts` as a dict view object:
-            - if 2 appears once & 1 appears three times:
-                - return True
-        - return False
         """
-        pass
+        all_ranks = self.get_ranks()
+        rank_counts = list(self.count_ranks(all_ranks).values())
+        rank_counts.sort()
+
+        return rank_counts == [1, 1, 1, 2]
 
 # Test code
 hand = PokerHand(Deck())  # from "real" shuffled deck
