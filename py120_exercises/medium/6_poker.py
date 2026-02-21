@@ -171,7 +171,6 @@ class PokerHand:
         """
         return [card.rank for card in self._cards]
 
-
     def get_suits(self):
         """
         Collect all the suits of a hand into a list & return it
@@ -237,7 +236,7 @@ class PokerHand:
                 - return True
         - return False
         """
-        pass
+        all_ranks = 
 
     def _is_full_house(self):
         """
