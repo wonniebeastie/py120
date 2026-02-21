@@ -399,12 +399,17 @@ class PokerHand:
         ALGO:
         - SET `all_ranks` with ranks of all cards as a list
         - SET `rank_counts` with a frequency count of all the ranks
-        - look at the collection of counts in `rank_counts`:
-            - if `rank_counts` matches exactly `{2, 2, 1}` [NOTE: any order]:
-                - return True
-        - return False
+        - turn the collection of counts in `rank_counts` into a list
+        - sort it in ascending order
+        - if it matches `[1, 2, 2]`:
+            - return true
+        - return false
         """
-        pass
+        all_ranks = self.get_ranks()
+        rank_counts = list(self.count_ranks(all_ranks).values())
+        rank_counts.sort()
+
+        return rank_counts == [1, 2, 2]
 
     def _is_pair(self):
         """
@@ -418,6 +423,15 @@ class PokerHand:
         - 3 cards have distinct ranks from each other & above pair
 
         ALGO:
+        - SET `all_ranks` with ranks of all cards as a list
+        - SET `rank_counts` with a frequency count of all the ranks
+        - turn the collection of counts in `rank_counts` into a list
+        - sort it in ascending order
+        - if it matches `[1, 1, 1, 2]`:
+            - return true
+        - return false
+
+
         - SET `all_ranks` with ranks of all cards as a list
         - SET `rank_counts` with a frequency count of all the ranks
         - look at the collection of counts in `rank_counts` as a dict view object:
