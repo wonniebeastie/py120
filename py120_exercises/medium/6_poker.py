@@ -218,9 +218,11 @@ class PokerHand:
         all_suits = self.get_suits()
 
         if self.check_suit(all_suits):
+            # TODO: Extract me from here
             all_ranks = self.get_ranks()
             numeric_ranks = self.convert_to_numeric(all_ranks)
             numeric_ranks.sort()
+            # TODO: to here (maybe)
             return self.check_consecutive(numeric_ranks)
         else:
             return False
@@ -321,7 +323,16 @@ class PokerHand:
             - return False
         - return boolean from `check_consecutive(numeric_ranks)`
         """
-        pass
+        # TODO: Extract me from here
+        all_ranks = self.get_ranks()
+        numeric_ranks = self.convert_to_numeric(all_ranks)
+        numeric_ranks.sort()
+        # TODO: to here (maybe)
+
+        if self.check_duplicates(numeric_ranks):
+            return False
+
+        return self.check_consecutive(numeric_ranks)
 
     def check_duplicates(self, numeric_ranks):
         """
