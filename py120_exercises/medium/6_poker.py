@@ -317,7 +317,7 @@ class PokerHand:
         - SET `numeric_ranks` with returning list from 
               `convert_to_numeric(all_ranks)`
         - sort values in ascending order
-        - if there are any duplicate values: [TODO: Extract to another helper]
+        - if `check_duplicates(numeric_ranks)` returns True (yes, duplicates):
             - return False
         - return boolean from `check_consecutive(numeric_ranks)`
         """
