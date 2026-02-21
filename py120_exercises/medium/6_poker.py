@@ -236,7 +236,15 @@ class PokerHand:
                 - return True
         - return False
         """
-        all_ranks = 
+        all_ranks = self.get_ranks()
+        unique_ranks = set(all_ranks)
+
+        for rank in unique_ranks:
+            rank_count = all_ranks.count(rank)
+            if rank_count == 4:
+                return True
+
+        return False
 
     def _is_full_house(self):
         """
