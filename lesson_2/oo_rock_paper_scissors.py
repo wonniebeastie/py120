@@ -26,6 +26,9 @@ class RPSGame:
         self._human = Player()
         self._computer = Player()
 
+    def _display_welcome_message(self):
+        print('Welcome to Rock Paper Scissors!')
+
     def play(self):
         display_welcome_message()
         self._human.choose()
