@@ -52,9 +52,13 @@ class RPSGame:
     def _display_goodbye_message(self):
         print('Thanks for playing Rock Paper Scissors. Goodbye!')
 
+    def _display_winner(self):
+        print(f'You chose: {self._human.move}')
+        print(f'The computer chose: {self._computer.move}')
+
     def play(self):
         self._display_welcome_message()
         self._human.choose()
         self._computer.choose()
-        display_winner()
+        self._display_winner()
         self._display_goodbye_message()
