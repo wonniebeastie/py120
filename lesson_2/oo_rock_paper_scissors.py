@@ -1,4 +1,11 @@
 import random
+
+class Computer:
+    def __init__(self):
+        self.move = None
+
+    def choose(self):
+        self.move = random.choice(Player.CHOICES)
 class Player:
     CHOICES = ('rock', 'paper', 'scissors')
 
