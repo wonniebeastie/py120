@@ -1,7 +1,7 @@
 class Player:
-    def __init__(self):
+    def __init__(self, player_type):
         # maybe a "name"? what about a "move"?
-        pass
+        self._player_type = player_type.lower()
 
     def choose(self):
         pass
@@ -23,8 +23,8 @@ class Rule:
 
 class RPSGame:
     def __init__(self):
-        self._human = Player()
-        self._computer = Player()
+        self._human = Player('human')
+        self._computer = Player('computer')
 
     def _display_welcome_message(self):
         print('Welcome to Rock Paper Scissors!')
