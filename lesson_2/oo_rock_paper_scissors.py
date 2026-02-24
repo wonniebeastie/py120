@@ -74,9 +74,18 @@ class RPSGame:
 
     def play(self):
         self._display_welcome_message()
-        self._human.choose()
-        self._computer.choose()
-        self._display_winner()
+
+        while True:
+            self._human.choose()
+            self._computer.choose()
+            self._display_winner()
+            if not self._play_again():
+                break
+
         self._display_goodbye_message()
+
+    def _play_again(self):
+        answer = input('Would you like to play again? (y/n) ')
+        return answer.lower().startswith('y')
 
 RPSGame().play()
