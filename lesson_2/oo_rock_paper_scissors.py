@@ -1,5 +1,11 @@
 import random
 
+class Player:
+    CHOICES = ('rock', 'paper', 'scissors')
+
+    def __init__(self, player_type):
+        self._player_type = player_type.lower()
+        self.move = None
 class Computer:
     def __init__(self):
         self.move = None
@@ -23,13 +29,6 @@ class Human:
                 print(f'Sorry, {choice} is not valid.')
 
             self.move = choice
-
-class Player:
-    CHOICES = ('rock', 'paper', 'scissors')
-
-    def __init__(self, player_type):
-        self._player_type = player_type.lower()
-        self.move = None
 
 class Move:
     def __init__(self):
