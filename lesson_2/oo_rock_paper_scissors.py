@@ -3,8 +3,9 @@ class Player:
     CHOICES = ('rock', 'paper', 'scissors')
 
     def __init__(self, player_type):
-        # maybe a "name"? what about a "move"?
+        # maybe a "name"?
         self._player_type = player_type.lower()
+        self.move = None
 
     def _is_human(self):
         return self._player_type == 'human'
@@ -13,7 +14,7 @@ class Player:
         if self._is_human():
             # choose human player's move
         else:
-            return random.choice(Player.CHOICES)
+            self.move = random.choice(Player.CHOICES)
 
 class Move:
     def __init__(self):
