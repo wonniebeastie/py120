@@ -6,20 +6,15 @@ class Computer:
 
     def choose(self):
         self.move = random.choice(Player.CHOICES)
-class Player:
-    CHOICES = ('rock', 'paper', 'scissors')
 
-    def __init__(self, player_type):
-        self._player_type = player_type.lower()
+class Human:
+    def __init__(self):
         self.move = None
-
-    def _is_human(self):
-        return self._player_type == 'human'
 
     def choose(self):
         if self._is_human():
             prompt = 'Please choose rock, paper, or scissors: '
-    
+
             while True:
                 choice = input(prompt).lower()
                 if choice in Player.CHOICES:
@@ -29,8 +24,12 @@ class Player:
 
             self.move = choice
 
-        else:
-            self.move = random.choice(Player.CHOICES)
+class Player:
+    CHOICES = ('rock', 'paper', 'scissors')
+
+    def __init__(self, player_type):
+        self._player_type = player_type.lower()
+        self.move = None
 
 class Move:
     def __init__(self):
