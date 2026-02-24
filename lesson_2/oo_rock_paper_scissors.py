@@ -12,7 +12,17 @@ class Player:
 
     def choose(self):
         if self._is_human():
-            # choose human player's move
+            prompt = 'Please choose rock, paper, or scissors: '
+    
+            while True:
+                choice = input(prompt).lower()
+                if choice in Player.CHOICES:
+                    break
+
+                print(f'Sorry, {choice} is not valid.')
+
+            self.move = choice
+
         else:
             self.move = random.choice(Player.CHOICES)
 
