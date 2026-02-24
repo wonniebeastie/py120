@@ -4,7 +4,6 @@ class Player:
     CHOICES = ('rock', 'paper', 'scissors')
 
     def __init__(self, player_type):
-        self._player_type = player_type.lower()
         self.move = None
 class Computer:
     def __init__(self):
