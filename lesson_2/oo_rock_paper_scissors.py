@@ -62,3 +62,5 @@ class RPSGame:
         self._computer.choose()
         self._display_winner()
         self._display_goodbye_message()
+
+RPSGame().play()
