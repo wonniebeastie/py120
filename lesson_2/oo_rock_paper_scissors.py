@@ -3,8 +3,14 @@ class Player:
         # maybe a "name"? what about a "move"?
         self._player_type = player_type.lower()
 
+    def _is_human(self):
+        return self._player_type == 'human'
+
     def choose(self):
-        pass
+        if self._is_human():
+            # choose human player's move
+        else:
+            # choose computer's move
 
 class Move:
     def __init__(self):
