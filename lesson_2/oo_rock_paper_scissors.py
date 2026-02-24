@@ -46,8 +46,8 @@ class Rule:
 
 class RPSGame:
     def __init__(self):
-        self._human = Player('human')
-        self._computer = Player('computer')
+        self._human = Human()
+        self._computer = Computer()
 
     def _display_welcome_message(self):
         print('Welcome to Rock Paper Scissors!')
