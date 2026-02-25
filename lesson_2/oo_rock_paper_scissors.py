@@ -57,8 +57,8 @@ class RPSGame:
                 (computer_move == 'scissors' and human_move == 'paper'))
 
     def _display_winner(self):
-        print(f'You chose: {self._human_move}')
-        print(f'The computer chose: {self._computer_move}')
+        print(f'You chose: {self._human.move}')
+        print(f'The computer chose: {self._computer.move}')
 
         if self._human_wins():
             print('You win!')
