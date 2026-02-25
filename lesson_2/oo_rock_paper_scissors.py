@@ -18,17 +18,16 @@ class Human(Player):
         super().__init__()
 
     def choose(self):
-        if self._is_human():
-            prompt = 'Please choose rock, paper, or scissors: '
+        prompt = 'Please choose rock, paper, or scissors: '
 
-            while True:
-                choice = input(prompt).lower()
-                if choice in Player.CHOICES:
-                    break
+        while True:
+            choice = input(prompt).lower()
+            if choice in Player.CHOICES:
+                break
 
-                print(f'Sorry, {choice} is not valid.')
+            print(f'Sorry, {choice} is not valid.')
 
-            self.move = choice
+        self.move = choice
 
 class RPSGame:
     def __init__(self):
