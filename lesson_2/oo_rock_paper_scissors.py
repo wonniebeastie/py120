@@ -64,18 +64,21 @@ class RPSGame:
                 (human_move == 'paper' and computer_move == 'rock') or
                 (human_move == 'scissors' and computer_move == 'paper'))
 
-    def _display_winner(self):
+    def _computer_wins(self):
+        human_move = self._human.move
         computer_move = self._computer.move
 
+        return ((computer_move == 'rock' and human_move == 'scissors') or
+                (computer_move == 'paper' and human_move == 'rock') or
+                (computer_move == 'scissors' and human_move == 'paper'))
+
+    def _display_winner(self):
         print(f'You chose: {self._human_move}')
-        print(f'The computer chose: {computer_move}')
+        print(f'The computer chose: {self._computer_move}')
 
         if self._human_wins():
             print('You win!')
-        elif ((computer_move == 'rock' and human_move == 'scissors') or
-              (computer_move == 'paper' and human_move == 'rock') or
-              (computer_move == 'scissors' and human_move == 'paper')):
-
+        elif self._computer_wins():
             print('Computer wins!')
         else:
             print("It's a tie!")
