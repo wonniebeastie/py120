@@ -3,7 +3,7 @@ import random
 class Player:
     CHOICES = ('rock', 'paper', 'scissors')
 
-    def __init__(self, player_type):
+    def __init__(self):
         self.move = None
 
 class Computer(Player):
