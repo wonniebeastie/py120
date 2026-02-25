@@ -5,16 +5,17 @@ class Player:
 
     def __init__(self, player_type):
         self.move = None
-class Computer:
+
+class Computer(Player):
     def __init__(self):
-        self.move = None
+        super().__init__()
 
     def choose(self):
         self.move = random.choice(Player.CHOICES)
 
-class Human:
+class Human(Player):
     def __init__(self):
-        self.move = None
+        super().__init__()
 
     def choose(self):
         if self._is_human():
