@@ -23,6 +23,14 @@ class Vector:
         y = self.y + other.y
         return Vector(x, y)
 
+    def __sub__(self, other):
+        if not isinstance(other, Vector):
+            return NotImplemented
+        
+        x = self.x - other.x
+        y = self.y - other.y
+        return Vector(x, y)
+
 print(Vector(3, 2) + Vector(5, 12))   # Vector(8, 14)
 print(Vector(5, 12) - Vector(3, 2))   # Vector(2, 10)
 print(Vector(5, 12) * 2)              # Vector(10, 24)
