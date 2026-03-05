@@ -23,6 +23,14 @@ class Vector:
         y = self.y + other.y
         return Vector(x, y)
 
+    def __iadd__(self, other):
+        if not isinstance(other, Vector):
+            return NotImplemented
+        
+        self.x += other.x
+        self.y += other.y
+        return self
+
     def __sub__(self, other):
         if not isinstance(other, Vector):
             return NotImplemented
@@ -32,6 +40,14 @@ class Vector:
         return Vector(x, y)
 
     def __mul__(self, other):
+        if not isinstance(other, int):
+            return NotImplemented
+        
+        x = self.x * other
+        y = self.y * other
+        return Vector(x, y)
+
+    def __rmul__(self, other):
         if not isinstance(other, int):
             return NotImplemented
         
