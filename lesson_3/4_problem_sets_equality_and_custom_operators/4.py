@@ -39,6 +39,14 @@ class Vector:
         y = self.y - other.y
         return Vector(x, y)
 
+    def __isub__(self, other):
+        if not isinstance(other, Vector):
+            return NotImplemented
+        
+        self.x -= other.x
+        self.y -= other.y
+        return self
+
     def __mul__(self, other):
         if not isinstance(other, int):
             return NotImplemented
