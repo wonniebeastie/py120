@@ -1,3 +1,8 @@
+"""
+- If both x and y can be expressed as integers, compute the sum of the integer 
+values of x and y.
+- Otherwise, concatenate the string values of x and y.
+"""
 class Silly:
     def __init__(self, value):
         if isinstance(value, int):
