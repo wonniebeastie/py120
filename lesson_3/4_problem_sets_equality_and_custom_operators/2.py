@@ -1,6 +1,6 @@
 """
 [x] Compare `Cat` objects for equality & inequality by their `name` value
-[] Ignore case
+[x] Ignore case
 [x] Should work for `==` & `!=` operators
 [x] If right-hand operand is not a `Cat` object, methods should return
 `NotImplemented`.
