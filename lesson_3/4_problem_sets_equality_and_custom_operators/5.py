@@ -96,6 +96,9 @@ class Silly:
     def __str__(self):
         return f'Silly({repr(self.value)})'
 
+    def is_int(self):
+        return isinstance(self.value, int)
+
 print(Silly('abc') + 'def')        # Silly('abcdef')
 print(Silly('abc') + 123)          # Silly('abc123')
 print(Silly(123) + 'xyz')          # Silly('123xyz')
