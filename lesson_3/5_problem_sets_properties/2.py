@@ -11,6 +11,9 @@ class Person:
         if not isinstance(name, str):
             print("Name must be a string.")
         
+        if name == '':
+            raise ValueError('Name must not be empty')
+        
         self._name = name
 
 luna = Person("Luna")
@@ -20,3 +23,6 @@ luna.name = "Luna Lovegood"
 print(luna.name) # Luna Lovegood
 
 not_person = Person(56) # Name must be a string.
+
+goku = Person("Goku")
+goku.name = ''
