@@ -18,6 +18,19 @@ class SmartLamp:
 
         self._color = color
 
+    @property
+    def brightness(self):
+        return self._brightness
+
+    @brightness.setter
+    def brightness(self, brightness):
+        if isinstance(brightness, int):
+            if 0 <= brightness <= 100:
+                self._brightness = brightness
+                return
+        
+        raise ValueError('Brightness must be between 0 and 100.')
+
 lamp = SmartLamp('blue', 70)
 print(lamp.color)      # blue
 print(lamp.brightness) # 70
