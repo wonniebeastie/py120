@@ -12,3 +12,11 @@ class Person:
             print("Name must be a string.")
         
         self._name = name
+
+luna = Person("Luna")
+print(luna.name) # Luna
+
+luna.name = "Luna Lovegood"
+print(luna.name) # Luna Lovegood
+
+not_person = Person(56) # Name must be a string.
