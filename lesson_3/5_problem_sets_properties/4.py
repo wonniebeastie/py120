@@ -16,3 +16,16 @@ class SmartLamp:
 
         self._color = color
 
+lamp = SmartLamp('blue', 70)
+print(lamp.color)      # blue
+print(lamp.brightness) # 70
+print(lamp.glow())     # The lamp glows blue with brightness 70%.
+
+lamp.color = 'red'
+lamp.brightness = 90
+print(lamp.color)      # red
+print(lamp.brightness) # 90
+print(lamp.glow())     # The lamp glows red with brightness 90%.
+
+lamp.brightness = 120
+# ValueError: Brightness must be between 0 and 100.
