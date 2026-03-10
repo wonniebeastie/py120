@@ -1,6 +1,7 @@
 class SmartLamp:
-    def __init__(self, color):
+    def __init__(self, color, brightness):
         self.color = color
+        self.brightness = brightness
 
     def glow(self):
         return (f'The lamp glows {self.color}.')
