@@ -9,8 +9,6 @@ class Dog:
     def get_breed(self):
         return self._breed
 
-doggo1 = Dog('Golden Retriever')
-doggo2 = Dog('Poodle')
-
-print(doggo1.get_breed()) # Golden Retriever
-print(doggo2.get_breed()) # Poodle
+doggo = Dog("Panda Dog")
+doggo._breed = "Racoon Dog"
+print(doggo.get_breed()) # Racoon Dog
