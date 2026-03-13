@@ -8,12 +8,11 @@ class Dog:
     def __init__(self, breed):
         self._breed = breed
 
-    @property
-    def breed(self):
+    def get_breed(self):
         return self._breed
 
 doggo1 = Dog('Golden Retriever')
 doggo2 = Dog('Poodle')
 
-print(doggo1.breed) # Golden Retriever
-print(doggo2.breed) # Poodle
+print(doggo1.get_breed()) # Golden Retriever
+print(doggo2.get_breed()) # Poodle
