@@ -5,4 +5,10 @@ Create a `Cat` class that has a single method named `get_name` that returns the
 """
 class Cat:
     def get_name(self):
-        return self.name
+        try:
+            return self.name
+        except AttributeError:
+            print('Name not set!')
+
+kitty1 = Cat()
+kitty1.get_name()  # Name not set!
