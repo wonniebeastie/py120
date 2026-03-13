@@ -6,3 +6,7 @@ Create a `Cat` class that has a single method named `get_name` that returns the
 class Cat:
     def __init__(self, name):
         self.name = name
+
+    def get_name(self):
+        return self.name
+
