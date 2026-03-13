@@ -6,7 +6,11 @@ also mark the `breed` instance variable for internal use only.
 """
 class Dog:
     def __init__(self, breed):
-        self.breed = breed
+        self._breed = breed
+
+    @property
+    def breed(self):
+        return self._breed
 
 doggo1 = Dog('Golden Retriever')
 doggo2 = Dog('Poodle')
