@@ -6,3 +6,6 @@ instance variables.
 """
 class Car:
     manufacturer = 'McDs'
+
+    def __init__(self, manufacturer):
+        self.manufacturer = 'Hogwarts'
