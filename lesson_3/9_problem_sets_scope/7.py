@@ -10,3 +10,7 @@ class Student:
 
     def __init__(self, name):
         self.name = name
+
+    @classmethod
+    def get_school_name(cls):
+        return cls.school_name
