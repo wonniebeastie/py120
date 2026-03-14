@@ -11,10 +11,10 @@ class Car:
         self.manufacturer = manufacturer
 
     def show_manufacturer(self):
-        print(self.__class__.manufacturer)
-        print(self.manufacturer)
+        print(f'{Car.manufacturer=}')
+        print(f'{self.manufacturer=}')
 
 car = Car("Hogwarts")
 car.show_manufacturer()
-# McDs
-# Hogwarts
+# Car.manufacturer='McDs'
+# self.manufacturer='Hogwarts'
