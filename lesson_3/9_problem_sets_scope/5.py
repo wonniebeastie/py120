@@ -7,3 +7,10 @@ correct operation.
 class Mammal:
     def __init__(self):
         self.legs = 4
+
+class Human(Mammal):
+    def __init__(self):
+        self.legs = 2
+
+a_human_bean = Human()
+print(a_human_bean.legs) # 2
