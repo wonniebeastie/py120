@@ -5,5 +5,5 @@ the value of `legs` to `2`. Print the number of legs for a human to verify
 correct operation.
 """
 class Mammal:
-    def __init__(self, legs):
+    def __init__(self):
         self.legs = 4
