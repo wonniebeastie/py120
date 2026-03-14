@@ -14,3 +14,6 @@ class Student:
     @classmethod
     def get_school_name(cls):
         return cls.school_name
+
+print(Student.get_school_name()) # Oxford
+print(Student.school_name)       # Oxford
