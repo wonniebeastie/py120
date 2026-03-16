@@ -14,3 +14,11 @@ print(birdie.species)               # What will this output?
 Without running the above code, what will it output? If it raises an error, 
 explain why and how to fix it.
 """
+"""
+I think it will raise an error because defining an `__init__` method for 
+`Sparrow` causes it to overrid its superclass's `__init__`. And when you create
+a `Sparrow` instance, `birdie`, the argument `"sparrow"` is never stored in a
+variable inside `Sparrow`'s `__init__`. 
+
+I think could fix it by adding `self.species = species` to it. 
+"""
