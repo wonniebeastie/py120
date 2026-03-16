@@ -12,3 +12,7 @@ class Pine(Tree):
 
 # When an instance of Pine is created, what value will its type attribute have?
 # Why?
+"""
+I think it will have `"Pine Tree"` because line 8 initializes it with 
+`"Generic Tree"` then line 9 reassigns its value as `"Pine Tree"`.
+"""
