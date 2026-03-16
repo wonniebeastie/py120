@@ -5,7 +5,7 @@ class Bird:
 
 class Sparrow(Bird):
     def __init__(self, species, color):
-        self.species = species
+        super().__init__(species)
         self.color = color
 
 birdie = Sparrow("sparrow", "brown")
@@ -22,4 +22,8 @@ a `Sparrow` instance, `birdie`, the argument `"sparrow"` is never stored in a
 variable inside `Sparrow`'s `__init__`. 
 
 I think could fix it by adding `self.species = species` to it. 
+
+Fix:
+Apparently, `super().__init__(species)` is better for robustness & style,
+according to LSBot.
 """
