@@ -13,3 +13,7 @@ print(Lion.make_sound())
 
 # Answer the following question without running the code.
 # What will this code output, and why?
+"""
+It will output `"roar"` because the `cls` in the `make_found` method will be
+referring to the class that it is called on, `Lion`.
+"""
