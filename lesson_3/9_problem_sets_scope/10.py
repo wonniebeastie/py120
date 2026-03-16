@@ -5,10 +5,11 @@ class Bird:
 
 class Sparrow(Bird):
     def __init__(self, species, color):
+        self.species = species
         self.color = color
 
 birdie = Sparrow("sparrow", "brown")
-print(birdie.species)               # What will this output?
+print(birdie.species) # sparrow
 
 """
 Without running the above code, what will it output? If it raises an error, 
