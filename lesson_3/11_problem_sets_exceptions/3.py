@@ -3,8 +3,8 @@ try:
     divisor = float(input('Enter the divisor: '))
 
     result = dividend / divisor
-except (ValueError, ZeroDivisionError):
-    print('Got ValueError or ZeroDivisionError')
+except (ValueError, ZeroDivisionError) as e:
+    print(e)
 else:
     print(f'The result is: {result}')
 finally:
