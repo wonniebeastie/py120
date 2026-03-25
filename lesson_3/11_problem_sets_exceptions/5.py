@@ -1,5 +1,8 @@
+class NegativeNumberError(Exception):
+    pass
+
 num = float(input('Enter a positive number: '))
 
 if num < 0:
-    raise ValueError('The number must be positive.')
+    raise NegativeNumberError('Number cannot be negative.')
 print(f'You entered {num}')
