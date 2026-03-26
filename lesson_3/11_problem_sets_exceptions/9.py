@@ -20,3 +20,25 @@ def get_sixth_elem_lbyl(num_list):
 
 print(get_sixth_elem_lbyl(numbers)) # None
 print(get_sixth_elem_lbyl(nums)) # 6
+
+# AFNP approach
+"""
+Try it out & handle errors that can arise.
+"""
+"""
+I: a list of numbers
+O: int, sixth element or `None` if none found
+
+- try:
+    - return the element at index 6
+- except index error:
+    - return `None`
+"""
+def get_sixth_elem_afnp(num_list):
+    try:
+        return num_list[5]
+    except IndexError:
+        return None
+
+print(get_sixth_elem_afnp(numbers)) # None
+print(get_sixth_elem_afnp(nums)) # 6
