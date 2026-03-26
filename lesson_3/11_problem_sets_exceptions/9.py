@@ -5,14 +5,6 @@ nums = [1, 2, 3, 4, 5, 6]
 """
 Check for potential errors before executing code that might fail.
 """
-"""
-I: a list of numbers
-O: int, sixth element or `None` if none found
-
-- if length of list is less than 6:
-    - return `None`
-- return element
-"""
 def get_sixth_elem_lbyl(num_list):
     if len(num_list) < 6:
         return None
@@ -24,15 +16,6 @@ print(get_sixth_elem_lbyl(nums)) # 6
 # AFNP approach
 """
 Try it out & handle errors that can arise.
-"""
-"""
-I: a list of numbers
-O: int, sixth element or `None` if none found
-
-- try:
-    - return the element at index 6
-- except index error:
-    - return `None`
 """
 def get_sixth_elem_afnp(num_list):
     try:
