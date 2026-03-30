@@ -9,3 +9,12 @@ class Car(SpeedMixin):
 class Truck(SpeedMixin):
     def go_very_slow(self):
         print('I am a heavy truck and like going very slow.')
+
+car = Car()
+truck = Truck()
+
+car.go_slow() # I am safe and driving slow.
+truck.go_very_slow() # I am a heavy truck and like going very slow.
+
+car.go_fast() # I am a super fast Car
+truck.go_fast() # I am a super fast Truck
