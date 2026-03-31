@@ -7,7 +7,7 @@ class Game:
         Game.count += 1
 
     def play(self):
-        return 'Start the game!'
+        return f'Start the {self.game_type} game!'
 
     @classmethod
     def return_count(cls):
