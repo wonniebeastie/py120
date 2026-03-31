@@ -2,5 +2,5 @@ class Game:
     def play(self):
         return 'Start the game!'
 
-class Bingo:
+class Bingo(Game):
     pass
