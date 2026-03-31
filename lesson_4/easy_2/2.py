@@ -5,9 +5,6 @@ class Game:
 class Bingo(Game):
     pass
 
-game1 = Bingo()
-print(game1.play()) # Start the game!
-
 bingo = Bingo('Bingo', 'Bill')
 print(Game.count)                       # 1
 print(bingo.play())                     # Start the Bingo game!
