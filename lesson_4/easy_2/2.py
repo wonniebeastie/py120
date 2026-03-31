@@ -4,7 +4,7 @@ class Game:
     def __init__(self, game_type, player_name):
         self.game_type = game_type
         self.player_name = player_name
-        self.__class__.count += 1
+        Game.count += 1
 
     def play(self):
         return 'Start the game!'
