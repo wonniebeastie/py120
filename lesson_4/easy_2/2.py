@@ -1,6 +1,10 @@
 class Game:
     count = 0
 
+    def __init__(self, game_type, player_name):
+        self.game_type = game_type
+        self.player_name = player_name
+
     def play(self):
         return 'Start the game!'
 
