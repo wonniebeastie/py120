@@ -4,3 +4,6 @@ class Game:
 
 class Bingo(Game):
     pass
+
+game1 = Bingo()
+print(game1.play()) # Start the game!
