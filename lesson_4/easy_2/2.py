@@ -7,3 +7,16 @@ class Bingo(Game):
 
 game1 = Bingo()
 print(game1.play()) # Start the game!
+
+bingo = Bingo('Bingo', 'Bill')
+print(Game.count)                       # 1
+print(bingo.play())                     # Start the Bingo game!
+print(bingo.player_name)                # Bill
+
+scrabble = Scrabble('Scrabble', 'Jill', 'Sill')
+print(Game.count)                       # 2
+print(scrabble.play())                  # Start the Scrabble game!
+print(scrabble.player_name1)            # Jill
+print(scrabble.player_name2)            # Sill
+print(scrabble.player_name)
+# AttributeError: 'Scrabble' object has no attribute 'player_name'
