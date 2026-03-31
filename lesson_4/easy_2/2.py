@@ -9,6 +9,10 @@ class Game:
     def play(self):
         return 'Start the game!'
 
+    @classmethod
+    def return_count(cls):
+        return cls.count
+
 class Bingo(Game):
     pass
 
