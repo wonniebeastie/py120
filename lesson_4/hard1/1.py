@@ -1,3 +1,22 @@
+"""
+Rules:
+    - `Auto` represents automobiles
+    - `Motorcycles` represent motorcycles
+    - `WheeledVehicle` class has common behaviors of `Auto` & `Motocycles`
+    - `Catamaran`s don't have tires
+    - We still want to track fuel efficiency & range
+    - Move code into a mix-in, to share code among the 3 classes
+
+Brainstorm:
+    - what we want from all 3
+        - `range()`
+        - `fuel_efficiency`
+        - `fuel_capacity`
+
+Mixin Algo:
+    - range
+    - 
+"""
 class WheeledVehicle:
     def __init__(self,
                  tire_list,
@@ -32,4 +51,7 @@ class Catamaran:
                 number_hulls,
                 kilometers_per_liter,
                 liters_of_fuel_capacity):
-        # ... code omitted ...
+        self.number_propellers = number_propellers
+        self.number_hulls = number_hulls
+        self.kilometers_per_liter = kilometers_per_liter
+        self.liters_of_fuel_capacity = liters_of_fuel_capacity
