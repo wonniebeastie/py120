@@ -1,7 +1,24 @@
+"""
+Rules:
+- if both filling and glazing are `None`, print 'Plain'
+- if filling is NOT `None`, just print the filling
+- if filling `None`, but glazing is NOT `None`, print 'Plain with {glazing}'
+- if both filling and glazing are NOT `None`, print '{filling} with {icing}
+"""
 class KrispyKreme:
     def __init__(self, filling, glazing):
         self.filling = filling
         self.glazing = glazing
+
+    def __str__(self):
+        if (self.filling == None) and (self.glazing == None):
+            return 'Plain'
+        elif self.glazing == None:
+            return f'{self.filling}'
+        elif self.filling == None:
+            return f'Plain with {self.glazing}'
+        else:
+            return f'{self.filling} with {self.glazing}'
 
 donut1 = KrispyKreme(None, None)
 donut2 = KrispyKreme('Vanilla', None)
