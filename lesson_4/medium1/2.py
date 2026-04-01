@@ -7,6 +7,10 @@ class InvoiceEntry:
     def quantity(self):
         return self._quantity
 
+    @quantity.setter
+    def quantity(self, quantity):
+        self._quantity = quantity
+
 entry = InvoiceEntry('Marbles', 5000)
 print(entry.quantity)         # 5000
 
