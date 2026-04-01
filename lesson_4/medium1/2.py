@@ -3,6 +3,10 @@ class InvoiceEntry:
         self._product_name = product_name
         self._quantity = number_purchased
 
+    @property
+    def quantity(self):
+        return self._quantity
+
 entry = InvoiceEntry('Marbles', 5000)
 print(entry.quantity)         # 5000
 
