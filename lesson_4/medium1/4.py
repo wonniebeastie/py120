@@ -3,7 +3,8 @@ Rules:
 - if both filling and glazing are `None`, print 'Plain'
 - if filling is NOT `None`, just print the filling
 - if filling `None`, but glazing is NOT `None`, print 'Plain with {glazing}'
-- if both filling and glazing are NOT `None`, print '{filling} with {icing}
+- if both filling and glazing are NOT `None`, print '{filling} with {icing}'
+
 """
 class KrispyKreme:
     def __init__(self, filling, glazing):

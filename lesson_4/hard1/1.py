@@ -15,9 +15,14 @@ Brainstorm:
 
 Mixin Algo:
     - range
-    - 
+    - set fuel efficiency
+    - set fuel capacity
 """
-class WheeledVehicle:
+class FueledVehicleMixin:
+    def set_fuel_efficiency(self):
+        self.fuel_efficiency = self.kilometers_per_liter
+
+class WheeledVehicle(FueledVehicleMixin):
     def __init__(self,
                  tire_list,
                  kilometers_per_liter,
@@ -45,7 +50,7 @@ class Motorcycle(WheeledVehicle):
         # 2 tires with various tire pressures
         super().__init__([20, 20], 80, 8.0)
 
-class Catamaran:
+class Catamaran(FueledVehicleMixin):
     def __init__(self,
                 number_propellers,
                 number_hulls,
