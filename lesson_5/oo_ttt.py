@@ -86,6 +86,8 @@ class TTTGame:
             if self.is_game_over():
                 break
 
+            break # Exceute loop only once for now
+
         self.display_board()
         self.display_results()
         self.display_goodbye_message()
