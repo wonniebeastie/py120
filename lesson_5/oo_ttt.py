@@ -72,9 +72,58 @@ class TTTGame:
         pass
 
     def play(self):
+        # SPIKE
+        self.display_welcome_message()
+
+        while True:
+            self.display_board()
+
+            self.first_player_moves()
+            if self.is_game_over():
+                break
+
+            self.second_player_moves()
+            if self.is_game_over():
+                break
+
+        self.display_board()
+        self.display_results()
+        self.display_goodbye_message()
+
+    def display_welcome_message(self):
         # STUB
-        # Orchestrate game play.
+        # Show a welcome message
         pass
+
+    def display_goodbye_message(self):
+        # STUB
+        # Show a goodbye message
+        pass
+
+    def display_results(self):
+        # STUB
+        # Show the results of this game (win, lose, tie)
+        pass
+
+    def display_board(self):
+        # STUB
+        # Display the board, including its current state
+        pass
+
+    def first_player_moves(self):
+        # STUB
+        # The first player makes a move
+        pass
+
+    def second_player_moves(self):
+        # STUB
+        # The second player makes a move
+        pass
+
+    def is_game_over(self):
+        # STUB
+        # We'll start by assuming the game never ends
+        return False
 
 game = TTTGame()
 game.play()
