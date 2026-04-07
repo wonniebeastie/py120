@@ -16,7 +16,7 @@ class Board:
         #   Numbers? Square objects?
         pass
 
-    def display_board(self):
+    def display(self):
         print()
         print("     |     |")
         print("  O  |     |  O")
@@ -91,7 +91,7 @@ class TTTGame:
         self.display_welcome_message()
 
         while True:
-            self.display_board()
+            self.board.display()
 
             self.first_player_moves()
             if self.is_game_over():
@@ -103,7 +103,7 @@ class TTTGame:
 
             break # Exceute loop only once for now
 
-        self.display_board()
+        self.board.display()
         self.display_results()
         self.display_goodbye_message()
 
