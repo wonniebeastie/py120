@@ -42,6 +42,9 @@ class Board:
         print("     |     |")
         print()
 
+    def mark_square_at(self, key, marker):
+        self.squares[key].marker = marker
+
 class Row:
     def __init__(self):
         # STUB
@@ -144,6 +147,7 @@ class TTTGame:
             print()
 
         # Mark the chosen square with the human's marker.
+        self.board.mark_square_at(choice, Square.HUMAN_MARKER)
 
     def computer_moves(self):
         print("computer moves")
