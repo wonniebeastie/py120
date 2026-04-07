@@ -122,7 +122,18 @@ class TTTGame:
         pass
 
     def human_moves(self):
-        print("human moves")
+        choice = None
+        while True:
+            choice = input("Choose a square between 1 and 9: ")
+            try:
+                choice = int(choice)
+                if 1 <= choice <= 9:
+                    break
+            except ValueError:
+                pass
+
+            print("Sorry, that's not a valid choice.")
+            print()
 
     def computer_moves(self):
         print("computer moves")
