@@ -1,36 +1,39 @@
 class Square:
-    def __init__(self):
-        # STUB
-        # We need some way to keep track of this square's
-        #   marker.
-        pass
+    def __init__(self, marker):
+        self.marker = marker
 
 class Board:
     def __init__(self):
         self.squares = {
-            1: "X",
-            2: " ",
-            3: " ",
-            4: " ",
-            5: "O",
-            6: " ",
-            7: " ",
-            8: " ",
-            9: " ",
+            1: Square(" "),
+            2: Square(" "),
+            3: Square(" "),
+            4: Square(" "),
+            5: Square(" "),
+            6: Square(" "),
+            7: Square(" "),
+            8: Square(" "),
+            9: Square(" "),
         }
 
     def display(self):
         print()
         print("     |     |")
-        print("  O  |     |  O")
+        print(f"  {self.squares[1]}  |"
+              f"  {self.squares[2]}  |"
+              f"  {self.squares[3]}")
         print("     |     |")
         print("-----+-----+-----")
         print("     |     |")
-        print("     |  X  |")
+        print(f"  {self.squares[4]}  |"
+              f"  {self.squares[5]}  |"
+              f"  {self.squares[6]}")
         print("     |     |")
         print("-----+-----+-----")
         print("     |     |")
-        print("  X  |     |")
+        print(f"  {self.squares[7]}  |"
+              f"  {self.squares[8]}  |"
+              f"  {self.squares[9]}")
         print("     |     |")
         print()
 
