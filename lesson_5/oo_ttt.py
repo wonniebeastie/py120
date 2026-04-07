@@ -87,14 +87,14 @@ class Human(Player):
         # STUB
         # What does a human player need to do? How does it
         #   differ from the basic Player or a Computer?
-        super().__init__()
+        super().__init__(Square.HUMAN_MARKER)
 
 class Computer(Player):
     def __init__(self):
         # STUB
         # What does a computer player need to do? How does
         #   it differ from the basic Player or a Human?
-        super().__init__()
+        super().__init__(Square.COMPUTER_MARKER)
 
 class TTTGame:
     def __init__(self):
