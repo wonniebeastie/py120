@@ -60,13 +60,21 @@ class Marker:
         pass
 
 class Player:
-    def __init__(self):
+    def __init__(self, marker):
         # STUB
         # A player is either a human or a computer that is
         #   playing the game.
         # Perhaps we need a "marker" to keep track of this
         #   player's symbol? (i.e., 'X' or 'O')
-        pass
+        self.marker = marker
+
+    @property
+    def marker(self):
+        return self._marker
+
+    @marker.setter
+    def marker(self, value):
+        self._marker = value
 
     def mark(self):
         # STUB
