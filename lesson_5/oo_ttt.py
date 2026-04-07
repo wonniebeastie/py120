@@ -6,6 +6,14 @@ class Square:
     def __init__(self, marker=INITIAL_MARKER):
         self.marker = marker
 
+    @property
+    def marker(self):
+        return self._marker
+
+    @marker.setter
+    def marker(self, marker):
+        self._marker = marker
+
     def __str__(self):
         return self.marker
 
