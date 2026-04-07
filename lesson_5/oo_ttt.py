@@ -96,11 +96,11 @@ class TTTGame:
         while True:
             self.board.display()
 
-            self.first_player_moves()
+            self.human_moves()
             if self.is_game_over():
                 break
 
-            self.second_player_moves()
+            self.computer_moves()
             if self.is_game_over():
                 break
 
@@ -121,15 +121,11 @@ class TTTGame:
         # Show the results of this game (win, lose, tie)
         pass
 
-    def first_player_moves(self):
-        # STUB
-        # The first player makes a move
-        pass
+    def human_moves(self):
+        print("human moves")
 
-    def second_player_moves(self):
-        # STUB
-        # The second player makes a move
-        pass
+    def computer_moves(self):
+        print("computer moves")
 
     def is_game_over(self):
         # STUB
