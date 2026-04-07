@@ -98,9 +98,9 @@ class Computer(Player):
 
 class TTTGame:
     def __init__(self):
-        # STUB
-        # We need a board and two players.
         self.board = Board()
+        self.human = Human()
+        self.computer = Computer()
 
     def play(self):
         # SPIKE
@@ -110,6 +110,7 @@ class TTTGame:
             self.board.display()
 
             self.human_moves()
+            self.board.display() # so we can see the human's move
             if self.is_game_over():
                 break
 
