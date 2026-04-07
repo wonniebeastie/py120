@@ -16,6 +16,21 @@ class Board:
         #   Numbers? Square objects?
         pass
 
+    def display_board(self):
+        print()
+        print("     |     |")
+        print("  O  |     |  O")
+        print("     |     |")
+        print("-----+-----+-----")
+        print("     |     |")
+        print("     |  X  |")
+        print("     |     |")
+        print("-----+-----+-----")
+        print("     |     |")
+        print("  X  |     |")
+        print("     |     |")
+        print()
+
 class Row:
     def __init__(self):
         # STUB
@@ -69,7 +84,7 @@ class TTTGame:
     def __init__(self):
         # STUB
         # We need a board and two players.
-        pass
+        self.board = Board()
 
     def play(self):
         # SPIKE
@@ -101,11 +116,6 @@ class TTTGame:
     def display_results(self):
         # STUB
         # Show the results of this game (win, lose, tie)
-        pass
-
-    def display_board(self):
-        # STUB
-        # Display the board, including its current state
         pass
 
     def first_player_moves(self):
