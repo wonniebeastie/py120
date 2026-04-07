@@ -76,12 +76,6 @@ class Player:
     def marker(self, value):
         self._marker = value
 
-    def mark(self):
-        # STUB
-        # We need a way to mark the board with this player's
-        #   marker. How do we access the board?
-        pass
-
     def play(self):
         # STUB
         # We need a way for each player to play the game.
