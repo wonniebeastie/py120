@@ -135,6 +135,8 @@ class TTTGame:
             print("Sorry, that's not a valid choice.")
             print()
 
+        # Mark the chosen square with the human's marker.
+
     def computer_moves(self):
         print("computer moves")
 
