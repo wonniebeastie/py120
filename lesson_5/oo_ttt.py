@@ -53,14 +53,6 @@ class Row:
         # We need some way to identify a row of 3 squares
         pass
 
-class Marker:
-    def __init__(self):
-        # STUB
-        # A marker is something that represents a board
-        #   square that belongs to a particular player. That
-        #   is, it's a square that was chosen by the player.
-        pass
-
 class Player:
     def __init__(self, marker):
         # STUB
