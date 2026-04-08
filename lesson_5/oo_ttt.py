@@ -135,9 +135,14 @@ class TTTGame:
         pass
 
     def human_moves(self):
-        choice = None
+        valid_choices = self.board.unused_squares()
+        choices_list = [str(choice) for choice in valid_choices]
+        choices_str = ", ".join(choices_list)
+
         while True:
-            choice = input("Choose a square between 1 and 9: ")
+            prompt =f"Choose a square({choices_str}): "
+            choice = input(prompt)
+
             try:
                 choice = int(choice)
                 if 1 <= choice <= 9:
