@@ -145,7 +145,7 @@ class TTTGame:
 
             try:
                 choice = int(choice)
-                if 1 <= choice <= 9:
+                if choice in valid_choices:
                     break
             except ValueError:
                 pass
