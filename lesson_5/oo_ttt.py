@@ -135,6 +135,7 @@ class TTTGame:
         pass
 
     def human_moves(self):
+        choice = None
         valid_choices = self.board.unused_squares()
         choices_list = [str(choice) for choice in valid_choices]
         choices_str = ", ".join(choices_list)
