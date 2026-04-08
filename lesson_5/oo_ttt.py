@@ -19,6 +19,9 @@ class Square:
     def __str__(self):
         return self.marker
 
+    def is_unused(self):
+        return self.marker == Square.INITIAL_MARKER
+
 class Board:
     def __init__(self):
         self.squares = {key: Square() for key in range(1, 10)}
@@ -46,6 +49,11 @@ class Board:
 
     def mark_square_at(self, key, marker):
         self.squares[key].marker = marker
+
+    def unused_squares(self):
+        return [key
+                for key, square in self.squares.items()
+                if square.is_unused()]
 
 class Row:
     def __init__(self):
@@ -104,16 +112,12 @@ class TTTGame:
             self.board.display()
 
             self.human_moves()
-            self.board.display() # so we can see the human's move
             if self.is_game_over():
                 break
 
             self.computer_moves()
-            self.board.display() # so we can see the computer's move
             if self.is_game_over():
                 break
-
-            break # Exceute loop only once for now
 
         self.board.display()
         self.display_results()
