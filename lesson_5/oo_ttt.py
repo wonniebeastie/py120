@@ -158,9 +158,9 @@ class TTTGame:
         self.board.mark_square_at(choice, self.human.marker)
 
     def computer_moves(self):
-        choice = random.randint(1, 9)
+        valid_choices = self.board.unused_squares()
+        choice = random.choice(valid_choices)
         self.board.mark_square_at(choice, self.computer.marker)
-        print("computer moves")
 
     def is_game_over(self):
         # STUB
