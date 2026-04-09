@@ -154,7 +154,7 @@ class TTTGame:
         choices_str = ", ".join(choices_list)
 
         while True:
-            prompt =f"Choose a square({choices_str}): "
+            prompt =f"Choose a square ({choices_str}): "
             choice = input(prompt)
 
             try:
