@@ -68,11 +68,6 @@ class Board:
 
 class Player:
     def __init__(self, marker):
-        # STUB
-        # A player is either a human or a computer that is
-        #   playing the game.
-        # Perhaps we need a "marker" to keep track of this
-        #   player's symbol? (i.e., 'X' or 'O')
         self.marker = marker
 
     @property
@@ -85,16 +80,10 @@ class Player:
 
 class Human(Player):
     def __init__(self):
-        # STUB
-        # What does a human player need to do? How does it
-        #   differ from the basic Player or a Computer?
         super().__init__(Square.HUMAN_MARKER)
 
 class Computer(Player):
     def __init__(self):
-        # STUB
-        # What does a computer player need to do? How does
-        #   it differ from the basic Player or a Human?
         super().__init__(Square.COMPUTER_MARKER)
 
 class TTTGame:
@@ -115,7 +104,6 @@ class TTTGame:
         self.computer = Computer()
 
     def play(self):
-        # SPIKE
         self.display_welcome_message()
 
         while True:
