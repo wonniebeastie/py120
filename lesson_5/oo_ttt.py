@@ -157,8 +157,14 @@ class TTTGame:
         self.board.mark_square_at(choice, self.computer.marker)
 
     def is_game_over(self):
+        return self.board_is_full() or self.someone_won()
+
+    def board_is_full(self):
         # STUB
-        # We'll start by assuming the game never ends
+        return False
+
+    def someone_won(self):
+        # STUB
         return False
 
 game = TTTGame()
