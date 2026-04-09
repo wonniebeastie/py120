@@ -58,6 +58,10 @@ class Board:
     def is_full(self):
         return len(self.unused_squares()) == 0
 
+    def count_markers_for(self, player, keys):
+        markers = [self.squares[key].marker for key in keys]
+        return markers.count(player.marker)
+
 class Row:
     def __init__(self):
         # STUB
