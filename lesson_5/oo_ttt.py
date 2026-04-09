@@ -160,8 +160,8 @@ class TTTGame:
         return self.board_is_full() or self.someone_won()
 
     def board_is_full(self):
-        # STUB
-        return False
+        unused_squares = self.board.unused_squares()
+        return len(unused_squares) == 0
 
     def someone_won(self):
         # STUB
