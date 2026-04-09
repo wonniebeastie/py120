@@ -1,4 +1,8 @@
 import random
+import os
+
+def clear_screen():
+    os.system('clear')
 
 class Square:
     INITIAL_MARKER = " "
