@@ -142,9 +142,12 @@ class TTTGame:
         print("Thanks for playing Tic Tac Toe! Goodbye!")
 
     def display_results(self):
-        # STUB
-        # Show the results of this game (win, lose, tie)
-        pass
+        if self.is_winner(self.human):
+            print("You won! Congratulations!")
+        elif self.is_winner(self.computer):
+            print("I won! I won! Take that, human!")
+        else:
+            print("A tie game. How boring.")
 
     def human_moves(self):
         choice = None
@@ -176,6 +179,13 @@ class TTTGame:
 
     def is_game_over(self):
         return self.board.is_full() or self.someone_won()
+
+    def is_winner(self, player):
+        for row in TTTGame.POSSIBLE_WINNING_ROWS:
+            if self.three_in_a_row(player, row):
+                return True
+            
+            return False
 
     def three_in_a_row(self, player, row):
         return self.board.count_markers_for(player, row) == 3
