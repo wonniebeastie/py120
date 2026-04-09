@@ -191,13 +191,8 @@ class TTTGame:
         return self.board.count_markers_for(player, row) == 3
 
     def someone_won(self):
-        for row in TTTGame.POSSIBLE_WINNING_ROWS:
-            if self.three_in_a_row(self.human, row):
-                return True
-            elif self.three_in_a_row(self.computer, row):
-                return True
-
-        return False
+        return (self.is_winner(self.human) or
+                self.is_winner(self.computer))
 
 game = TTTGame()
 game.play()
