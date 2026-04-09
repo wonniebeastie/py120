@@ -185,7 +185,7 @@ class TTTGame:
             if self.three_in_a_row(player, row):
                 return True
             
-            return False
+        return False
 
     def three_in_a_row(self, player, row):
         return self.board.count_markers_for(player, row) == 3
