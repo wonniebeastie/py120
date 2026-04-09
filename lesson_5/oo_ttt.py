@@ -62,12 +62,6 @@ class Board:
         markers = [self.squares[key].marker for key in keys]
         return markers.count(player.marker)
 
-class Row:
-    def __init__(self):
-        # STUB
-        # We need some way to identify a row of 3 squares
-        pass
-
 class Player:
     def __init__(self, marker):
         # STUB
