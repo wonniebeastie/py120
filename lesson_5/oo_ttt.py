@@ -55,6 +55,9 @@ class Board:
                 for key, square in self.squares.items()
                 if square.is_unused()]
 
+    def is_full(self):
+        return len(self.unused_squares()) == 0
+
 class Row:
     def __init__(self):
         # STUB
@@ -157,11 +160,7 @@ class TTTGame:
         self.board.mark_square_at(choice, self.computer.marker)
 
     def is_game_over(self):
-        return self.board_is_full() or self.someone_won()
-
-    def board_is_full(self):
-        unused_squares = self.board.unused_squares()
-        return len(unused_squares) == 0
+        return self.board.is_full() or self.someone_won()
 
     def someone_won(self):
         # STUB
