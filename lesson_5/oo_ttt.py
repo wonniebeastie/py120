@@ -135,11 +135,12 @@ class TTTGame:
         while True:
             answer = input("Do you want to play again? Enter 'y' for yes, "
                         "'n' for no: ").lower().strip()
+
             if answer in ['y', 'n']:
                 clear_screen()
                 return answer == 'y'
-            else:
-                print("Please enter a valid answer.")
+
+            print("Please enter a valid answer.")
 
     def display_welcome_message(self):
         clear_screen()
