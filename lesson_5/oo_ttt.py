@@ -105,10 +105,12 @@ class TTTGame:
 
     def play(self):
         self.display_welcome_message()
+
         while True:
             self.play_one_game()
             if not self.play_again():
                 break
+
         self.display_goodbye_message()
 
     def play_one_game(self):
