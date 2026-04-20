@@ -28,7 +28,7 @@ class Square:
 
 class Board:
     def __init__(self):
-        self.squares = {key: Square() for key in range(1, 10)}
+        self.reset()
 
     def display(self):
         print()
@@ -71,6 +71,9 @@ class Board:
         print("\n")
         self.display()
 
+    def reset(self):
+        self.squares = {key: Square() for key in range(1, 10)}
+
 class Player:
     def __init__(self, marker):
         self.marker = marker
@@ -102,6 +105,14 @@ class TTTGame:
 
     def play(self):
         self.display_welcome_message()
+        while True:
+            self.play_one_game()
+            if not self.play_again():
+                break
+        self.display_goodbye_message()
+
+    def play_one_game(self):
+        self.board.reset()
         self.board.display()
 
         while True:
@@ -117,7 +128,16 @@ class TTTGame:
 
         self.board.display_with_clear()
         self.display_results()
-        self.display_goodbye_message()
+
+    def play_again(self):
+        while True:
+            answer = input("Do you want to play again? Enter 'y' for yes, "
+                        "'n' for no: ").lower().strip()
+            if answer in ['y', 'n']:
+                clear_screen()
+                return answer == 'y'
+            else:
+                print("Please enter a valid answer.")
 
     def display_welcome_message(self):
         clear_screen()
@@ -154,7 +174,7 @@ class TTTGame:
         choice = None
         valid_choices = self.board.unused_squares()
         while True:
-            choices_str = self._join_or(valid_choices)
+            choices_str = TTTGame._join_or(valid_choices)
             prompt = f"Choose a square ({choices_str}): "
             choice = input(prompt)
 
