@@ -244,9 +244,7 @@ class TTTGame:
         return None
 
     def pick_center_square(self):
-        if self.board.is_unused_square(5):
-            return 5
-        return None
+        return 5 if self.board.is_unused_square(5) else None
 
     def is_game_over(self):
         return self.board.is_full() or self.someone_won()
