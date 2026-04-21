@@ -203,9 +203,17 @@ class TTTGame:
         self.board.mark_square_at(choice, self.computer.marker)
 
     def defensive_computer_move(self):
+        for row in TTTGame.POSSIBLE_WINNING_ROWS:
+            key = self.at_risk_square(row)
+            if key:
+                return key
+
+        return None
+
+    def at_risk_square(self, row):
         # STUB
-        # computer needs to "block" the human's last available square to
-        # prevent win
+        # checks if there's a row from possible winning rows that's at risk of
+        # winning
         pass
 
     def is_game_over(self):
