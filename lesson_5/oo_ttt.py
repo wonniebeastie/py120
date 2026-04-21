@@ -194,9 +194,19 @@ class TTTGame:
         self.board.mark_square_at(choice, self.human.marker)
 
     def computer_moves(self):
-        valid_choices = self.board.unused_squares()
-        choice = random.choice(valid_choices)
+        choice = self.defensive_computer_move()
+
+        if not choice:
+            valid_choices = self.board.unused_squares()
+            choice = random.choice(valid_choices)
+
         self.board.mark_square_at(choice, self.computer.marker)
+
+    def defensive_computer_move(self):
+        # STUB
+        # computer needs to "block" the human's last available square to
+        # prevent win
+        pass
 
     def is_game_over(self):
         return self.board.is_full() or self.someone_won()
