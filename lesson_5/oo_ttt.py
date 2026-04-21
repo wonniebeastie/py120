@@ -209,10 +209,20 @@ class TTTGame:
         self.board.mark_square_at(choice, self.computer.marker)
 
     def offensive_computer_move(self):
-        # STUB
-        # computer returns the associated key of the square of the winning row
-        # or return `None` if it can't be found
-        pass
+        for row in TTTGame.POSSIBLE_WINNING_ROWS:
+            key = self.winning_square(row)
+            if key:
+                return key
+
+        return None
+
+    def winning_square(self, row):
+        if self.board.count_markers_for(self.computer, row) == 2:
+            for key in row:
+                if self.board.is_unused_square(key):
+                    return key
+
+        return None
 
     def defensive_computer_move(self):
         for row in TTTGame.POSSIBLE_WINNING_ROWS:
