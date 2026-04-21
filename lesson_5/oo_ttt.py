@@ -203,6 +203,9 @@ class TTTGame:
             choice = self.defensive_computer_move()
 
         if not choice:
+            choice = self.pick_center_square()
+
+        if not choice:
             valid_choices = self.board.unused_squares()
             choice = random.choice(valid_choices)
 
@@ -238,6 +241,11 @@ class TTTGame:
                 if self.board.is_unused_square(key):
                     return key
 
+        return None
+
+    def pick_center_square(self):
+        if self.board.is_unused_square(5):
+            return 5
         return None
 
     def is_game_over(self):
