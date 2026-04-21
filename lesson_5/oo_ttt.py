@@ -59,6 +59,12 @@ class Board:
                 for key, square in self.squares.items()
                 if square.is_unused()]
 
+    def is_unused_square(self, key):
+        # STUB
+        # for each key, it checks whether the associated square is unused by
+        # either player
+        pass
+
     def is_full(self):
         return len(self.unused_squares()) == 0
 
@@ -211,10 +217,12 @@ class TTTGame:
         return None
 
     def at_risk_square(self, row):
-        # STUB
-        # checks if there's a row from possible winning rows that's at risk of
-        # winning
-        pass
+        if self.board.count_markers_for(self.human, row) == 2:
+            for key in row:
+                if self.board_is_unused_square(key):
+                    return key
+
+        return None
 
     def is_game_over(self):
         return self.board.is_full() or self.someone_won()
