@@ -206,8 +206,7 @@ class TTTGame:
             choice = self.pick_center_square()
 
         if not choice:
-            valid_choices = self.board.unused_squares()
-            choice = random.choice(valid_choices)
+            choice = self.pick_random_square()
 
         self.board.mark_square_at(choice, self.computer.marker)
 
@@ -245,6 +244,10 @@ class TTTGame:
 
     def pick_center_square(self):
         return 5 if self.board.is_unused_square(5) else None
+
+    def pick_random_square(self):
+        valid_choices = self.board.unused_squares()
+        return random.choice(valid_choices)
 
     def is_game_over(self):
         return self.board.is_full() or self.someone_won()
