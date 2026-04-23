@@ -218,27 +218,19 @@ class TTTGame:
 
         return None
 
+    def critical_square(self, row, player):
+        if self.board.count_markers_for(player, row) == 2:
+            for key in row:
+                if self.board.is_unused_square(key):
+                    return key
+
+        return None
+
     def offensive_computer_move(self):
         return self.find_critical_square(self.computer)
 
-    def winning_square(self, row):
-        if self.board.count_markers_for(self.computer, row) == 2:
-            for key in row:
-                if self.board.is_unused_square(key):
-                    return key
-
-        return None
-
     def defensive_computer_move(self):
         return self.find_critical_square(self.human)
-
-    def at_risk_square(self, row):
-        if self.board.count_markers_for(self.human, row) == 2:
-            for key in row:
-                if self.board.is_unused_square(key):
-                    return key
-
-        return None
 
     def pick_center_square(self):
         return 5 if self.board.is_unused_square(5) else None
