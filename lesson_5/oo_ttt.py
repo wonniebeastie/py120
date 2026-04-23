@@ -210,13 +210,16 @@ class TTTGame:
 
         self.board.mark_square_at(choice, self.computer.marker)
 
-    def offensive_computer_move(self):
-        for row in TTTGame.POSSIBLE_WINNING_ROWS:
-            key = self.winning_square(row)
+    def find_critical_square(self, player):
+        for row in self.POSSIBLE_WINNING_ROWS:
+            key = self.critical_square(row, player)
             if key:
                 return key
 
         return None
+
+    def offensive_computer_move(self):
+        return self.find_critical_square(self.computer)
 
     def winning_square(self, row):
         if self.board.count_markers_for(self.computer, row) == 2:
@@ -227,12 +230,7 @@ class TTTGame:
         return None
 
     def defensive_computer_move(self):
-        for row in TTTGame.POSSIBLE_WINNING_ROWS:
-            key = self.at_risk_square(row)
-            if key:
-                return key
-
-        return None
+        return self.find_critical_square(self.human)
 
     def at_risk_square(self, row):
         if self.board.count_markers_for(self.human, row) == 2:
