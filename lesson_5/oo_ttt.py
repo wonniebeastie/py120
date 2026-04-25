@@ -90,6 +90,8 @@ class Computer(Player):
         super().__init__(Square.COMPUTER_MARKER)
 
 class TTTGame:
+    WINNING_SCORE = 3
+
     POSSIBLE_WINNING_ROWS = (
         (1, 2, 3),  # top row of board
         (4, 5, 6),  # center row of board
@@ -108,12 +110,20 @@ class TTTGame:
 
     def play(self):
         self.display_welcome_message()
+        print(f"The first player to win {TTTGame.WINNING_SCORE} games wins the"
+              " overall match.")
 
-        while True:
+        while not self.match_over():
             self.play_one_game()
-            if not self.play_again():
-                break
+            self.update_score()
+            self.display_score()
+            if not self.match_over():
+                if not self.play_again():
+                    break
 
+        self.display_match_results()
+        print("The final match score is: ")
+        self.display_score()
         self.display_goodbye_message()
 
     def play_one_game(self):
@@ -255,6 +265,26 @@ class TTTGame:
                 return True
 
         return False
+
+    def match_over(self):
+        # STUB
+        # checks if someone has 3 wins
+        pass
+
+    def update_score(self):
+        # STUB
+        # depending on who won, update the score (no change if tied)
+        pass
+
+    def display_score(self):
+        # STUB
+        # display both `huamn.score` & `computer.score`
+        pass
+
+    def display_match_results(self):
+        # STUB
+        # check if anyone won the match, then displays appropriate message
+        pass
 
 game = TTTGame()
 game.play()
