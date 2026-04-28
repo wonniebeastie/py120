@@ -113,6 +113,7 @@ class TTTGame:
         self.board = Board()
         self.human = Human()
         self.computer = Computer()
+        self.first_player = self.human
 
     def play(self):
         self.display_welcome_message()
@@ -134,22 +135,23 @@ class TTTGame:
             if not self.play_again():
                 break
 
+            self.first_player = self.toggle_player(self.first_player)
+
         self.display_match_results()
 
     def play_one_game(self):
+        current_player = self.first_player
+
         self.board.reset()
         self.board.display()
 
         while True:
-            self.human_moves()
-            if self.is_game_over():
-                break
-
-            self.computer_moves()
+            self.player_moves(current_player) # TODO
             if self.is_game_over():
                 break
 
             self.board.display_with_clear()
+            current_player = self.toggle_player(current_player) # TODO
 
         self.board.display_with_clear()
         self.display_results()
@@ -238,6 +240,16 @@ class TTTGame:
                 return key
 
         return None
+
+    def player_moves(self, current_player):
+        # STUB
+        # call appropriate player's move method depending on current player
+        pass
+
+    def toggle_player(self, player):
+        # STUB
+        # toggle the player to the other one
+        pass
 
     def critical_square(self, row, player):
         if self.board.count_markers_for(player, row) == 2:
