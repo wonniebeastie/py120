@@ -27,6 +27,8 @@ class Square:
         return self.marker == Square.INITIAL_MARKER
 
 class Board:
+    CENTER_SQUARE = 5
+
     def __init__(self):
         self.reset()
 
@@ -252,7 +254,8 @@ class TTTGame:
         return self.find_critical_square(self.human)
 
     def pick_center_square(self):
-        return 5 if self.board.is_unused_square(5) else None
+        center = self.board.CENTER_SQUARE
+        return center if self.board.is_unused_square(center) else None
 
     def pick_random_square(self):
         valid_choices = self.board.unused_squares()
