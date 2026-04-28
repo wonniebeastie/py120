@@ -290,7 +290,7 @@ class TTTGame:
         return False
 
     def match_over(self):
-        return (self.human.score >= TTTGame.WINNING_SCORE or 
+        return (self.human.score >= TTTGame.WINNING_SCORE or
                 self.computer.score >= TTTGame.WINNING_SCORE)
 
     def update_score(self):
