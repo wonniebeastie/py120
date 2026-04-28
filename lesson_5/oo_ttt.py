@@ -146,12 +146,12 @@ class TTTGame:
         self.board.display()
 
         while True:
-            self.player_moves(current_player) # TODO
+            self.player_moves(current_player)
             if self.is_game_over():
                 break
 
             self.board.display_with_clear()
-            current_player = self.toggle_player(current_player) # TODO
+            current_player = self.toggle_player(current_player)
 
         self.board.display_with_clear()
         self.display_results()
