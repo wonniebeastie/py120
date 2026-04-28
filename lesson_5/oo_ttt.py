@@ -242,14 +242,13 @@ class TTTGame:
         return None
 
     def player_moves(self, current_player):
-        # STUB
-        # call appropriate player's move method depending on current player
-        pass
+        if current_player == self.human:
+            self.human_moves()
+        else:
+            self.computer_moves()
 
     def toggle_player(self, player):
-        # STUB
-        # toggle the player to the other one
-        pass
+        return self.computer if player == self.human else self.human
 
     def critical_square(self, row, player):
         if self.board.count_markers_for(player, row) == 2:
