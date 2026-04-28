@@ -80,13 +80,14 @@ class Board:
 class Player:
     def __init__(self, marker):
         self.marker = marker
+        self.score = 0
 
 class Human(Player):
-    def __init__(self):
+    def __init__(self, score):
         super().__init__(Square.HUMAN_MARKER)
 
 class Computer(Player):
-    def __init__(self):
+    def __init__(self, score):
         super().__init__(Square.COMPUTER_MARKER)
 
 class TTTGame:
@@ -267,9 +268,8 @@ class TTTGame:
         return False
 
     def match_over(self):
-        # STUB
-        # checks if someone has 3 wins
-        pass
+        return (self.human.score == TTTGame.WINNING_SCORE or 
+                self.computer.score == TTTGame.WINNING_SCORE)
 
     def update_score(self):
         # STUB
