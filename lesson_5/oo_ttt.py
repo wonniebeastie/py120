@@ -82,6 +82,9 @@ class Player:
         self.marker = marker
         self.score = 0
 
+    def increment_score(self):
+        self.score += 1
+
 class Human(Player):
     def __init__(self, score):
         super().__init__(Square.HUMAN_MARKER)
@@ -272,9 +275,10 @@ class TTTGame:
                 self.computer.score == TTTGame.WINNING_SCORE)
 
     def update_score(self):
-        # STUB
-        # depending on who won, update the score (no change if tied)
-        pass
+        if self.is_winner(self.human):
+            self.human.increment_score()
+        elif self.is_winner(self.computer):
+            self.computer.increment_score()
 
     def display_score(self):
         # STUB
