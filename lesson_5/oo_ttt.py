@@ -114,21 +114,25 @@ class TTTGame:
 
     def play(self):
         self.display_welcome_message()
+        self.play_match()
+        self.display_goodbye_message()
+
+    def play_match(self):
+        self.display_welcome_message()
         print(f"The first player to win {TTTGame.WINNING_SCORE} games wins the"
               " overall match.")
 
-        while not self.match_over():
+        while True:
             self.play_one_game()
             self.update_score()
             self.display_score()
-            if not self.match_over():
-                if not self.play_again():
-                    break
+
+            if self.match_over():
+                break
+            if not self.play_again():
+                break
 
         self.display_match_results()
-        print("The final match score is: ")
-        self.display_score()
-        self.display_goodbye_message()
 
     def play_one_game(self):
         self.board.reset()
@@ -288,11 +292,9 @@ class TTTGame:
         if self.human.score > self.computer.score:
             print()
             print('Congratulations! You won the match!')
-            print()
         elif self.human.score < self.computer.score:
             print()
             print('Too bad, you lost the match.')
-            print()
 
 game = TTTGame()
 game.play()
