@@ -86,11 +86,11 @@ class Player:
         self.score += 1
 
 class Human(Player):
-    def __init__(self, score):
+    def __init__(self):
         super().__init__(Square.HUMAN_MARKER)
 
 class Computer(Player):
-    def __init__(self, score):
+    def __init__(self):
         super().__init__(Square.COMPUTER_MARKER)
 
 class TTTGame:
@@ -165,11 +165,12 @@ class TTTGame:
         print()
 
     def display_goodbye_message(self):
+        print()
         print("Thanks for playing Tic Tac Toe! Goodbye!")
 
     def display_results(self):
         if self.is_winner(self.human):
-            print("You won! Congratulations!")
+            print("You won!")
         elif self.is_winner(self.computer):
             print("I won! I won! Take that, human!")
         else:
@@ -284,9 +285,14 @@ class TTTGame:
         print(f'[You: {self.human.score}] [Computer: {self.computer.score}]')
 
     def display_match_results(self):
-        # STUB
-        # check if anyone won the match, then displays appropriate message
-        pass
+        if self.human.score > self.computer.score:
+            print()
+            print('Congratulations! You won the match!')
+            print()
+        elif self.human.score < self.computer.score:
+            print()
+            print('Too bad, you lost the match.')
+            print()
 
 game = TTTGame()
 game.play()
