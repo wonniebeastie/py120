@@ -191,13 +191,14 @@ class TTTGame:
 
         if len_ == 1:
             return choices_list[0]
-        elif len_ == 2:
+
+        if len_ == 2:
             return f'{choices_list[0]} {conjunction} {choices_list[1]}'
-        else:
-            first_half_slice = choices_list[0:-1]
-            second_half = choices_list[-1]
-            first_half = separator.join(first_half_slice)
-            return f'{first_half}{separator}{conjunction} {second_half}'
+
+        first_half_slice = choices_list[0:-1]
+        second_half = choices_list[-1]
+        first_half = separator.join(first_half_slice)
+        return f'{first_half}{separator}{conjunction} {second_half}'
 
     def human_moves(self):
         choice = None
