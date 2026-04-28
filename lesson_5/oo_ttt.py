@@ -281,9 +281,7 @@ class TTTGame:
             self.computer.increment_score()
 
     def display_score(self):
-        # STUB
-        # display both `huamn.score` & `computer.score`
-        pass
+        print(f'[You: {self.human.score}] [Computer: {self.computer.score}]')
 
     def display_match_results(self):
         # STUB
