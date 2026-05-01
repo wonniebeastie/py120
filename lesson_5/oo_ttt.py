@@ -153,6 +153,7 @@ class TTTGame:
         self.board.display()
 
         while True:
+            self.display_score()
             self.player_moves(current_player)
             if self.is_game_over():
                 break
