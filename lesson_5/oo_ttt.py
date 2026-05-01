@@ -129,7 +129,6 @@ class TTTGame:
         self.display_goodbye_message()
 
     def play_match(self):
-        self.display_welcome_message()
         print(f"The first player to win {TTTGame.WINNING_SCORE} games wins the"
               " overall match.")
 
