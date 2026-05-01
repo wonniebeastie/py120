@@ -192,8 +192,8 @@ class TTTGame:
             print("A tie game. How boring.")
 
     @staticmethod
-    def _join_or(remaining_squrs, separator=', ', conjunction='or'):
-        choices_list = [str(choice) for choice in remaining_squrs]
+    def _join_or(remaining_squares, separator=', ', conjunction='or'):
+        choices_list = [str(choice) for choice in remaining_squares]
         len_ = len(choices_list)
 
         if len_ == 1:
