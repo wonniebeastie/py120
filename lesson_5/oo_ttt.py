@@ -84,6 +84,14 @@ class Player:
         self.marker = marker
         self.score = 0
 
+    @property
+    def score(self):
+        return self._score
+
+    @score.setter
+    def score(self, score):
+        self._score = score
+
     def increment_score(self):
         self.score += 1
 
