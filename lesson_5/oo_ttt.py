@@ -202,10 +202,9 @@ class TTTGame:
         if len(choices_list) == 2:
             return f'{choices_list[0]} {conjunction} {choices_list[1]}'
 
-        first_half_slice = choices_list[0:-1]
-        second_half = choices_list[-1]
-        first_half = separator.join(first_half_slice)
-        return f'{first_half}{separator}{conjunction} {second_half}'
+        first_half = separator.join(choices_list[:-1])
+        last_half = choices_list[-1]
+        return f'{first_half}{separator}{conjunction} {last_half}'
 
     def human_moves(self):
         choice = None
