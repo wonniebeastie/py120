@@ -194,12 +194,11 @@ class TTTGame:
     @staticmethod
     def _join_or(remaining_squares, separator=', ', conjunction='or'):
         choices_list = [str(choice) for choice in remaining_squares]
-        len_ = len(choices_list)
 
-        if len_ == 1:
+        if len(choices_list) == 1:
             return choices_list[0]
 
-        if len_ == 2:
+        if len(choices_list) == 2:
             return f'{choices_list[0]} {conjunction} {choices_list[1]}'
 
         first_half_slice = choices_list[0:-1]
