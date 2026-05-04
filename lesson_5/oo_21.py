@@ -93,12 +93,10 @@ class TwentyOneGame:
         pass
 
     def display_welcome_message(self):
-        # STUB
-        pass
+        print("Welcome to a game of Twenty-One. Let's play!")
 
     def display_goodbye_message(self):
-        # STUB
-        pass
+        print("Thanks for playing Twenty-One. Goodbye.")
 
     def display_result(self):
         # STUB
