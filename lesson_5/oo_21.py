@@ -83,13 +83,14 @@ class TwentyOneGame:
 
     def deal_cards(self):
         # STUB
-        # deal two cards to each participant
+        # Use a helper to do the initial dealing of 2 cards to each participant
+        # helper: deck.draw()
         pass
 
     def show_cards(self):
         # STUB
-        # Use a helper to do the initial dealing of 2 cards to each participant
-        # helper: deck.draw()
+        # show each participants' hands
+        # TODO: hide one of dealer's
         pass
 
     def player_turn(self):
