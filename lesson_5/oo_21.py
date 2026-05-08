@@ -8,17 +8,16 @@ class Card:
         self.suit = suit
         self.rank = rank
 
-    def __str__(self):
+    def __repr__(self):
         return f'{self.rank} of {self.suit}'
-
 
 class Deck:
     def __init__(self):
-        self.deck = []
+        self.cards = []
         for suit in Card.SUITS:
             for rank in Card.RANKS:
-                self.deck.append(Card(suit, rank))
-        random.shuffle(self.deck)
+                self.cards.append(Card(suit, rank))
+        random.shuffle(self.cards)
 
     def draw(self):
         # STUB
@@ -75,7 +74,7 @@ class TwentyOneGame:
         # A game needs:
         # a shuffled deck of cards
         # players
-        pass
+        self.deck = Deck()
 
     def start(self):
         # SPIKE
@@ -120,8 +119,8 @@ class TwentyOneGame:
 game = TwentyOneGame()
 game.start()
 
-# deck = Deck()
-# print(deck.deck())
+deck = Deck()
+print(deck.cards)
 
-# for card in deck.deck:
+# for card in deck.cards:
 #     print(card)
