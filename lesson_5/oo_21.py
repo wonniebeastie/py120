@@ -14,6 +14,11 @@ class Deck:
         # a collection of 52 Cards
         pass
 
+    def draw(self):
+        # STUB
+        # draw a single Card from deck
+        pass
+
 class Participant:
     def __init__(self):
         # STUB
@@ -78,10 +83,13 @@ class TwentyOneGame:
 
     def deal_cards(self):
         # STUB
+        # deal two cards to each participant
         pass
 
     def show_cards(self):
         # STUB
+        # Use a helper to do the initial dealing of 2 cards to each participant
+        # helper: deck.draw()
         pass
 
     def player_turn(self):
