@@ -20,9 +20,7 @@ class Deck:
         random.shuffle(self.cards)
 
     def draw(self):
-        # STUB
-        # draw a single Card from deck
-        pass
+        return self.cards.pop()
 
 class Participant:
     def __init__(self):
@@ -90,7 +88,7 @@ class TwentyOneGame:
         # STUB
         # Use a helper to do the initial dealing of 2 cards to each participant
         # helper: deck.draw()
-        pass
+        self.deck.draw()
 
     def show_cards(self):
         # STUB
@@ -119,8 +117,7 @@ class TwentyOneGame:
 game = TwentyOneGame()
 game.start()
 
+# test
 deck = Deck()
 print(deck.cards)
-
-# for card in deck.cards:
-#     print(card)
+print(len(deck.cards))
