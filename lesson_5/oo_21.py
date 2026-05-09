@@ -24,10 +24,10 @@ class Deck:
 
 class Participant:
     def __init__(self):
-        # STUB
-        # Each participants needs:
-        # a hand
-        pass
+        self.hand = []
+
+    def add_card(self, card):
+        self.hand.append(card)
 
     def hit(self):
         # STUB
@@ -50,13 +50,9 @@ class Player(Participant):
         # STUB
         # A player needs, in addition to the ones in Participant:
         # betting money (starts at $5)
-        pass
+        super().__init__()
 
 class Dealer(Participant):
-    def __init__(self):
-        # STUB
-        # Very similar to a Player; do we need this?
-        pass
 
     def hide(self):
         # STUB
@@ -73,6 +69,8 @@ class TwentyOneGame:
         # a shuffled deck of cards
         # players
         self.deck = Deck()
+        self.player = Player()
+        self.dealer = Dealer()
 
     def start(self):
         # SPIKE
@@ -85,10 +83,9 @@ class TwentyOneGame:
         self.display_goodbye_message()
 
     def deal_cards(self):
-        # STUB
-        # Use a helper to do the initial dealing of 2 cards to each participant
-        # helper: deck.draw()
-        self.deck.draw()
+        for _ in range(2):
+            self.player.add_card(self.deck.draw())
+            self.dealer.add_card(self.deck.draw())
 
     def show_cards(self):
         # STUB
@@ -118,6 +115,6 @@ game = TwentyOneGame()
 game.start()
 
 # test
-deck = Deck()
-print(deck.cards)
-print(len(deck.cards))
+# deck = Deck()
+# print(deck.cards)
+# print(len(deck.cards))
