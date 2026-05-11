@@ -29,6 +29,23 @@ class Participant:
     def add_card(self, card):
         self.hand.append(card)
 
+    def display_hand(self):
+        num_of_cards = len(self.hand)
+
+        match num_of_cards:
+            case 0:
+                return 'No cards in hand'
+            case 1:
+                return str(self.hand[0])
+            case 2:
+                return f'{self.hand[0]} and {self.hand[1]}'
+            case _:
+                last = str(self.hand[-1])
+                first = self.hand[:-1]
+                card_list = [str(card) for card in first]
+                first = ', '.join(card_list)
+                return f'{first}, and {last}'
+
     def hit(self):
         # STUB
         pass
@@ -53,6 +70,11 @@ class Player(Participant):
         super().__init__()
 
 class Dealer(Participant):
+
+    def display_hand(self):
+        # TODO: hide one of dealer's & call super() for cases where hiding is
+        # not needed
+        pass
 
     def hide(self):
         # STUB
@@ -88,10 +110,8 @@ class TwentyOneGame:
             self.dealer.add_card(self.deck.draw())
 
     def show_cards(self):
-        # STUB
-        # show each participants' hands
-        # TODO: hide one of dealer's
-        pass
+        print(f"Your hand: {self.player.display_hand()}")
+        print(f"Dealer's hand: {self.dealer.display_hand()}")
 
     def player_turn(self):
         # STUB
