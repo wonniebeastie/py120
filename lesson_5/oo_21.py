@@ -77,7 +77,6 @@ class Player(Participant):
 
         self.hand.append(new_card)
         # display total points
-        # show both hands
 
 class Dealer(Participant):
 
@@ -96,8 +95,7 @@ class TwentyOneGame:
         # SPIKE
         self.display_welcome_message()
         self.deal_cards()
-        self.show_cards(self.dealer)
-        self.show_cards(self.player)
+        self.show_cards()
         self.player_turn()
         # if player has busted, skip dealer turn
         # if player stays, run dealer_turn
@@ -110,12 +108,9 @@ class TwentyOneGame:
             self.player.add_card(self.deck.draw())
             self.dealer.add_card(self.deck.draw())
 
-    def show_cards(self, participant):
-        # TODO: change to showing both hands 
-        if participant is self.player:
-            print(f"Your hand: {participant.display_hand()}")
-        else:
-            print(f"Dealer's hand: {participant.display_hand(True)}")
+    def show_cards(self):
+        print(f"Your hand: {self.player.display_hand()}")
+        print(f"Dealer's hand: {self.dealer.display_hand(True)}")
 
     def player_turn(self):
         # STUB
