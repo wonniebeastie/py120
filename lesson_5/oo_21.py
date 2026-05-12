@@ -71,25 +71,13 @@ class Player(Participant):
 
 class Dealer(Participant):
 
-    def display_hand(self):
-        # TODO: hide one of dealer's & call super() for cases where hiding is
-        # not needed
-        pass
-
-    def hide(self):
-        # STUB
-        pass
-
-    def reveal(self):
-        # STUB
-        pass
+    def display_hand(self, hide_one=False):
+        if hide_one:
+            return f'{self.hand[0]} and [Hidden Card]'
+        return super().display_hand()
 
 class TwentyOneGame:
     def __init__(self):
-        # STUB
-        # A game needs:
-        # a shuffled deck of cards
-        # players
         self.deck = Deck()
         self.player = Player()
         self.dealer = Dealer()
@@ -98,8 +86,11 @@ class TwentyOneGame:
         # SPIKE
         self.display_welcome_message()
         self.deal_cards()
-        self.show_cards()
+        self.show_cards(self.dealer)
+        self.show_cards(self.player)
         self.player_turn()
+        # if player has busted, skip dealer turn
+        # if player stays, run dealer_turn
         self.dealer_turn()
         self.display_result()
         self.display_goodbye_message()
@@ -109,12 +100,37 @@ class TwentyOneGame:
             self.player.add_card(self.deck.draw())
             self.dealer.add_card(self.deck.draw())
 
-    def show_cards(self):
-        print(f"Your hand: {self.player.display_hand()}")
-        print(f"Dealer's hand: {self.dealer.display_hand()}")
+    def show_cards(self, participant):
+        if participant is self.player:
+            print(f"Your hand: {participant.display_hand()}")
+        else:
+            print(f"Dealer's hand: {participant.display_hand(True)}")
 
     def player_turn(self):
         # STUB
+        """
+        [WORK IN PROGRESS]
+        - display "PLAYER TURN"
+        - while true:
+            - ask player if they want to hit or stay
+            - if the answer is not 'h' or 's':
+                - tell them it's invalid
+                - continue onto next loop
+            - if the answer is 'h':
+                - display "You chose to hit."
+                - draw a new card from deck
+                - update player's hand with it 
+                - add up the total points in hand
+                - display dealer hand (one hidden)
+                - display player hand & total points
+            - if the answer is 's' or the player has busted:
+                - exit loop
+        outside loop:
+        - if player has busted:
+            - display "You busted. Dealer wins!"
+        - if player chose to stay:
+            - display "You chose to stay."
+        """
         pass
 
     def dealer_turn(self):
