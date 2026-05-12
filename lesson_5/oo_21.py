@@ -63,11 +63,21 @@ class Participant:
         pass
 
 class Player(Participant):
+    # TODO: FINISH ME!!
     def __init__(self):
         # STUB
         # A player needs, in addition to the ones in Participant:
         # betting money (starts at $5)
         super().__init__()
+
+    def hit(self, deck):
+        print('You chose to hit.')
+        new_card = deck.draw()
+        print(f'You drew: {new_card}')
+
+        self.hand.append(new_card)
+        # display total points
+        # show both hands
 
 class Dealer(Participant):
 
@@ -101,6 +111,7 @@ class TwentyOneGame:
             self.dealer.add_card(self.deck.draw())
 
     def show_cards(self, participant):
+        # TODO: change to showing both hands 
         if participant is self.player:
             print(f"Your hand: {participant.display_hand()}")
         else:
@@ -131,7 +142,18 @@ class TwentyOneGame:
         - if player chose to stay:
             - display "You chose to stay."
         """
-        pass
+        print("--- PLAYER TURN ---")
+
+        while True:
+            player_choice = input("==> Hit or Stay? Enter 'h' for Hit"
+                                    " & 's' for Stay. \n").strip().lower()
+
+            if player_choice not in ['h', 's']:
+                print('Invalid input. Please try again.')
+                continue
+
+            if player_choice == 'h':
+                self.player.hit(self.deck)
 
     def dealer_turn(self):
         # STUB
