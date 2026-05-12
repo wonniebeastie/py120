@@ -46,9 +46,11 @@ class Participant:
                 first = ', '.join(card_list)
                 return f'{first}, and {last}'
 
-    def hit(self):
-        # STUB
-        pass
+    def hit(self, deck):
+        print(f'{self} chose to hit.')
+        new_card = deck.draw()
+        print(f'You drew: {new_card}')
+        self.hand.append(new_card)
 
     def stay(self):
         # STUB
@@ -70,13 +72,8 @@ class Player(Participant):
         # betting money (starts at $5)
         super().__init__()
 
-    def hit(self, deck):
-        print('You chose to hit.')
-        new_card = deck.draw()
-        print(f'You drew: {new_card}')
-
-        self.hand.append(new_card)
-        # display total points
+    def __str__(self):
+        return 'You'
 
 class Dealer(Participant):
 
@@ -84,6 +81,9 @@ class Dealer(Participant):
         if hide_one:
             return f'{self.hand[0]} and [Hidden Card]'
         return super().display_hand()
+
+    def __str__(self):
+        return 'Dealer'
 
 class TwentyOneGame:
     def __init__(self):
@@ -135,7 +135,7 @@ class TwentyOneGame:
         - if player has busted:
             - display "You busted. Dealer wins!"
         - if player chose to stay:
-            - display "You chose to stay."
+            - display "You chose to stay with a total of {} points."
         """
         print("--- PLAYER TURN ---")
 
