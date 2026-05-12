@@ -49,7 +49,7 @@ class Participant:
     def hit(self, deck):
         print(f'{self} chose to hit.')
         new_card = deck.draw()
-        print(f'You drew: {new_card}')
+        print(f'{self} drew: {new_card}')
         self.hand.append(new_card)
 
     def stay(self):
