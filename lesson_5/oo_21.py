@@ -57,7 +57,7 @@ class Participant:
         pass
 
     def is_busted(self):
-        self.score() > 21
+        return self.score() > 21
 
     def score(self):
         # STUB
@@ -99,6 +99,7 @@ class TwentyOneGame:
         self.player_turn()
 
         if not self.player.is_busted():
+            print("You chose to stay.")
             self.dealer_turn()
 
         self.display_result()
@@ -111,33 +112,10 @@ class TwentyOneGame:
 
     def show_cards(self):
         print(f"Your hand: {self.player.display_hand()}")
+        # TODO: show player's total 
         print(f"Dealer's hand: {self.dealer.display_hand(True)}")
 
     def player_turn(self):
-        # STUB
-        """
-        [WORK IN PROGRESS]
-        - display "PLAYER TURN"
-        - while true:
-            - ask player if they want to hit or stay
-            - if the answer is not 'h' or 's':
-                - tell them it's invalid
-                - continue onto next loop
-            - if the answer is 'h':
-                - display "You chose to hit."
-                - draw a new card from deck
-                - update player's hand with it 
-                - add up the total points in hand
-                - display dealer hand (one hidden)
-                - display player hand & total points
-            - if the answer is 's' or the player has busted:
-                - exit loop
-        outside loop:
-        - if player has busted:
-            - display "You busted. Dealer wins!"
-        - if player chose to stay:
-            - display "You chose to stay."
-        """
         print("--- PLAYER TURN ---")
 
         while True:
@@ -150,6 +128,10 @@ class TwentyOneGame:
 
             if player_choice == 'h':
                 self.player.hit(self.deck)
+                self.show_cards()
+
+            if player_choice == 's' or self.player.is_busted():
+                return
 
     def dealer_turn(self):
         # STUB
