@@ -57,11 +57,11 @@ class Participant:
         pass
 
     def is_busted(self):
-        # STUB
-        pass
+        self.score() > 21
 
     def score(self):
         # STUB
+        # compute total points
         pass
 
 class Player(Participant):
@@ -97,9 +97,10 @@ class TwentyOneGame:
         self.deal_cards()
         self.show_cards()
         self.player_turn()
-        # if player has busted, skip dealer turn
-        # if player stays, run dealer_turn
-        self.dealer_turn()
+
+        if not self.player.is_busted():
+            self.dealer_turn()
+
         self.display_result()
         self.display_goodbye_message()
 
@@ -135,7 +136,7 @@ class TwentyOneGame:
         - if player has busted:
             - display "You busted. Dealer wins!"
         - if player chose to stay:
-            - display "You chose to stay with a total of {} points."
+            - display "You chose to stay."
         """
         print("--- PLAYER TURN ---")
 
