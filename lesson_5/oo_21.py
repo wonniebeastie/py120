@@ -117,21 +117,26 @@ class TwentyOneGame:
         self.display_welcome_message()
 
         while True:
-            self.deal_cards()
-            self.show_cards()
-            self.player_turn()
-
-            if not self.player.is_busted():
-                self.dealer_turn()
-
-            self.display_result()
+            self.play_round()
 
             if not self.play_again():
                 break
-
+            
             print("Let's go again!")
+            clear_screen()
+            self.reset_round()
 
         self.display_goodbye_message()
+
+    def play_round(self):
+        self.deal_cards()
+        self.show_cards()
+        self.player_turn()
+
+        if not self.player.is_busted():
+            self.dealer_turn()
+
+        self.display_result()
 
     def deal_cards(self):
         for _ in range(2):
@@ -233,6 +238,10 @@ class TwentyOneGame:
 
         return answer == 'y'
 
+    def reset_round(self):
+        self.deck = Deck()
+        self.player.hand = []
+        self.dealer.hand = []
 
 game = TwentyOneGame()
 game.start()
