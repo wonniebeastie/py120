@@ -48,14 +48,10 @@ class Participant:
                 return f'{first}, and {last}'
 
     def hit(self, deck):
-        print(f'{self} chose to hit.')
+        print(f'{self} chose hit.')
         new_card = deck.draw()
         print(f'{self} drew: {new_card}')
         self.hand.append(new_card)
-
-    def stay(self):
-        # STUB
-        pass
 
     def is_busted(self):
         return self.total_points() > 21
@@ -115,7 +111,6 @@ class TwentyOneGame:
         self.player_turn()
 
         if not self.player.is_busted():
-            print("You chose to stay.")
             self.dealer_turn()
 
         self.display_result()
@@ -148,12 +143,17 @@ class TwentyOneGame:
                 self.player.hit(self.deck)
                 self.show_cards()
 
-            if player_choice == 's' or self.player.is_busted():
+            if self.player.is_busted():
+                return
+
+            if player_choice == 's':
+                print('You chose to stay.')
+                print(DASHES)
                 return
 
     def dealer_turn(self):
         # STUB
-        pass
+        print("| DEALER TURN |")
 
     def display_welcome_message(self):
         print("Welcome to a game of Twenty-One. Let's play!")
