@@ -180,7 +180,7 @@ class TwentyOneGame:
         print("Welcome to a game of Twenty-One. Let's play!")
 
     def display_goodbye_message(self):
-        print("Thanks for playing Twenty-One. Goodbye.")
+        print('Thanks for playing Twenty-One. Goodbye.')
 
     def display_result(self):
         # STUB
