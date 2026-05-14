@@ -60,12 +60,23 @@ class Participant:
         return self.total_points() > 21
 
     def total_points(self):
-        # STUB
-        """
-        Job: compute the score of a hand
-        - get only the card ranks [TODO: extract logic - get self.rank of each card]
-        """
-        pass
+        card_ranks = [card.rank for card in self.hand]
+
+        score = 0
+        for rank in card_ranks:
+            if rank == 'Ace':
+                score += 1
+            elif rank in ['Jack', 'Queen', 'King']:
+                score += 10
+            else:
+                score += rank
+
+        number_of_aces = card_ranks.count('Ace')
+        for _ in range(number_of_aces):
+            if score + 10 <= 21: # Update ace to 11 if it won't cause a bust.
+                score += 10
+
+        return score
 
 class Player(Participant):
     # TODO: FINISH ME!!
@@ -122,8 +133,8 @@ class TwentyOneGame:
         print("--- PLAYER TURN ---")
 
         while True:
-            player_choice = input("==> Hit or Stay? Enter 'h' for Hit"
-                                    " & 's' for Stay. \n").strip().lower()
+            prompt = "==> Hit or Stay? Enter 'h' for Hit & 's' for Stay."
+            player_choice = input(prompt).strip().lower()
 
             if player_choice not in ['h', 's']:
                 print('Invalid input. Please try again.')
