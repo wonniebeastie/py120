@@ -48,7 +48,7 @@ class Participant:
                 return f'{first}, and {last}'
 
     def hit(self, deck):
-        print(f'{self} chose hit.')
+        print(f'{self} chose to hit.')
         new_card = deck.draw()
         print(f'{self} drew: {new_card}')
         self.hand.append(new_card)
@@ -92,6 +92,12 @@ class Dealer(Participant):
         if hide_one:
             return f'{self.hand[0]} and [Hidden Card]'
         return super().display_hand()
+
+    def show_dealer_info(self):
+        print(
+            f"Dealer's Hand: {self.display_hand()} | "
+            f"Dealer's Point Total: {self.total_points()}"
+        )
 
     def __str__(self):
         return 'Dealer'
@@ -144,6 +150,7 @@ class TwentyOneGame:
                 self.show_cards()
 
             if self.player.is_busted():
+                print('You busted!')
                 return
 
             if player_choice == 's':
@@ -152,8 +159,22 @@ class TwentyOneGame:
                 return
 
     def dealer_turn(self):
-        # STUB
-        print("| DEALER TURN |")
+        print('| DEALER TURN |')
+        self.dealer.show_dealer_info()
+
+        while self.dealer.total_points() < 17:
+            self.dealer.hit(self.deck)
+            print(DASHES)
+            self.dealer.show_dealer_info()
+
+        if self.dealer.is_busted():
+            print('Dealer busted!')
+            print(DASHES)
+            return
+
+        print('Dealer stays.')
+        print(DASHES)
+        return
 
     def display_welcome_message(self):
         print("Welcome to a game of Twenty-One. Let's play!")
