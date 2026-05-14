@@ -1,4 +1,5 @@
 import random
+DASHES = '-' * 60
 
 class Card:
     SUITS = ('Hearts', 'Diamonds', 'Clubs', 'Spades')
@@ -100,6 +101,7 @@ class Dealer(Participant):
         return 'Dealer'
 
 class TwentyOneGame:
+
     def __init__(self):
         self.deck = Deck()
         self.player = Player()
@@ -125,15 +127,17 @@ class TwentyOneGame:
             self.dealer.add_card(self.deck.draw())
 
     def show_cards(self):
-        print(f"Your hand: {self.player.display_hand()}")
-        # TODO: show player's total 
-        print(f"Dealer's hand: {self.dealer.display_hand(True)}")
+        print(DASHES)
+        print(f"Dealer's Hand: {self.dealer.display_hand(True)}")
+        print(f"Your Hand: {self.player.display_hand()}")
+        print(f"Your Point Total: {self.player.total_points()}")
+        print(DASHES)
 
     def player_turn(self):
-        print("--- PLAYER TURN ---")
+        print("| PLAYER TURN |")
 
         while True:
-            prompt = "==> Hit or Stay? Enter 'h' for Hit & 's' for Stay."
+            prompt = "==> Hit or Stay? Enter 'h' for Hit & 's' for Stay: "
             player_choice = input(prompt).strip().lower()
 
             if player_choice not in ['h', 's']:
