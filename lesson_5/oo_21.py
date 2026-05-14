@@ -124,8 +124,8 @@ class TwentyOneGame:
     def show_cards(self):
         print(DASHES)
         print(f"Dealer's Hand: {self.dealer.display_hand(True)}")
-        print(f"Your Hand: {self.player.display_hand()}")
-        print(f"Your Point Total: {self.player.total_points()}")
+        print(f"Your Hand: {self.player.display_hand()} | "
+              f"Your Point Total: {self.player.total_points()}")
         print(DASHES)
 
     def player_turn(self):
