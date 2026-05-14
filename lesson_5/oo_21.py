@@ -57,11 +57,14 @@ class Participant:
         pass
 
     def is_busted(self):
-        return self.score() > 21
+        return self.total_points() > 21
 
-    def score(self):
+    def total_points(self):
         # STUB
-        # compute total points
+        """
+        Job: compute the score of a hand
+        - get only the card ranks [TODO: extract logic - get self.rank of each card]
+        """
         pass
 
 class Player(Participant):
