@@ -1,5 +1,9 @@
 import random
+import os
 DASHES = '-' * 60
+
+def clear_screen():
+    os.system('clear')
 
 class Card:
     SUITS = ('Hearts', 'Diamonds', 'Clubs', 'Spades')
