@@ -110,16 +110,23 @@ class TwentyOneGame:
         self.dealer = Dealer()
 
     def start(self):
-        # SPIKE
         self.display_welcome_message()
-        self.deal_cards()
-        self.show_cards()
-        self.player_turn()
 
-        if not self.player.is_busted():
-            self.dealer_turn()
+        while True:
+            self.deal_cards()
+            self.show_cards()
+            self.player_turn()
 
-        self.display_result()
+            if not self.player.is_busted():
+                self.dealer_turn()
+
+            self.display_result()
+
+            if not self.play_again():
+                break
+
+            print("Let's go again!")
+
         self.display_goodbye_message()
 
     def deal_cards(self):
@@ -210,6 +217,18 @@ class TwentyOneGame:
             print('Dealer wins this round, better luck next time.')
         else:
             print("It's a tie!")
+
+    def play_again(self):
+        while True:
+            answer = input("==> Play again? Enter 'y' or 'n': ").strip().lower()
+
+            if answer in ['y', 'n']:
+                break
+
+            print("Please enter a valid choice.")
+
+        return answer == 'y'
+
 
 game = TwentyOneGame()
 game.start()
