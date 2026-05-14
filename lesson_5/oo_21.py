@@ -176,6 +176,12 @@ class TwentyOneGame:
         print(DASHES)
         return
 
+    def determine_winner(self, player_points, dealer_points):
+        if player_points > dealer_points:
+            return 'player'
+        elif player_points < dealer_points:
+            return 'dealer'
+
     def display_welcome_message(self):
         print("Welcome to a game of Twenty-One. Let's play!")
 
@@ -183,13 +189,27 @@ class TwentyOneGame:
         print('Thanks for playing Twenty-One. Goodbye.')
 
     def display_result(self):
-        # STUB
-        pass
+        player_points = self.player.total_points()
+        dealer_points = self.dealer.total_points()
+        winner = None
+
+        print(f"Your Points: {player_points} | "
+              f"Dealer's Points: {dealer_points}")
+
+        if self.player.is_busted():
+            winner = 'dealer'
+        elif self.dealer.is_busted():
+            winner = 'player'
+        else:
+            # If both stayed
+            winner = self.determine_winner(player_points, dealer_points)
+
+        if winner == 'player':
+            print('Congratulations, you won the round!')
+        elif winner == 'dealer':
+            print('Dealer wins this round, better luck next time.')
+        else:
+            print("It's a tie!")
 
 game = TwentyOneGame()
 game.start()
-
-# test
-# deck = Deck()
-# print(deck.cards)
-# print(len(deck.cards))
