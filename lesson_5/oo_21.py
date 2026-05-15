@@ -66,7 +66,7 @@ class Participant:
         self.hand.append(new_card)
 
     def is_busted(self):
-        return self.total_points > 21
+        return self.total_points > TwentyOneGame.WINNING_SCORE
 
     @property
     def total_points(self):
@@ -83,15 +83,21 @@ class Participant:
 
         number_of_aces = card_ranks.count('Ace')
         for _ in range(number_of_aces):
-            if score + 10 <= 21: # Update ace to 11 if it won't cause a bust.
+            if score + 10 <= TwentyOneGame.WINNING_SCORE: # Update ace to 11 if it won't cause a bust.
                 score += 10
 
         return score
 
 class Player(Participant):
+    INITIAL_AMOUNT = 5
+    WINNING_AMOUNT = 10
+
     def __init__(self):
         super().__init__()
-        self.money = 5
+        self.money = Player.INITIAL_AMOUNT
+
+    def display_money(self):
+        print(f'You now have ${self.money}.')
 
     def __str__(self):
         return 'You'
@@ -113,6 +119,8 @@ class Dealer(Participant):
         return 'Dealer'
 
 class TwentyOneGame:
+    WINNING_SCORE = 21
+    DEALER_STAY_SCORE = 17
 
     def __init__(self):
         self.deck = Deck()
@@ -194,7 +202,7 @@ class TwentyOneGame:
         print('| DEALER TURN |')
         self.dealer.show_dealer_info()
 
-        while self.dealer.total_points < 17:
+        while self.dealer.total_points < TwentyOneGame.DEALER_STAY_SCORE:
             self.dealer.hit(self.deck)
             print(DASHES)
             self.dealer.show_dealer_info()
@@ -222,7 +230,7 @@ class TwentyOneGame:
         print()
         print(f"You have ${self.player.money} to start. \n"
               f"If you reach $0, you will be kicked out of the game. \n"
-              f"However, if you reach $10, you get to go home rich.")
+              f"However, if you reach ${Player.WINNING_AMOUNT}, you get to go home rich.")
 
     def display_goodbye_message(self):
         print()
@@ -246,11 +254,11 @@ class TwentyOneGame:
 
         if winner == 'player':
             self.player.money += 1
-            print(f'You now have ${self.player.money}.')
+            self.player.display_money()
             print('Congratulations, you won the round!')
         elif winner == 'dealer':
             self.player.money -= 1
-            print(f'You now have ${self.player.money}.')
+            self.player.display_money()
             print('Dealer wins this round, better luck next time.')
         else:
             print("It's a tie!")
