@@ -10,8 +10,16 @@ class Card:
     RANKS = ('Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King')
 
     def __init__(self, suit, rank):
-        self.suit = suit
-        self.rank = rank
+        self._suit = suit
+        self._rank = rank
+
+    @property
+    def suit(self):
+        return self._suit
+
+    @property
+    def rank(self):
+        return self._rank
 
     def __repr__(self):
         return f'{self.rank} of {self.suit}'
@@ -58,8 +66,9 @@ class Participant:
         self.hand.append(new_card)
 
     def is_busted(self):
-        return self.total_points() > 21
+        return self.total_points > 21
 
+    @property
     def total_points(self):
         card_ranks = [card.rank for card in self.hand]
 
@@ -80,12 +89,9 @@ class Participant:
         return score
 
 class Player(Participant):
-    # TODO: FINISH ME!!
     def __init__(self):
-        # STUB
-        # A player needs, in addition to the ones in Participant:
-        # betting money (starts at $5)
         super().__init__()
+        self.money = 5
 
     def __str__(self):
         return 'You'
@@ -100,7 +106,7 @@ class Dealer(Participant):
     def show_dealer_info(self):
         print(
             f"Dealer's Hand: {self.display_hand()} | "
-            f"Dealer's Point Total: {self.total_points()}"
+            f"Dealer's Point Total: {self.total_points}"
         )
 
     def __str__(self):
@@ -119,9 +125,19 @@ class TwentyOneGame:
         while True:
             self.play_round()
 
+            financial_status = self.broke_or_rich()
+
+            if financial_status == 'broke':
+                print(f"You're now too {financial_status} to play.")
+                break
+
+            if financial_status == 'rich':
+                print(f"You can now go home {financial_status}!")
+                break
+
             if not self.play_again():
                 break
-            
+
             print("Let's go again!")
             clear_screen()
             self.reset_round()
@@ -147,7 +163,7 @@ class TwentyOneGame:
         print(DASHES)
         print(f"Dealer's Hand: {self.dealer.display_hand(True)}")
         print(f"Your Hand: {self.player.display_hand()} | "
-              f"Your Point Total: {self.player.total_points()}")
+              f"Your Point Total: {self.player.total_points}")
         print(DASHES)
 
     def player_turn(self):
@@ -178,7 +194,7 @@ class TwentyOneGame:
         print('| DEALER TURN |')
         self.dealer.show_dealer_info()
 
-        while self.dealer.total_points() < 17:
+        while self.dealer.total_points < 17:
             self.dealer.hit(self.deck)
             print(DASHES)
             self.dealer.show_dealer_info()
@@ -195,18 +211,26 @@ class TwentyOneGame:
     def determine_winner(self, player_points, dealer_points):
         if player_points > dealer_points:
             return 'player'
-        elif player_points < dealer_points:
+
+        if player_points < dealer_points:
             return 'dealer'
+
+        return 'tie'
 
     def display_welcome_message(self):
         print("Welcome to a game of Twenty-One. Let's play!")
+        print()
+        print(f"You have ${self.player.money} to start. \n"
+              f"If you reach $0, you will be kicked out of the game. \n"
+              f"However, if you reach $10, you get to go home rich.")
 
     def display_goodbye_message(self):
+        print()
         print('Thanks for playing Twenty-One. Goodbye.')
 
     def display_result(self):
-        player_points = self.player.total_points()
-        dealer_points = self.dealer.total_points()
+        player_points = self.player.total_points
+        dealer_points = self.dealer.total_points
         winner = None
 
         print(f"Your Points: {player_points} | "
@@ -221,8 +245,12 @@ class TwentyOneGame:
             winner = self.determine_winner(player_points, dealer_points)
 
         if winner == 'player':
+            self.player.money += 1
+            print(f'You now have ${self.player.money}.')
             print('Congratulations, you won the round!')
         elif winner == 'dealer':
+            self.player.money -= 1
+            print(f'You now have ${self.player.money}.')
             print('Dealer wins this round, better luck next time.')
         else:
             print("It's a tie!")
@@ -242,6 +270,15 @@ class TwentyOneGame:
         self.deck = Deck()
         self.player.hand = []
         self.dealer.hand = []
+
+    def broke_or_rich(self):
+        if self.player.money == 0:
+            return 'broke'
+
+        if self.player.money == 10:
+            return 'rich'
+
+        return None
 
 game = TwentyOneGame()
 game.start()
